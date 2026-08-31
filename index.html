@@ -8,13 +8,14 @@
         :root {
             --primary: #5A4AD1;
             --primary-hover: #4839B3;
+            --primary-light: #F0EEFF;
             --bg-color: #F8F9FA;
             --card-bg: #FFFFFF;
-            --text-main: #2D3748;
-            --text-muted: #718096;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
             --border-color: #E2E8F0;
-            --radius: 12px;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --radius: 16px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
         }
 
         * {
@@ -22,6 +23,7 @@
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -32,21 +34,25 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            overflow-x: hidden;
         }
 
         .quiz-container {
             width: 100%;
-            max-width: 650px;
+            max-width: 580px;
             background: var(--card-bg);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            padding: 32px;
+            padding: 36px 32px;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
+        /* Top Progress Header */
         .progress-header {
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+            transition: opacity 0.3s ease;
         }
 
         .progress-text {
@@ -55,115 +61,155 @@
             font-size: 14px;
             font-weight: 600;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .progress-bar-bg {
             width: 100%;
             height: 8px;
-            background-color: var(--border-color);
-            border-radius: 4px;
+            background-color: #EDF2F7;
+            border-radius: 99px;
             overflow: hidden;
         }
 
         .progress-bar-fill {
             height: 100%;
             width: 5.5%;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, #5A4AD1 0%, #7C3AED 100%);
+            border-radius: 99px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* RiseGuide Smooth Slide Animation */
         .step-content {
             display: none;
-            animation: fadeIn 0.4s ease forwards;
+            opacity: 0;
+            transform: translateY(20px) scale(0.99);
+            will-change: transform, opacity;
         }
 
         .step-content.active {
             display: block;
+            animation: slideUpFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideUpFade {
+            0% {
+                opacity: 0;
+                transform: translateY(24px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         h2 {
             font-size: 22px;
+            font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 20px;
-            line-height: 1.4;
+            margin-bottom: 24px;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+            text-align: center;
         }
 
         .options-grid {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
 
         .option-btn {
-            background: #F8FAFC;
+            background: #FFFFFF;
             border: 2px solid var(--border-color);
             border-radius: var(--radius);
-            padding: 16px;
+            padding: 18px 20px;
             text-align: left;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-main);
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 4px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .option-btn span {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .option-btn:hover {
             border-color: var(--primary);
-            background-color: #F0EEFF;
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(90, 74, 209, 0.12);
+        }
+
+        .option-btn:active {
+            transform: scale(0.98);
         }
 
         .option-btn.selected {
             border-color: var(--primary);
-            background-color: #F0EEFF;
+            background-color: var(--primary-light);
+            box-shadow: 0 0 0 1px var(--primary);
         }
 
+        /* Custom Cards */
         .info-card {
-            background-color: #F0EEFF;
+            background: linear-gradient(135deg, #F0EEFF 0%, #F8F9FF 100%);
             border-left: 4px solid var(--primary);
-            padding: 24px;
-            border-radius: 8px;
+            padding: 26px;
+            border-radius: 12px;
             margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(90, 74, 209, 0.06);
         }
 
         .info-card h3 {
             color: var(--primary);
             margin-bottom: 12px;
             font-size: 20px;
+            font-weight: 700;
         }
 
         .info-card p {
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.6;
             color: var(--text-main);
         }
 
         .cta-btn {
-            background-color: var(--primary);
+            background: linear-gradient(180deg, #5A4AD1 0%, #4839B3 100%);
             color: white;
             border: none;
-            border-radius: var(--radius);
+            border-radius: 99px;
             padding: 18px 32px;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             width: 100%;
             cursor: pointer;
-            transition: background 0.2s ease;
-            margin-top: 16px;
+            transition: all 0.25s ease;
+            margin-top: 20px;
             text-align: center;
+            box-shadow: 0 8px 20px rgba(90, 74, 209, 0.3);
+            letter-spacing: 0.02em;
         }
 
         .cta-btn:hover {
-            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(90, 74, 209, 0.4);
+        }
+
+        .cta-btn:active {
+            transform: scale(0.98);
         }
 
         .diagnostic-card {
@@ -184,7 +230,7 @@
         }
 
         .badge {
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: 700;
@@ -197,43 +243,87 @@
         .timeline {
             border-left: 3px solid var(--primary);
             padding-left: 20px;
-            margin: 20px 0;
+            margin: 24px 0;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 18px;
         }
 
         .timeline-item h4 {
             color: var(--primary);
             font-size: 16px;
+            font-weight: 700;
         }
 
         .timeline-item p {
             font-size: 14px;
             color: var(--text-muted);
             margin-top: 4px;
+            line-height: 1.4;
         }
 
-        /* Loading Overlay */
+        /* Dynamic Multi-Step Analysis Engine (Matching Video Frame 00:52 - 01:12) */
         .loader-container {
             display: none;
             text-align: center;
-            padding: 40px 0;
+            padding: 10px 0;
         }
 
-        .spinner {
-            border: 4px solid var(--border-color);
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px auto;
+        .loader-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 24px;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .loader-title span {
+            color: var(--primary);
+        }
+
+        .analysis-step {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .analysis-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .analysis-bar-bg {
+            width: 100%;
+            height: 10px;
+            background-color: #EDF2F7;
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .analysis-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #5A4AD1 0%, #7C3AED 100%);
+            border-radius: 99px;
+            transition: width 0.1s linear;
+        }
+
+        .testimonial-box {
+            background: #F8FAFC;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 28px;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .stars {
+            color: #F59E0B;
+            margin-bottom: 6px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -312,12 +402,12 @@
         </div>
     </div>
 
-    <!-- STEP 7 (Social Proof Info Slide) -->
+    <!-- STEP 7 -->
     <div class="step-content" data-step="7">
         <div class="info-card">
             <h3>💬 You Are Not "Crazy," and You Are Not Alone.</h3>
-            <p>Millions of women around the world have stood exactly where you are standing right now.</p> <br>
-            <p>They thought their sudden anxiety, 3 AM wake-up calls, and weight retention were just "getting older." In reality, their nervous system was stuck in a high-cortisol loop caused by hormonal shifts.</p> <br>
+            <p>Millions of women around the world have stood exactly where you are standing right now.</p><br>
+            <p>They thought their sudden anxiety, 3 AM wake-up calls, and weight retention were just "getting older." In reality, their nervous system was stuck in a high-cortisol loop caused by hormonal shifts.</p><br>
             <p><strong>The good news: Once you address the root nervous system balance, your body naturally resets.</strong></p>
         </div>
         <button class="cta-btn" onclick="nextStep()">Continue to Your Customized Assessment →</button>
@@ -333,10 +423,10 @@
         </div>
     </div>
 
-    <!-- STEP 9 (Multi-Select) -->
+    <!-- STEP 9 -->
     <div class="step-content" data-step="9">
         <h2>Which of these have you tried to fix your symptoms in the past? (Select all that apply)</h2>
-        <div class="options-grid" id="multiSelectGrid">
+        <div class="options-grid">
             <button class="option-btn" onclick="toggleMultiSelect(this)">Counting calories or strict diets (keto, fasting)</button>
             <button class="option-btn" onclick="toggleMultiSelect(this)">Over-the-counter menopause supplements or vitamins</button>
             <button class="option-btn" onclick="toggleMultiSelect(this)">Cutting back on coffee, sugar, or alcohol</button>
@@ -356,7 +446,7 @@
         </div>
     </div>
 
-    <!-- STEP 11 (Objection Buster Slide) -->
+    <!-- STEP 11 -->
     <div class="step-content" data-step="11">
         <div class="info-card">
             <h3>💡 Good News: You Don't Need Hours a Day.</h3>
@@ -386,7 +476,7 @@
         </div>
     </div>
 
-    <!-- STEP 14 (Summary Diagnosis) -->
+    <!-- STEP 14 -->
     <div class="step-content" data-step="14">
         <h2>Your Hormonal & Nervous System Profile</h2>
         <div class="diagnostic-card">
@@ -409,7 +499,7 @@
         <button class="cta-btn" onclick="nextStep()">View Your 6-Month Roadmap →</button>
     </div>
 
-    <!-- STEP 15 (Timeline Promise) -->
+    <!-- STEP 15 -->
     <div class="step-content" data-step="15">
         <h2>Your Expected Progress Timeline</h2>
         <div class="timeline">
@@ -429,7 +519,7 @@
         <button class="cta-btn" onclick="nextStep()">Continue to Claim Your Custom Plan →</button>
     </div>
 
-    <!-- STEP 16 (Yes Streak 1) -->
+    <!-- STEP 16 -->
     <div class="step-content" data-step="16">
         <h2>Are you ready to stop guessing with random supplements and follow a clinically structured plan designed for your hormonal stage?</h2>
         <div class="options-grid">
@@ -438,7 +528,7 @@
         </div>
     </div>
 
-    <!-- STEP 17 (Yes Streak 2) -->
+    <!-- STEP 17 -->
     <div class="step-content" data-step="17">
         <h2>If we show you a natural, non-invasive method to calm your nervous system and restore your sleep, will you give it a fair try?</h2>
         <div class="options-grid">
@@ -447,7 +537,7 @@
         </div>
     </div>
 
-    <!-- STEP 18 (Yes Streak 3 / Final CTA) -->
+    <!-- STEP 18 -->
     <div class="step-content" data-step="18">
         <h2>Are you ready to stop feeling like a stranger in your own skin and finally reclaim your energy, mind, and body?</h2>
         <div class="options-grid">
@@ -455,11 +545,39 @@
         </div>
     </div>
 
-    <!-- LOADING SCREEN -->
+    <!-- DYNAMIC ANALYSIS LOADER (RiseGuide Video Matching 00:52 - 01:12) -->
     <div class="loader-container" id="loaderContainer">
-        <div class="spinner"></div>
-        <h2>Analyzing Your Answers...</h2>
-        <p style="color: var(--text-muted); font-size: 15px; margin-top: 8px;">Building Your Personalized Calm Reset Protocol</p>
+        <h2 class="loader-title">We are creating your <span>Calm Reset Plan...</span></h2>
+
+        <div class="analysis-step">
+            <div class="analysis-label">
+                <span>Analyzing your answers</span>
+                <span id="p1-text">0%</span>
+            </div>
+            <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p1-bar"></div></div>
+        </div>
+
+        <div class="analysis-step">
+            <div class="analysis-label">
+                <span>Adapting to your nervous system triggers</span>
+                <span id="p2-text">0%</span>
+            </div>
+            <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p2-bar"></div></div>
+        </div>
+
+        <div class="analysis-step">
+            <div class="analysis-label">
+                <span>Building your progress timeline</span>
+                <span id="p3-text">0%</span>
+            </div>
+            <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p3-bar"></div></div>
+        </div>
+
+        <div class="testimonial-box">
+            <div class="stars">★★★★★</div>
+            <p style="font-size: 14px; font-weight: 600; color: #1E293B;">"My best decision ever"</p>
+            <p style="font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4;">"I was struggling with 3 AM wake-ups and brain fog for over two years. After following the Calm Reset Method for 3 weeks, I finally sleep through the night and feel like myself again!"</p>
+        </div>
     </div>
 </div>
 
@@ -476,9 +594,14 @@
 
     function nextStep() {
         if (currentStep < totalSteps) {
-            document.querySelector(`.step-content[data-step="${currentStep}"]`).classList.remove('active');
+            const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+            currentEl.style.animation = 'none'; // reset animation
+            currentEl.classList.remove('active');
+
             currentStep++;
-            document.querySelector(`.step-content[data-step="${currentStep}"]`).classList.add('active');
+
+            const nextEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+            nextEl.classList.add('active');
             updateProgress();
         }
     }
@@ -489,14 +612,37 @@
 
     function finishQuiz() {
         document.querySelector(`.step-content[data-step="${currentStep}"]`).classList.remove('active');
-        document.getElementById('progressHeader').style.display = 'none';
+        document.getElementById('progressHeader').style.opacity = '0';
+        setTimeout(() => { document.getElementById('progressHeader').style.display = 'none'; }, 300);
         document.getElementById('loaderContainer').style.display = 'block';
 
-        // Simulating 3 second analysis before redirecting to your sales page
-        setTimeout(() => {
-            // Replace with your actual sales page or checkout URL
-            window.location.href = "https://yourdomain.com/calm-reset-vsl"; 
-        }, 3000);
+        // Run sequential progress bars matching video (RiseGuide style)
+        runBar('p1-bar', 'p1-text', 0, 100, 1000, () => {
+            runBar('p2-bar', 'p2-text', 0, 100, 1200, () => {
+                runBar('p3-bar', 'p3-text', 0, 100, 1000, () => {
+                    setTimeout(() => {
+                        window.location.href = "https://yourdomain.com/calm-reset-vsl";
+                    }, 500);
+                });
+            });
+        });
+    }
+
+    function runBar(barId, textId, start, end, duration, callback) {
+        let startTime = null;
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            let progress = Math.min((timestamp - startTime) / duration, 1);
+            let val = Math.floor(progress * (end - start) + start);
+            document.getElementById(barId).style.width = val + '%';
+            document.getElementById(textId).innerText = val + '%';
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else if (callback) {
+                callback();
+            }
+        }
+        requestAnimationFrame(step);
     }
 </script>
 
