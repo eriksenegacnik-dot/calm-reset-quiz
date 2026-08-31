@@ -32,24 +32,123 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 24px 16px;
+            padding: 16px;
             overflow-x: hidden;
         }
 
         .quiz-container {
             width: 100%;
-            max-width: 580px;
+            max-width: 520px;
             background: transparent;
             position: relative;
             margin: 0 auto;
         }
 
-        /* Top Social Badges (Exact match to image) */
+        /* Top Header Navigation matching screenshots */
+        .app-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 24px;
+            position: relative;
+            width: 100%;
+        }
+
+        .header-top-bar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: #E2E8F0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            color: #1E293B;
+            font-size: 16px;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1E293B;
+        }
+
+        /* Timeline Step Line */
+        .step-timeline {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .timeline-line-bg {
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #E2E8F0;
+            z-index: 1;
+        }
+
+        .timeline-line-progress {
+            position: absolute;
+            height: 3px;
+            background: #1E293B;
+            z-index: 2;
+            transition: width 0.3s ease;
+            width: 25%;
+        }
+
+        .timeline-dots {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 3;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #E2E8F0;
+            border: 2px solid #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-dot.active {
+            background: #1E293B;
+            border-color: #1E293B;
+        }
+
+        .timeline-dot.completed {
+            background: #1E293B;
+            color: white;
+            font-size: 8px;
+        }
+
+        /* Social Badges */
         .badges-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         .badge-box {
@@ -78,62 +177,32 @@
 
         .badge-icon {
             font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Header Progress Bar */
-        .progress-header {
-            margin-bottom: 28px;
-        }
-
-        .progress-bar-bg {
-            width: 100%;
-            height: 6px;
-            background-color: #E2E8F0;
-            border-radius: 99px;
-            overflow: hidden;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #5267FA 0%, #7C3AED 100%);
-            border-radius: 99px;
-            transition: width 0.4s ease;
         }
 
         /* Screen Animations */
         .step-content {
             display: none;
             opacity: 0;
-            transform: translateY(16px);
+            transform: translateY(12px);
         }
 
         .step-content.active {
             display: block;
-            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes slideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(12px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         h1.hero-title {
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 800;
             color: #5267FA;
             text-align: center;
-            line-height: 1.2;
-            margin-bottom: 16px;
+            line-height: 1.25;
+            margin-bottom: 14px;
             letter-spacing: -0.02em;
         }
 
@@ -142,28 +211,83 @@
             font-weight: 700;
             color: #64748B;
             text-align: center;
-            letter-spacing: 1.8px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         h2 {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-main);
+            font-size: 22px;
+            font-weight: 800;
+            color: #000000;
             margin-bottom: 8px;
             line-height: 1.3;
             text-align: center;
         }
 
         .subtitle {
-            font-size: 15px;
-            color: var(--text-muted);
+            font-size: 14px;
+            color: #64748B;
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
-        /* Age Image Grid */
+        /* Questions Option Cards matching Image 1 */
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: #FFFFFF;
+            border: 1.5px solid transparent;
+            border-radius: 16px;
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .option-btn-icon {
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .option-btn-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .option-btn-text span {
+            font-size: 13px;
+            font-weight: 400;
+            color: #64748B;
+        }
+
+        .option-btn:hover {
+            border-color: #A5B4FC;
+            background-color: #EEF2FF;
+        }
+
+        .option-btn.selected {
+            border-color: #6366F1;
+            background-color: #EEF2FF;
+        }
+
+        /* Age Grid */
         .age-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -187,13 +311,9 @@
             box-shadow: 0 10px 24px rgba(82, 103, 250, 0.18);
         }
 
-        .age-card:active {
-            transform: scale(0.98);
-        }
-
         .age-card-img-wrap {
             width: 100%;
-            height: 200px;
+            height: 180px;
             background-color: #F1F5F9;
             overflow: hidden;
         }
@@ -208,93 +328,194 @@
         .age-card-btn {
             background: #5267FA;
             color: white;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 700;
-            padding: 16px 20px;
+            padding: 14px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /* Standard Option Buttons */
-        .options-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .option-btn {
-            background: #FFFFFF;
-            border: 1.5px solid var(--border-color);
-            border-radius: 16px;
-            padding: 18px 20px;
-            text-align: left;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-main);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-        }
-
-        .option-btn span {
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .option-btn:hover {
-            border-color: var(--primary);
-            background-color: var(--primary-light);
-            transform: translateY(-2px);
-        }
-
-        .option-btn.selected {
-            border-color: var(--primary);
-            background-color: var(--primary-light);
-            box-shadow: 0 0 0 1px var(--primary);
-        }
-
-        /* Primary Action Button (Matches Screenshot Styling) */
+        /* Primary Action CTA */
         .primary-cta-btn {
-            background: linear-gradient(180deg, #5267FA 0%, #3B4ED8 100%);
+            background: #5267FA;
             color: white;
             border: none;
             border-radius: 16px;
-            padding: 20px 32px;
-            font-size: 18px;
+            padding: 18px 32px;
+            font-size: 17px;
             font-weight: 700;
             width: 100%;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             text-align: center;
-            box-shadow: 0 8px 24px rgba(82, 103, 250, 0.35);
+            box-shadow: 0 6px 20px rgba(82, 103, 250, 0.3);
             letter-spacing: 0.01em;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 8px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .primary-cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(82, 103, 250, 0.45);
+            background: #3E53E8;
+            transform: translateY(-1px);
         }
 
-        .primary-cta-btn:active {
-            transform: scale(0.98);
+        /* Summary Profile Screen Styles matching Image 2 */
+        .profile-summary-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            margin-bottom: 20px;
+        }
+
+        .readiness-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .readiness-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #000000;
+        }
+
+        .readiness-pill {
+            background: #DCFCE7;
+            color: #16A34A;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid #86EFAC;
+            text-transform: uppercase;
+        }
+
+        /* Meter Bar */
+        .level-meter-container {
+            margin-bottom: 28px;
+            position: relative;
+            padding-top: 28px;
+        }
+
+        .meter-pointer-pill {
+            position: absolute;
+            top: 0;
+            left: 82%;
+            transform: translateX(-50%);
+            background: #000000;
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .meter-pointer-pill::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 4px 4px 0 4px;
+            border-style: solid;
+            border-color: #000000 transparent transparent transparent;
+        }
+
+        .meter-bar {
+            height: 10px;
+            border-radius: 99px;
+            background: linear-gradient(90deg, #EF4444 0%, #F59E0B 35%, #10B981 70%, #22C55E 100%);
+            position: relative;
+        }
+
+        .meter-indicator-dot {
+            position: absolute;
+            top: 50%;
+            left: 82%;
+            transform: translate(-50%, -50%);
+            width: 18px;
+            height: 18px;
+            background: white;
+            border: 3px solid #000000;
+            border-radius: 50%;
+        }
+
+        .meter-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #64748B;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* Niche Metrics Grid (Without Photo) */
+        .niche-metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            padding-top: 8px;
+        }
+
+        .metric-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .metric-icon {
+            font-size: 22px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #64748B;
+            font-weight: 500;
+        }
+
+        .metric-val {
+            font-size: 15px;
+            font-weight: 800;
+            color: #000000;
+        }
+
+        /* Green Insight Box matching Image 2 */
+        .insight-box {
+            background: #DCFCE7;
+            border: 1px solid #86EFAC;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .insight-box-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #15803D;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .insight-box-desc {
+            font-size: 13px;
+            color: #166534;
+            line-height: 1.5;
+            font-weight: 400;
         }
 
         .info-card {
             background: #FFFFFF;
             border-left: 4px solid var(--primary);
-            padding: 26px;
+            padding: 24px;
             border-radius: 16px;
             margin-bottom: 24px;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
@@ -303,19 +524,19 @@
         .info-card h3 {
             color: var(--primary);
             margin-bottom: 12px;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
         }
 
         .info-card p {
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.6;
             color: var(--text-main);
         }
 
         .legal-terms {
-            margin-top: 32px;
-            font-size: 12px;
+            margin-top: 28px;
+            font-size: 11px;
             color: var(--text-muted);
             text-align: center;
             line-height: 1.6;
@@ -325,34 +546,6 @@
             color: var(--text-muted);
             text-decoration: underline;
         }
-
-        .diagnostic-card {
-            background: #1E293B;
-            color: white;
-            padding: 24px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-        }
-
-        .diagnostic-metric {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #334155;
-        }
-
-        .badge {
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .badge-red { background: #EF4444; color: white; }
-        .badge-yellow { background: #F59E0B; color: white; }
-        .badge-green { background: #10B981; color: white; }
 
         .timeline {
             border-left: 3px solid var(--primary);
@@ -447,15 +640,8 @@
             margin-bottom: 6px;
         }
 
-        .stars {
-            color: #10B981;
-            font-size: 13px;
-        }
-
-        .review-date {
-            font-size: 12px;
-            color: #94A3B8;
-        }
+        .stars { color: #10B981; font-size: 13px; }
+        .review-date { font-size: 12px; color: #94A3B8; }
 
         /* Modal Overlay */
         .modal-overlay {
@@ -476,21 +662,15 @@
         .modal-card {
             background: white;
             width: 100%;
-            max-width: 480px;
-            padding: 30px 24px;
+            max-width: 440px;
+            padding: 28px 20px;
             border-radius: 20px;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-            animation: modalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             text-align: center;
         }
 
-        @keyframes modalPop {
-            0% { opacity: 0; transform: scale(0.9) translateY(10px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
         .modal-card h3 {
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 20px;
@@ -504,34 +684,38 @@
 
         .modal-btn {
             flex: 1;
-            padding: 16px;
+            padding: 14px;
             border-radius: 12px;
             border: 2px solid var(--border-color);
             background: white;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .modal-btn:hover {
-            border-color: var(--primary);
-            background-color: var(--primary-light);
-            color: var(--primary);
         }
     </style>
 </head>
 <body>
 
 <div class="quiz-container">
-    <!-- Sleek Progress Bar Header -->
-    <div class="progress-header" id="progressHeader" style="display: none;">
-        <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="progressBar"></div>
+    <!-- Top Nav Header (Visible during quiz) -->
+    <div class="app-header" id="appHeader" style="display: none;">
+        <div class="header-top-bar">
+            <button class="back-btn" onclick="prevStep()">‹</button>
+            <span class="category-title" id="headerCategory">Challenges</span>
+        </div>
+        <div class="step-timeline">
+            <div class="timeline-line-bg"></div>
+            <div class="timeline-line-progress" id="timelineProgress"></div>
+            <div class="timeline-dots">
+                <div class="timeline-dot completed">✓</div>
+                <div class="timeline-dot active" id="dot2"></div>
+                <div class="timeline-dot" id="dot3"></div>
+                <div class="timeline-dot" id="dot4"></div>
+            </div>
         </div>
     </div>
 
-    <!-- STEP 0: Clean Landing Page (No Borders/Boxes) -->
+    <!-- STEP 0: Landing Page -->
     <div class="step-content active" data-step="0">
         <div class="badges-row">
             <div class="badge-box">
@@ -549,7 +733,7 @@
 
         <button class="primary-cta-btn" onclick="startQuiz()">
             <span>Start My Quiz</span>
-            <span style="font-size: 20px;">›</span>
+            <span style="font-size: 18px;">›</span>
         </button>
 
         <p class="legal-terms">
@@ -557,13 +741,12 @@
         </p>
     </div>
 
-    <!-- STEP 1: Age Selection with Clean Images -->
-    <div class="step-content" data-step="1">
+    <!-- STEP 1: Age Selection -->
+    <div class="step-content" data-step="1" data-category="Profile">
         <h2>What's your age?</h2>
         <p class="subtitle">We only use age to personalise your plan</p>
 
         <div class="age-grid">
-            <!-- 35-40: Blonde Hair -->
             <div class="age-card" onclick="nextStep()">
                 <div class="age-card-img-wrap">
                     <img src="female-18.3hkk6nkxlip9m.webp" alt="35-40" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80'">
@@ -574,7 +757,6 @@
                 </div>
             </div>
 
-            <!-- 41-49: Long Dark Hair -->
             <div class="age-card" onclick="nextStep()">
                 <div class="age-card-img-wrap">
                     <img src="female-35.1_589sr8-6i9m.webp" alt="41-49" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'">
@@ -585,7 +767,6 @@
                 </div>
             </div>
 
-            <!-- 50-59: Short Dark Hair -->
             <div class="age-card" onclick="nextStep()">
                 <div class="age-card-img-wrap">
                     <img src="female-45.3ek8q4ody9qik.webp" alt="50-59" onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80'">
@@ -596,7 +777,6 @@
                 </div>
             </div>
 
-            <!-- 60+: Grey Hair -->
             <div class="age-card" onclick="nextStep()">
                 <div class="age-card-img-wrap">
                     <img src="female-55.1-t6r5mj_odp0.webp" alt="60+" onerror="this.src='https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=600&q=80'">
@@ -610,38 +790,53 @@
     </div>
 
     <!-- STEP 2 -->
-    <div class="step-content" data-step="2">
-        <h2 style="margin-bottom:24px;">Where do you feel the biggest disruption in your daily life right now?</h2>
+    <div class="step-content" data-step="2" data-category="Challenges">
+        <h2>Where do you feel the biggest disruption in your daily life right now?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">In my head <span>Brain fog, low motivation, and racing thoughts</span></button>
-            <button class="option-btn" onclick="nextStep()">In my sleep <span>Waking at 2–4 AM, tossing/turning, morning exhaustion</span></button>
-            <button class="option-btn" onclick="nextStep()">In my body <span>Stubborn belly fat, hot flashes, joint/muscle fatigue</span></button>
-            <button class="option-btn" onclick="nextStep()">In my emotions <span>Irritability, snapping at loved ones, constantly "on edge"</span></button>
+            <button class="option-btn" onclick="nextStep()">
+                <div class="option-btn-icon">🧠</div>
+                <div class="option-btn-text">In my head <span>Brain fog, low motivation, and racing thoughts</span></div>
+            </button>
+            <button class="option-btn" onclick="nextStep()">
+                <div class="option-btn-icon">🌙</div>
+                <div class="option-btn-text">In my sleep <span>Waking at 2–4 AM, tossing/turning, morning exhaustion</span></div>
+            </button>
+            <button class="option-btn" onclick="nextStep()">
+                <div class="option-btn-icon">⚡</div>
+                <div class="option-btn-text">In my body <span>Stubborn belly fat, hot flashes, joint/muscle fatigue</span></div>
+            </button>
+            <button class="option-btn" onclick="nextStep()">
+                <div class="option-btn-icon">❤️</div>
+                <div class="option-btn-text">In my emotions <span>Irritability, snapping at loved ones, constantly "on edge"</span></div>
+            </button>
         </div>
     </div>
 
     <!-- STEP 3 -->
-    <div class="step-content" data-step="3">
-        <h2 style="margin-bottom:24px;">Do you often wake up between 2:00 AM and 4:00 AM with a racing heart or a surge of heat, unable to drift back to sleep?</h2>
+    <div class="step-content" data-step="3" data-category="Challenges">
+        <h2>Do you often wake up between 2:00 AM and 4:00 AM with a racing heart or a surge of heat, unable to drift back to sleep?</h2>
+        <p class="subtitle">Do you agree with the statement above?</p>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Yes <span>This happens to me multiple nights a week</span></button>
-            <button class="option-btn" onclick="nextStep()">No <span>I struggle more with falling asleep initially or daytime fatigue</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> Strongly disagree</button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">👎</span> Somewhat disagree</button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">👍</span> Somewhat agree</button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Strongly agree</button>
         </div>
     </div>
 
     <!-- STEP 4 -->
-    <div class="step-content" data-step="4">
-        <h2 style="margin-bottom:24px;">How much are these physical and emotional changes impacting your quality of life?</h2>
+    <div class="step-content" data-step="4" data-category="Challenges">
+        <h2>How much are these physical and emotional changes impacting your quality of life?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Mild <span>It's annoying, but I'm managing to push through</span></button>
-            <button class="option-btn" onclick="nextStep()">Moderate <span>I feel exhausted daily, clothes are tight, losing my edge</span></button>
-            <button class="option-btn" onclick="nextStep()">Severe <span>I feel like a shell of myself. It strains my life and confidence</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🟡</span> Mild <span>It's annoying, but I'm managing to push through</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🟠</span> Moderate <span>I feel exhausted daily, clothes are tight, losing my edge</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🔴</span> Severe <span>I feel like a shell of myself. It strains my life and confidence</span></button>
         </div>
     </div>
 
     <!-- STEP 5 -->
-    <div class="step-content" data-step="5">
-        <h2 style="margin-bottom:24px;">How long have you felt like your body is working against you instead of with you?</h2>
+    <div class="step-content" data-step="5" data-category="Challenges">
+        <h2>How long have you felt like your body is working against you instead of with you?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Less than 6 months <span>It hit me out of nowhere</span></button>
             <button class="option-btn" onclick="nextStep()">1 to 3 years <span>It's been a slow, frustrating decline</span></button>
@@ -650,18 +845,18 @@
     </div>
 
     <!-- STEP 6 -->
-    <div class="step-content" data-step="6">
-        <h2 style="margin-bottom:24px;">If you could press a button and fix ONE thing by next month, what would it be?</h2>
+    <div class="step-content" data-step="6" data-category="Goals">
+        <h2>If you could press a button and fix ONE thing by next month, what would it be?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Sleep <span>Sleeping 7 to 8 uninterrupted hours and waking refreshed</span></button>
-            <button class="option-btn" onclick="nextStep()">Mental Clarity <span>Clearing brain fog to feel sharp and focused again</span></button>
-            <button class="option-btn" onclick="nextStep()">Weight & Metabolism <span>Melting stubborn abdominal fat and feeling comfortable in clothes</span></button>
-            <button class="option-btn" onclick="nextStep()">Emotional Balance <span>Calming my nervous system to stop feeling anxious and overwhelmed</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">😴</span> Sleep <span>Sleeping 7 to 8 uninterrupted hours and waking refreshed</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">💡</span> Mental Clarity <span>Clearing brain fog to feel sharp and focused again</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🔥</span> Weight & Metabolism <span>Melting stubborn abdominal fat and feeling comfortable in clothes</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🧘</span> Emotional Balance <span>Calming my nervous system to stop feeling anxious and overwhelmed</span></button>
         </div>
     </div>
 
     <!-- STEP 7 -->
-    <div class="step-content" data-step="7">
+    <div class="step-content" data-step="7" data-category="Insights">
         <div class="info-card">
             <h3>💬 You Are Not "Crazy," and You Are Not Alone.</h3>
             <p>Millions of women around the world have stood exactly where you are standing right now.</p><br>
@@ -672,8 +867,8 @@
     </div>
 
     <!-- STEP 8 -->
-    <div class="step-content" data-step="8">
-        <h2 style="margin-bottom:24px;">What does your current daily routine look like?</h2>
+    <div class="step-content" data-step="8" data-category="Lifestyle">
+        <h2>What does your current daily routine look like?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">High-stress, fast-paced work environment with back-to-back schedules</button>
             <button class="option-btn" onclick="nextStep()">Busy taking care of family, home, or aging parents with little personal time</button>
@@ -682,8 +877,8 @@
     </div>
 
     <!-- STEP 9 -->
-    <div class="step-content" data-step="9">
-        <h2 style="margin-bottom:24px;">Which of these have you tried to fix your symptoms in the past? (Select all that apply)</h2>
+    <div class="step-content" data-step="9" data-category="Lifestyle">
+        <h2>Which of these have you tried to fix your symptoms in the past? (Select all that apply)</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="toggleMultiSelect(this)">Counting calories or strict diets (keto, fasting)</button>
             <button class="option-btn" onclick="toggleMultiSelect(this)">Over-the-counter menopause supplements or vitamins</button>
@@ -695,8 +890,8 @@
     </div>
 
     <!-- STEP 10 -->
-    <div class="step-content" data-step="10">
-        <h2 style="margin-bottom:24px;">Realistically, how much time can you dedicate each day to a reset routine?</h2>
+    <div class="step-content" data-step="10" data-category="Lifestyle">
+        <h2>Realistically, how much time can you dedicate each day to a reset routine?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">5 to 10 minutes <span>I need something fast and simple</span></button>
             <button class="option-btn" onclick="nextStep()">15 to 30 minutes <span>I can carve out dedicated time for real results</span></button>
@@ -705,7 +900,7 @@
     </div>
 
     <!-- STEP 11 -->
-    <div class="step-content" data-step="11">
+    <div class="step-content" data-step="11" data-category="Insights">
         <div class="info-card">
             <h3>💡 Good News: You Don't Need Hours a Day.</h3>
             <p>A common myth is that balancing your body during perimenopause requires hours of gym time or complex meal prepping.</p><br>
@@ -716,8 +911,8 @@
     </div>
 
     <!-- STEP 12 -->
-    <div class="step-content" data-step="12">
-        <h2 style="margin-bottom:24px;">How often do you feel "wired yet tired" at night?</h2>
+    <div class="step-content" data-step="12" data-category="Diagnostic">
+        <h2>How often do you feel "wired yet tired" at night?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Almost every night <span>Brain refuses to shut down while my body is exhausted</span></button>
             <button class="option-btn" onclick="nextStep()">A few times a week <span>Especially after particularly stressful days</span></button>
@@ -726,40 +921,90 @@
     </div>
 
     <!-- STEP 13 -->
-    <div class="step-content" data-step="13">
-        <h2 style="margin-bottom:24px;">Have you noticed that diets or exercises that used to work easily in your 20s or 30s no longer yield any results?</h2>
+    <div class="step-content" data-step="13" data-category="Diagnostic">
+        <h2>Have you noticed that diets or exercises that used to work easily in your 20s or 30s no longer yield any results?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Yes <span>It feels like my metabolism ran into a brick wall overnight</span></button>
             <button class="option-btn" onclick="nextStep()">No <span>My weight is stable, but my mood, energy, and sleep struggle</span></button>
         </div>
     </div>
 
-    <!-- STEP 14 -->
-    <div class="step-content" data-step="14">
-        <h2 style="margin-bottom:24px;">Your Hormonal & Nervous System Profile</h2>
-        <div class="diagnostic-card">
-            <div class="diagnostic-metric">
-                <span>Nervous System Stress Burden:</span>
-                <span class="badge badge-red">HIGH (Cortisol Loop)</span>
+    <!-- STEP 14: Summary Profile Screen (Matching Image 2 Design in Niche) -->
+    <div class="step-content" data-step="14" data-category="Goals">
+        <h2>Summary of your profile</h2>
+
+        <div class="profile-summary-card">
+            <div class="readiness-header">
+                <span class="readiness-title">Readiness score:</span>
+                <span class="readiness-pill">PERFECT</span>
             </div>
-            <div class="diagnostic-metric">
-                <span>Sleep Recovery Potential:</span>
-                <span class="badge badge-yellow">MODERATE (Night Spikes)</span>
+
+            <!-- Gradient Level Meter Bar -->
+            <div class="level-meter-container">
+                <div class="meter-pointer-pill">YOUR LEVEL</div>
+                <div class="meter-bar">
+                    <div class="meter-indicator-dot"></div>
+                </div>
+                <div class="meter-labels">
+                    <span>Low</span>
+                    <span>Normal</span>
+                    <span>Moderate</span>
+                    <span>High</span>
+                </div>
             </div>
-            <div class="diagnostic-metric">
-                <span>Reversibility Score:</span>
-                <span class="badge badge-green">94% Success Potential</span>
+
+            <!-- Niche Specific Profile Metrics (No Woman Photo) -->
+            <div class="niche-metrics-grid">
+                <div class="metric-item">
+                    <span class="metric-icon">🎯</span>
+                    <div>
+                        <div class="metric-label">Cortisol Burden</div>
+                        <div class="metric-val">High</div>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <span class="metric-icon">📈</span>
+                    <div>
+                        <div class="metric-label">Reset Potential</div>
+                        <div class="metric-val">High</div>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <span class="metric-icon">⚡</span>
+                    <div>
+                        <div class="metric-label">Stress State</div>
+                        <div class="metric-val">Wired & Tired</div>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <span class="metric-icon">⭐</span>
+                    <div>
+                        <div class="metric-label">Primary Trigger</div>
+                        <div class="metric-val">Night Spikes</div>
+                    </div>
+                </div>
             </div>
-            <p style="font-size: 14px; line-height: 1.5; color: #CBD5E1; margin-top: 12px;">
-                <strong>Analysis:</strong> Your responses indicate your symptoms are driven by your body being stuck in a <em>Fight-or-Flight</em> cycle triggered by declining estrogen and soaring cortisol.
+        </div>
+
+        <!-- Green Insight Highlight Box matching Screenshot 2 -->
+        <div class="insight-box">
+            <div class="insight-box-title">
+                <span>👍</span> Impressive score to reset your Nervous System
+            </div>
+            <p class="insight-box-desc">
+                A recent study in 2025 revealed that women who perform targeted nervous system resetting daily are 84% more likely to reduce night wake-ups and restore natural hormonal equilibrium within 30 days.
             </p>
         </div>
-        <button class="primary-cta-btn" onclick="nextStep()">View Your 6-Month Roadmap →</button>
+
+        <button class="primary-cta-btn" onclick="nextStep()">CONTINUE</button>
     </div>
 
     <!-- STEP 15 -->
-    <div class="step-content" data-step="15">
-        <h2 style="margin-bottom:24px;">Your Expected Progress Timeline</h2>
+    <div class="step-content" data-step="15" data-category="Plan Roadmap">
+        <h2>Your Expected Progress Timeline</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <h4>Weeks 1–2 (The Calm Reset)</h4>
@@ -857,13 +1102,18 @@
     function updateProgress() {
         if (currentStep > 0) {
             const percent = Math.round((currentStep / totalQuestionSteps) * 100);
-            document.getElementById('progressBar').style.width = percent + '%';
+            document.getElementById('timelineProgress').style.width = percent + '%';
+
+            const activeEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+            if (activeEl && activeEl.dataset.category) {
+                document.getElementById('headerCategory').innerText = activeEl.dataset.category;
+            }
         }
     }
 
     function startQuiz() {
         document.querySelector(`.step-content[data-step="0"]`).classList.remove('active');
-        document.getElementById('progressHeader').style.display = 'block';
+        document.getElementById('appHeader').style.display = 'flex';
         currentStep = 1;
         document.querySelector(`.step-content[data-step="1"]`).classList.add('active');
         updateProgress();
@@ -883,14 +1133,31 @@
         }
     }
 
+    function prevStep() {
+        if (currentStep > 1) {
+            const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+            currentEl.classList.remove('active');
+
+            currentStep--;
+
+            const prevEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+            prevEl.classList.add('active');
+            updateProgress();
+        } else if (currentStep === 1) {
+            document.querySelector(`.step-content[data-step="1"]`).classList.remove('active');
+            document.getElementById('appHeader').style.display = 'none';
+            currentStep = 0;
+            document.querySelector(`.step-content[data-step="0"]`).classList.add('active');
+        }
+    }
+
     function toggleMultiSelect(element) {
         element.classList.toggle('selected');
     }
 
     function finishQuiz() {
         document.querySelector(`.step-content[data-step="${currentStep}"]`).classList.remove('active');
-        document.getElementById('progressHeader').style.opacity = '0';
-        setTimeout(() => { document.getElementById('progressHeader').style.display = 'none'; }, 300);
+        document.getElementById('appHeader').style.display = 'none';
         document.getElementById('loaderContainer').style.display = 'block';
 
         runBarWithPopup('p1-bar', 'p1-text', "Are you ready to stop guessing with random supplements and follow a clinically structured plan?", () => {
