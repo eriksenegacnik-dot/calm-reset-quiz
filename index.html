@@ -352,6 +352,68 @@
             transform: translateY(-1px);
         }
 
+        /* Circular Progress Loader Card (Step 14) */
+        .circle-loader-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 10px;
+            text-align: center;
+        }
+
+        .circle-svg-wrapper {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin-bottom: 24px;
+        }
+
+        .circle-svg {
+            transform: rotate(-90deg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .circle-bg-track {
+            fill: none;
+            stroke: #E2E8F0;
+            stroke-width: 10;
+        }
+
+        .circle-progress-fill {
+            fill: none;
+            stroke: #5267FA;
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 440;
+            stroke-dashoffset: 440;
+            transition: stroke-dashoffset 0.1s linear;
+        }
+
+        .circle-text-val {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            font-weight: 800;
+            color: #1E293B;
+        }
+
+        .loader-status-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1E293B;
+            min-height: 28px;
+        }
+
+        .loader-sub-status {
+            font-size: 14px;
+            color: #64748B;
+            margin-top: 8px;
+        }
+
         /* Summary Profile Screen Styles */
         .profile-summary-card {
             background: #FFFFFF;
@@ -845,14 +907,29 @@
     <div class="step-content" data-step="13" data-category="Causation">
         <h2>Did your mother or close family members struggle with menopause symptoms?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Yes, she had it rough</button>
-            <button class="option-btn" onclick="nextStep()">No, she sailed through it</button>
-            <button class="option-btn" onclick="nextStep()">Not sure / we never talked about it</button>
+            <button class="option-btn" onclick="selectGeneticsAndProceed()">Yes, she had it rough</button>
+            <button class="option-btn" onclick="selectGeneticsAndProceed()">No, she sailed through it</button>
+            <button class="option-btn" onclick="selectGeneticsAndProceed()">Not sure / we never talked about it</button>
         </div>
     </div>
 
-    <!-- STEP 14: Summary / Diagnosis Slide -->
-    <div class="step-content" data-step="14" data-category="Diagnosis">
+    <!-- STEP 14: 5-Second Circle Progress Loader Transition -->
+    <div class="step-content" data-step="14" data-category="Analyzing">
+        <div class="circle-loader-container">
+            <div class="circle-svg-wrapper">
+                <svg class="circle-svg" viewBox="0 0 160 160">
+                    <circle class="circle-bg-track" cx="80" cy="80" r="70"></circle>
+                    <circle class="circle-progress-fill" id="circleProgressFill" cx="80" cy="80" r="70"></circle>
+                </svg>
+                <div class="circle-text-val" id="circlePercentVal">0%</div>
+            </div>
+            <div class="loader-status-text" id="circleStatusText">Gathering information...</div>
+            <div class="loader-sub-status">Analyzing your answers to calculate your profile</div>
+        </div>
+    </div>
+
+    <!-- STEP 15: Summary / Diagnosis Slide -->
+    <div class="step-content" data-step="15" data-category="Diagnosis">
         <h2>Your Personalized Results Are Ready</h2>
 
         <div class="profile-summary-card">
@@ -921,8 +998,8 @@
         <button class="primary-cta-btn" onclick="nextStep()">See Your Roadmap →</button>
     </div>
 
-    <!-- STEP 15: Transformation Timeline -->
-    <div class="step-content" data-step="15" data-category="Roadmap">
+    <!-- STEP 16: Transformation Timeline -->
+    <div class="step-content" data-step="16" data-category="Roadmap">
         <h2>Here's what's possible for you</h2>
         <div class="timeline">
             <div class="timeline-item">
@@ -941,8 +1018,8 @@
         <button class="primary-cta-btn" onclick="finishQuiz()">GENERATE MY CALM RESET PLAN NOW →</button>
     </div>
 
-    <!-- STEP 16: Yes-Streak Micro-Commitment 1 -->
-    <div class="step-content" data-step="16" data-category="Commitment">
+    <!-- STEP 17: Yes-Streak Micro-Commitment 1 -->
+    <div class="step-content" data-step="17" data-category="Commitment">
         <h2>Are you ready to finally get relief from these symptoms?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">👍</span> Yes, absolutely</button>
@@ -950,8 +1027,8 @@
         </div>
     </div>
 
-    <!-- STEP 17: Yes-Streak Micro-Commitment 2 -->
-    <div class="step-content" data-step="17" data-category="Commitment">
+    <!-- STEP 18: Yes-Streak Micro-Commitment 2 -->
+    <div class="step-content" data-step="18" data-category="Commitment">
         <h2>Would you rather feel calm, energized, and in control — without relying on more willpower alone?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✨</span> Yes, that's exactly what I want</button>
@@ -959,8 +1036,8 @@
         </div>
     </div>
 
-    <!-- STEP 18: Yes-Streak Micro-Commitment 3 -->
-    <div class="step-content" data-step="18" data-category="Commitment">
+    <!-- STEP 19: Yes-Streak Micro-Commitment 3 -->
+    <div class="step-content" data-step="19" data-category="Commitment">
         <h2>Are you open to a natural approach that works with your body, not against it?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="startAnalysisLoader()"><span class="option-btn-icon">🚀</span> Yes, I'm ready</button>
@@ -1008,12 +1085,13 @@
 
 <script>
     let currentStep = 0;
-    const totalSteps = 18;
+    const totalSteps = 19;
     let selectedAge = '';
     let selectedPainCluster = 'Sleep';
     let selectedSeverityVal = '';
     let selectedOutcomeVal = 'sleeping through the night again';
     let selectedTimeVal = '';
+    let circleInterval = null;
 
     function updateProgress() {
         if (currentStep > 0) {
@@ -1036,6 +1114,11 @@
     }
 
     function jumpToStep(targetStep) {
+        if (circleInterval) {
+            clearInterval(circleInterval);
+            circleInterval = null;
+        }
+
         const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
         if (currentEl) currentEl.classList.remove('active');
 
@@ -1046,6 +1129,10 @@
 
         document.getElementById('appHeader').style.display = 'flex';
         updateProgress();
+
+        if (currentStep === 14) {
+            run5SecondCircleLoader();
+        }
     }
 
     function nextStep() {
@@ -1060,6 +1147,11 @@
     }
 
     function prevStep() {
+        if (currentStep === 15) {
+            jumpToStep(13);
+            return;
+        }
+
         if (currentStep === 12 && (selectedTimeVal !== 'Less than 5 minutes' && selectedTimeVal !== '5–10 minutes')) {
             jumpToStep(10);
             return;
@@ -1135,6 +1227,46 @@
     function selectTime(time) {
         selectedTimeVal = time;
         nextStep();
+    }
+
+    function selectGeneticsAndProceed() {
+        jumpToStep(14);
+    }
+
+    function run5SecondCircleLoader() {
+        let percent = 0;
+        const totalDuration = 5000; // 5 seconds
+        const intervalTime = 50; // update every 50ms
+        const increment = 100 / (totalDuration / intervalTime);
+
+        const circleFill = document.getElementById('circleProgressFill');
+        const percentText = document.getElementById('circlePercentVal');
+        const statusText = document.getElementById('circleStatusText');
+        const circumference = 440; // 2 * PI * 70 radius
+
+        circleInterval = setInterval(() => {
+            percent += increment;
+            if (percent >= 100) {
+                percent = 100;
+                clearInterval(circleInterval);
+                circleInterval = null;
+                setTimeout(() => {
+                    jumpToStep(15);
+                }, 300);
+            }
+
+            percentText.innerText = Math.round(percent) + '%';
+            const offset = circumference - (percent / 100) * circumference;
+            circleFill.style.strokeDashoffset = offset;
+
+            if (percent < 35) {
+                statusText.innerText = 'Gathering information...';
+            } else if (percent < 70) {
+                statusText.innerText = 'Analyzing symptom profile...';
+            } else {
+                statusText.innerText = 'Finalizing your personalized results...';
+            }
+        }, intervalTime);
     }
 
     function finishQuiz() {
