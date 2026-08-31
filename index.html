@@ -74,7 +74,7 @@
 
         .progress-bar-fill {
             height: 100%;
-            width: 5.5%;
+            width: 6.6%;
             background: linear-gradient(90deg, #5A4AD1 0%, #7C3AED 100%);
             border-radius: 99px;
             transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -262,7 +262,7 @@
             line-height: 1.4;
         }
 
-        /* Dynamic Multi-Step Analysis Engine (Matching Video Frame 00:52 - 01:12) */
+        /* Dynamic Multi-Step Analysis Engine */
         .loader-container {
             display: none;
             text-align: center;
@@ -325,6 +325,69 @@
             margin-bottom: 6px;
             font-size: 14px;
         }
+
+        /* Modal Overlay & Popup Styling */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: white;
+            width: 100%;
+            max-width: 480px;
+            padding: 30px 24px;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            animation: modalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            text-align: center;
+        }
+
+        @keyframes modalPop {
+            0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-card h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 16px;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            background: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-btn:hover {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -332,8 +395,8 @@
 <div class="quiz-container">
     <div class="progress-header" id="progressHeader">
         <div class="progress-text">
-            <span>Question <span id="currentStepText">1</span> of 18</span>
-            <span id="progressPercent">5%</span>
+            <span>Question <span id="currentStepText">1</span> of 15</span>
+            <span id="progressPercent">7%</span>
         </div>
         <div class="progress-bar-bg">
             <div class="progress-bar-fill" id="progressBar"></div>
@@ -516,36 +579,10 @@
                 <p>Abdominal bloating settles, emotional resilience returns, and you feel like yourself again.</p>
             </div>
         </div>
-        <button class="cta-btn" onclick="nextStep()">Continue to Claim Your Custom Plan →</button>
+        <button class="cta-btn" onclick="finishQuiz()">GENERATE MY CALM RESET PLAN NOW →</button>
     </div>
 
-    <!-- STEP 16 -->
-    <div class="step-content" data-step="16">
-        <h2>Are you ready to stop guessing with random supplements and follow a clinically structured plan designed for your hormonal stage?</h2>
-        <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">YES! I'm ready to take control</button>
-            <button class="option-btn" onclick="nextStep()">Not yet</button>
-        </div>
-    </div>
-
-    <!-- STEP 17 -->
-    <div class="step-content" data-step="17">
-        <h2>If we show you a natural, non-invasive method to calm your nervous system and restore your sleep, will you give it a fair try?</h2>
-        <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">YES! Show me how it works</button>
-            <button class="option-btn" onclick="nextStep()">No</button>
-        </div>
-    </div>
-
-    <!-- STEP 18 -->
-    <div class="step-content" data-step="18">
-        <h2>Are you ready to stop feeling like a stranger in your own skin and finally reclaim your energy, mind, and body?</h2>
-        <div class="options-grid">
-            <button class="cta-btn" onclick="finishQuiz()">YES! GENERATE MY CALM RESET PLAN NOW →</button>
-        </div>
-    </div>
-
-    <!-- DYNAMIC ANALYSIS LOADER (RiseGuide Video Matching 00:52 - 01:12) -->
+    <!-- DYNAMIC ANALYSIS LOADER WITH POPUPS -->
     <div class="loader-container" id="loaderContainer">
         <h2 class="loader-title">We are creating your <span>Calm Reset Plan...</span></h2>
 
@@ -559,7 +596,7 @@
 
         <div class="analysis-step">
             <div class="analysis-label">
-                <span>Adapting to your nervous system triggers</span>
+                <span>Adapting to your triggers</span>
                 <span id="p2-text">0%</span>
             </div>
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p2-bar"></div></div>
@@ -567,7 +604,7 @@
 
         <div class="analysis-step">
             <div class="analysis-label">
-                <span>Building your progress timeline</span>
+                <span>Setting your plan & goals</span>
                 <span id="p3-text">0%</span>
             </div>
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p3-bar"></div></div>
@@ -581,9 +618,22 @@
     </div>
 </div>
 
+<!-- POPUP MODAL FOR INTERACTIVE LOADER QUESTIONS -->
+<div class="modal-overlay" id="questionModal">
+    <div class="modal-card">
+        <p style="font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; tracking: 0.05em; margin-bottom: 8px;">To improve recommendations, specify</p>
+        <h3 id="modalQuestionText">Question goes here</h3>
+        <div class="modal-buttons">
+            <button class="modal-btn" onclick="answerModal('No')">No</button>
+            <button class="modal-btn" style="background: var(--primary); color: white; border-color: var(--primary);" onclick="answerModal('Yes')">Yes</button>
+        </div>
+    </div>
+</div>
+
 <script>
     let currentStep = 1;
-    const totalSteps = 18;
+    const totalSteps = 15;
+    let currentResumeCallback = null;
 
     function updateProgress() {
         const percent = Math.round((currentStep / totalSteps) * 100);
@@ -595,7 +645,7 @@
     function nextStep() {
         if (currentStep < totalSteps) {
             const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-            currentEl.style.animation = 'none'; // reset animation
+            currentEl.style.animation = 'none';
             currentEl.classList.remove('active');
 
             currentStep++;
@@ -616,33 +666,60 @@
         setTimeout(() => { document.getElementById('progressHeader').style.display = 'none'; }, 300);
         document.getElementById('loaderContainer').style.display = 'block';
 
-        // Run sequential progress bars matching video (RiseGuide style)
-        runBar('p1-bar', 'p1-text', 0, 100, 1000, () => {
-            runBar('p2-bar', 'p2-text', 0, 100, 1200, () => {
-                runBar('p3-bar', 'p3-text', 0, 100, 1000, () => {
+        // Run sequential progress bars with 75% popup checkpoints
+        runBarWithPopup('p1-bar', 'p1-text', "Are you ready to stop guessing with random supplements and follow a clinically structured plan?", () => {
+            runBarWithPopup('p2-bar', 'p2-text', "If we show you a natural method to calm your nervous system, will you give it a fair try?", () => {
+                runBarWithPopup('p3-bar', 'p3-text', "Are you ready to stop feeling like a stranger in your skin and reclaim your body?", () => {
                     setTimeout(() => {
                         window.location.href = "https://yourdomain.com/calm-reset-vsl";
-                    }, 500);
+                    }, 600);
                 });
             });
         });
     }
 
-    function runBar(barId, textId, start, end, duration, callback) {
-        let startTime = null;
-        function step(timestamp) {
-            if (!startTime) startTime = timestamp;
-            let progress = Math.min((timestamp - startTime) / duration, 1);
-            let val = Math.floor(progress * (end - start) + start);
-            document.getElementById(barId).style.width = val + '%';
-            document.getElementById(textId).innerText = val + '%';
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            } else if (callback) {
-                callback();
+    function runBarWithPopup(barId, textId, questionText, onComplete) {
+        let currentPercent = 0;
+        let hasPopped = false;
+
+        function animateBar() {
+            if (!hasPopped && currentPercent >= 75) {
+                hasPopped = true;
+                showModal(questionText, () => {
+                    resumeBar();
+                });
+                return;
+            }
+
+            if (currentPercent < 100) {
+                currentPercent++;
+                document.getElementById(barId).style.width = currentPercent + '%';
+                document.getElementById(textId).innerText = currentPercent + '%';
+                setTimeout(animateBar, 25);
+            } else {
+                if (onComplete) onComplete();
             }
         }
-        requestAnimationFrame(step);
+
+        function resumeBar() {
+            setTimeout(animateBar, 25);
+        }
+
+        animateBar();
+    }
+
+    function showModal(questionText, onAnswer) {
+        document.getElementById('modalQuestionText').innerText = questionText;
+        document.getElementById('questionModal').style.display = 'flex';
+        currentResumeCallback = onAnswer;
+    }
+
+    function answerModal(choice) {
+        document.getElementById('questionModal').style.display = 'none';
+        if (currentResumeCallback) {
+            currentResumeCallback();
+            currentResumeCallback = null;
+        }
     }
 </script>
 
