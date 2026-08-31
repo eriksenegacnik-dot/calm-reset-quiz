@@ -49,24 +49,15 @@
             border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
-        /* Top Progress Header */
+        /* Sleek Top Progress Header (RiseGuide Style) */
         .progress-header {
             margin-bottom: 28px;
             transition: opacity 0.3s ease;
         }
 
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
         .progress-bar-bg {
             width: 100%;
-            height: 8px;
+            height: 6px;
             background-color: #EDF2F7;
             border-radius: 99px;
             overflow: hidden;
@@ -105,15 +96,70 @@
         }
 
         h2 {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 24px;
+            margin-bottom: 8px;
             line-height: 1.35;
             letter-spacing: -0.01em;
             text-align: center;
         }
 
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        /* 2x2 Image Card Grid for Age Question */
+        .age-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .age-card {
+            background: #EBF2FF;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .age-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(90, 74, 209, 0.15);
+            border-color: var(--primary);
+        }
+
+        .age-card:active {
+            transform: scale(0.97);
+        }
+
+        .age-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .age-card-btn {
+            background: #5063F0;
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Standard Option Buttons */
         .options-grid {
             display: flex;
             flex-direction: column;
@@ -262,7 +308,7 @@
             line-height: 1.4;
         }
 
-        /* Dynamic Multi-Step Analysis Engine */
+        /* Dynamic Analysis Engine */
         .loader-container {
             display: none;
             text-align: center;
@@ -310,20 +356,38 @@
             transition: width 0.1s linear;
         }
 
+        /* Reviews Stack */
+        .reviews-container {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            text-align: left;
+        }
+
         .testimonial-box {
             background: #F8FAFC;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 18px;
-            margin-top: 28px;
-            text-align: left;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
 
-        .stars {
-            color: #F59E0B;
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 6px;
-            font-size: 14px;
+        }
+
+        .stars {
+            color: #10B981;
+            font-size: 13px;
+        }
+
+        .review-date {
+            font-size: 12px;
+            color: #94A3B8;
         }
 
         /* Modal Overlay & Popup Styling */
@@ -393,30 +457,56 @@
 <body>
 
 <div class="quiz-container">
+    <!-- RiseGuide Minimal Line Progress Bar -->
     <div class="progress-header" id="progressHeader">
-        <div class="progress-text">
-            <span>Question <span id="currentStepText">1</span> of 15</span>
-            <span id="progressPercent">7%</span>
-        </div>
         <div class="progress-bar-bg">
             <div class="progress-bar-fill" id="progressBar"></div>
         </div>
     </div>
 
-    <!-- STEP 1 -->
+    <!-- STEP 1: What's your age? (Clean 2x2 Grid matching screenshot) -->
     <div class="step-content active" data-step="1">
-        <h2>Which age group best describes you today?</h2>
-        <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">35–43 <span>I'm noticing subtle shifts, irregular cycles, or mood changes</span></button>
-            <button class="option-btn" onclick="nextStep()">44–52 <span>I feel like my body is changing rapidly and I can't slow it down</span></button>
-            <button class="option-btn" onclick="nextStep()">53–60 <span>I'm right in the middle of menopause with daily symptoms</span></button>
-            <button class="option-btn" onclick="nextStep()">60+ <span>I'm post-menopausal looking to reclaim energy and health</span></button>
+        <h2>What's your age?</h2>
+        <p class="subtitle">We only use age to personalise your plan</p>
+
+        <div class="age-grid">
+            <div class="age-card" onclick="nextStep()">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="18-34">
+                <div class="age-card-btn">
+                    <span>18-34</span>
+                    <span>›</span>
+                </div>
+            </div>
+
+            <div class="age-card" onclick="nextStep()">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="35-44">
+                <div class="age-card-btn">
+                    <span>35-44</span>
+                    <span>›</span>
+                </div>
+            </div>
+
+            <div class="age-card" onclick="nextStep()">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="45-54">
+                <div class="age-card-btn">
+                    <span>45-54</span>
+                    <span>›</span>
+                </div>
+            </div>
+
+            <div class="age-card" onclick="nextStep()">
+                <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=600&q=80" alt="55+">
+                <div class="age-card-btn">
+                    <span>55+</span>
+                    <span>›</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- STEP 2 -->
     <div class="step-content" data-step="2">
-        <h2>Where do you feel the biggest disruption in your daily life right now?</h2>
+        <h2 style="margin-bottom:24px;">Where do you feel the biggest disruption in your daily life right now?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">In my head <span>Brain fog, low motivation, and racing thoughts</span></button>
             <button class="option-btn" onclick="nextStep()">In my sleep <span>Waking at 2–4 AM, tossing/turning, morning exhaustion</span></button>
@@ -427,7 +517,7 @@
 
     <!-- STEP 3 -->
     <div class="step-content" data-step="3">
-        <h2>Do you often wake up between 2:00 AM and 4:00 AM with a racing heart or a surge of heat, unable to drift back to sleep?</h2>
+        <h2 style="margin-bottom:24px;">Do you often wake up between 2:00 AM and 4:00 AM with a racing heart or a surge of heat, unable to drift back to sleep?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Yes <span>This happens to me multiple nights a week</span></button>
             <button class="option-btn" onclick="nextStep()">No <span>I struggle more with falling asleep initially or daytime fatigue</span></button>
@@ -436,7 +526,7 @@
 
     <!-- STEP 4 -->
     <div class="step-content" data-step="4">
-        <h2>How much are these physical and emotional changes impacting your quality of life?</h2>
+        <h2 style="margin-bottom:24px;">How much are these physical and emotional changes impacting your quality of life?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Mild <span>It's annoying, but I'm managing to push through</span></button>
             <button class="option-btn" onclick="nextStep()">Moderate <span>I feel exhausted daily, clothes are tight, losing my edge</span></button>
@@ -446,7 +536,7 @@
 
     <!-- STEP 5 -->
     <div class="step-content" data-step="5">
-        <h2>How long have you felt like your body is working against you instead of with you?</h2>
+        <h2 style="margin-bottom:24px;">How long have you felt like your body is working against you instead of with you?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Less than 6 months <span>It hit me out of nowhere</span></button>
             <button class="option-btn" onclick="nextStep()">1 to 3 years <span>It's been a slow, frustrating decline</span></button>
@@ -456,7 +546,7 @@
 
     <!-- STEP 6 -->
     <div class="step-content" data-step="6">
-        <h2>If you could press a button and fix ONE thing by next month, what would it be?</h2>
+        <h2 style="margin-bottom:24px;">If you could press a button and fix ONE thing by next month, what would it be?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Sleep <span>Sleeping 7 to 8 uninterrupted hours and waking refreshed</span></button>
             <button class="option-btn" onclick="nextStep()">Mental Clarity <span>Clearing brain fog to feel sharp and focused again</span></button>
@@ -478,7 +568,7 @@
 
     <!-- STEP 8 -->
     <div class="step-content" data-step="8">
-        <h2>What does your current daily routine look like?</h2>
+        <h2 style="margin-bottom:24px;">What does your current daily routine look like?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">High-stress, fast-paced work environment with back-to-back schedules</button>
             <button class="option-btn" onclick="nextStep()">Busy taking care of family, home, or aging parents with little personal time</button>
@@ -488,7 +578,7 @@
 
     <!-- STEP 9 -->
     <div class="step-content" data-step="9">
-        <h2>Which of these have you tried to fix your symptoms in the past? (Select all that apply)</h2>
+        <h2 style="margin-bottom:24px;">Which of these have you tried to fix your symptoms in the past? (Select all that apply)</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="toggleMultiSelect(this)">Counting calories or strict diets (keto, fasting)</button>
             <button class="option-btn" onclick="toggleMultiSelect(this)">Over-the-counter menopause supplements or vitamins</button>
@@ -501,7 +591,7 @@
 
     <!-- STEP 10 -->
     <div class="step-content" data-step="10">
-        <h2>Realistically, how much time can you dedicate each day to a reset routine?</h2>
+        <h2 style="margin-bottom:24px;">Realistically, how much time can you dedicate each day to a reset routine?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">5 to 10 minutes <span>I need something fast and simple</span></button>
             <button class="option-btn" onclick="nextStep()">15 to 30 minutes <span>I can carve out dedicated time for real results</span></button>
@@ -522,7 +612,7 @@
 
     <!-- STEP 12 -->
     <div class="step-content" data-step="12">
-        <h2>How often do you feel "wired yet tired" at night?</h2>
+        <h2 style="margin-bottom:24px;">How often do you feel "wired yet tired" at night?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Almost every night <span>Brain refuses to shut down while my body is exhausted</span></button>
             <button class="option-btn" onclick="nextStep()">A few times a week <span>Especially after particularly stressful days</span></button>
@@ -532,7 +622,7 @@
 
     <!-- STEP 13 -->
     <div class="step-content" data-step="13">
-        <h2>Have you noticed that diets or exercises that used to work easily in your 20s or 30s no longer yield any results?</h2>
+        <h2 style="margin-bottom:24px;">Have you noticed that diets or exercises that used to work easily in your 20s or 30s no longer yield any results?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Yes <span>It feels like my metabolism ran into a brick wall overnight</span></button>
             <button class="option-btn" onclick="nextStep()">No <span>My weight is stable, but my mood, energy, and sleep struggle</span></button>
@@ -541,7 +631,7 @@
 
     <!-- STEP 14 -->
     <div class="step-content" data-step="14">
-        <h2>Your Hormonal & Nervous System Profile</h2>
+        <h2 style="margin-bottom:24px;">Your Hormonal & Nervous System Profile</h2>
         <div class="diagnostic-card">
             <div class="diagnostic-metric">
                 <span>Nervous System Stress Burden:</span>
@@ -564,7 +654,7 @@
 
     <!-- STEP 15 -->
     <div class="step-content" data-step="15">
-        <h2>Your Expected Progress Timeline</h2>
+        <h2 style="margin-bottom:24px;">Your Expected Progress Timeline</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <h4>Weeks 1–2 (The Calm Reset)</h4>
@@ -582,7 +672,7 @@
         <button class="cta-btn" onclick="finishQuiz()">GENERATE MY CALM RESET PLAN NOW →</button>
     </div>
 
-    <!-- DYNAMIC ANALYSIS LOADER WITH POPUPS -->
+    <!-- DYNAMIC ANALYSIS LOADER WITH POPUPS & 3 REVIEWS -->
     <div class="loader-container" id="loaderContainer">
         <h2 class="loader-title">We are creating your <span>Calm Reset Plan...</span></h2>
 
@@ -610,10 +700,34 @@
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p3-bar"></div></div>
         </div>
 
-        <div class="testimonial-box">
-            <div class="stars">★★★★★</div>
-            <p style="font-size: 14px; font-weight: 600; color: #1E293B;">"My best decision ever"</p>
-            <p style="font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4;">"I was struggling with 3 AM wake-ups and brain fog for over two years. After following the Calm Reset Method for 3 weeks, I finally sleep through the night and feel like myself again!"</p>
+        <!-- 3 Reviews Stack (Matching video screenshot) -->
+        <div class="reviews-container">
+            <div class="testimonial-box">
+                <div class="review-header">
+                    <div class="stars">★★★★★</div>
+                    <span class="review-date">Oct 12, 2024</span>
+                </div>
+                <p style="font-size: 14px; font-weight: 700; color: #1E293B;">My best decision</p>
+                <p style="font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4;">I used to struggle with 3 AM wake-ups and brain fog, but after starting this routine, I can drift right back to sleep. The program helped me approach each day with energy and clear confidence.</p>
+            </div>
+
+            <div class="testimonial-box">
+                <div class="review-header">
+                    <div class="stars">★★★★★</div>
+                    <span class="review-date">Feb 02, 2025</span>
+                </div>
+                <p style="font-size: 14px; font-weight: 700; color: #1E293B;">Game-changing Method</p>
+                <p style="font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4;">I completed the program step-by-step and it improved my daily energy immensely. It helped me manage cortisol spikes naturally and stay grounded throughout my work week.</p>
+            </div>
+
+            <div class="testimonial-box">
+                <div class="review-header">
+                    <div class="stars">★★★★★</div>
+                    <span class="review-date">Mar 15, 2025</span>
+                </div>
+                <p style="font-size: 14px; font-weight: 700; color: #1E293B;">It improved my life</p>
+                <p style="font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4;">After a month of practicing the daily reset steps, my physical tension dropped completely. My focus has improved and I feel like myself again. Highly recommend!</p>
+            </div>
         </div>
     </div>
 </div>
@@ -637,8 +751,6 @@
 
     function updateProgress() {
         const percent = Math.round((currentStep / totalSteps) * 100);
-        document.getElementById('currentStepText').innerText = currentStep;
-        document.getElementById('progressPercent').innerText = percent + '%';
         document.getElementById('progressBar').style.width = percent + '%';
     }
 
