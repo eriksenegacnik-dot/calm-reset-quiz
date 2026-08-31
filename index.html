@@ -58,9 +58,10 @@
             width: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             position: relative;
             margin-bottom: 16px;
+            min-height: 36px;
         }
 
         .back-btn {
@@ -80,12 +81,6 @@
             font-weight: 700;
             color: #1E293B;
             font-size: 16px;
-        }
-
-        .category-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1E293B;
         }
 
         /* Timeline Step Line */
@@ -690,7 +685,6 @@
     <div class="app-header" id="appHeader" style="display: none;">
         <div class="header-top-bar">
             <button class="back-btn" onclick="prevStep()">‹</button>
-            <span class="category-title" id="headerCategory">Diagnostic</span>
         </div>
         <div class="step-timeline">
             <div class="timeline-line-bg"></div>
@@ -731,7 +725,7 @@
     </div>
 
     <!-- STEP 1: Visual Identifier (Age/Avatar) -->
-    <div class="step-content" data-step="1" data-category="Diagnostic">
+    <div class="step-content" data-step="1">
         <h2>Let's find your personalized plan. Which stage of life are you in?</h2>
         <p class="subtitle">Select your age group below</p>
         <div class="avatar-options-grid">
@@ -767,7 +761,7 @@
     </div>
 
     <!-- STEP 2: Pain Location -->
-    <div class="step-content" data-step="2" data-category="Diagnostic">
+    <div class="step-content" data-step="2">
         <h2>Where do you feel the changes hitting you the hardest right now?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="selectPain('Sleep')">
@@ -789,7 +783,7 @@
     </div>
 
     <!-- STEP 3: Pain Specification -->
-    <div class="step-content" data-step="3" data-category="Diagnostic">
+    <div class="step-content" data-step="3">
         <h2 id="step3Question">Do you wake up between 2–4 AM and struggle to fall back asleep?</h2>
         <div class="options-grid" id="step3Options">
             <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, almost every night</button>
@@ -798,7 +792,7 @@
     </div>
 
     <!-- STEP 4: Pain Severity -->
-    <div class="step-content" data-step="4" data-category="Diagnostic">
+    <div class="step-content" data-step="4">
         <h2>How much is this affecting your day-to-day life?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="selectSeverity('It\'s a minor annoyance')">It's a minor annoyance</button>
@@ -809,7 +803,7 @@
     </div>
 
     <!-- STEP 5: Pain Timeline -->
-    <div class="step-content" data-step="5" data-category="Diagnostic">
+    <div class="step-content" data-step="5">
         <h2>When did you first start noticing these changes?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Within the last few months</button>
@@ -820,7 +814,7 @@
     </div>
 
     <!-- STEP 6: Desired Outcome -->
-    <div class="step-content" data-step="6" data-category="Desired Outcome">
+    <div class="step-content" data-step="6">
         <h2>If one thing changed starting tomorrow, what would make the biggest difference?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="selectOutcome('sleeping through the night again')">
@@ -842,7 +836,7 @@
     </div>
 
     <!-- STEP 7: Social Proof Info Slide -->
-    <div class="step-content" data-step="7" data-category="Social Proof">
+    <div class="step-content" data-step="7">
         <div class="info-card" style="border-left-color: #10B981;">
             <h3 style="color: #10B981; font-size: 22px;">You are not alone.</h3>
             <p style="font-size: 15px; margin-top: 10px;">Over 50,000 women have used this exact approach to finally get relief from <strong id="step7DynamicOutcome">sleeping through the night again</strong> — often within weeks, not years.</p>
@@ -851,7 +845,7 @@
     </div>
 
     <!-- STEP 8: Lifestyle -->
-    <div class="step-content" data-step="8" data-category="Personalization">
+    <div class="step-content" data-step="8">
         <h2>Which best describes your day-to-day lifestyle?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Busy professional, always on the go</button>
@@ -862,7 +856,7 @@
     </div>
 
     <!-- STEP 9: Diet / Body Type -->
-    <div class="step-content" data-step="9" data-category="Personalization">
+    <div class="step-content" data-step="9">
         <h2>How would you describe your eating habits right now?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Pretty healthy, but nothing's working like it used to</button>
@@ -873,7 +867,7 @@
     </div>
 
     <!-- STEP 10: Time Availability -->
-    <div class="step-content" data-step="10" data-category="Pre-Objection">
+    <div class="step-content" data-step="10">
         <h2>How much time can you realistically commit each day to feeling better?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="selectTime('Less than 5 minutes')">Less than 5 minutes</button>
@@ -884,7 +878,7 @@
     </div>
 
     <!-- STEP 11: Objection-Handling Info Card -->
-    <div class="step-content" data-step="11" data-category="Pre-Objection">
+    <div class="step-content" data-step="11">
         <div class="info-card">
             <h3>Good news — you don't need hours to feel like yourself again.</h3>
             <p>A busy schedule doesn't mean you can't take back control of how you feel. Our approach was built for women with 10 minutes or less to spare — because that's most of our members.</p>
@@ -893,7 +887,7 @@
     </div>
 
     <!-- STEP 12: Stress Levels -->
-    <div class="step-content" data-step="12" data-category="Causation">
+    <div class="step-content" data-step="12">
         <h2>How would you rate your stress levels lately?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()">Low — I feel mostly relaxed</button>
@@ -904,7 +898,7 @@
     </div>
 
     <!-- STEP 13: Genetics / Family History -->
-    <div class="step-content" data-step="13" data-category="Causation">
+    <div class="step-content" data-step="13">
         <h2>Did your mother or close family members struggle with menopause symptoms?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="selectGeneticsAndProceed()">Yes, she had it rough</button>
@@ -914,7 +908,7 @@
     </div>
 
     <!-- STEP 14: 5-Second Circle Progress Loader Transition -->
-    <div class="step-content" data-step="14" data-category="Analyzing">
+    <div class="step-content" data-step="14">
         <div class="circle-loader-container">
             <div class="circle-svg-wrapper">
                 <svg class="circle-svg" viewBox="0 0 160 160">
@@ -929,7 +923,7 @@
     </div>
 
     <!-- STEP 15: Summary / Diagnosis Slide -->
-    <div class="step-content" data-step="15" data-category="Diagnosis">
+    <div class="step-content" data-step="15">
         <h2>Your Personalized Results Are Ready</h2>
 
         <div class="profile-summary-card">
@@ -999,7 +993,7 @@
     </div>
 
     <!-- STEP 16: Transformation Timeline -->
-    <div class="step-content" data-step="16" data-category="Roadmap">
+    <div class="step-content" data-step="16">
         <h2>Here's what's possible for you</h2>
         <div class="timeline">
             <div class="timeline-item">
@@ -1019,7 +1013,7 @@
     </div>
 
     <!-- STEP 17: Yes-Streak Micro-Commitment 1 -->
-    <div class="step-content" data-step="17" data-category="Commitment">
+    <div class="step-content" data-step="17">
         <h2>Are you ready to finally get relief from these symptoms?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">👍</span> Yes, absolutely</button>
@@ -1028,7 +1022,7 @@
     </div>
 
     <!-- STEP 18: Yes-Streak Micro-Commitment 2 -->
-    <div class="step-content" data-step="18" data-category="Commitment">
+    <div class="step-content" data-step="18">
         <h2>Would you rather feel calm, energized, and in control — without relying on more willpower alone?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✨</span> Yes, that's exactly what I want</button>
@@ -1037,7 +1031,7 @@
     </div>
 
     <!-- STEP 19: Yes-Streak Micro-Commitment 3 -->
-    <div class="step-content" data-step="19" data-category="Commitment">
+    <div class="step-content" data-step="19">
         <h2>Are you open to a natural approach that works with your body, not against it?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="startAnalysisLoader()"><span class="option-btn-icon">🚀</span> Yes, I'm ready</button>
@@ -1097,11 +1091,6 @@
         if (currentStep > 0) {
             const percent = Math.round((currentStep / totalSteps) * 100);
             document.getElementById('timelineProgress').style.width = percent + '%';
-
-            const activeEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-            if (activeEl && activeEl.dataset.category) {
-                document.getElementById('headerCategory').innerText = activeEl.dataset.category;
-            }
         }
     }
 
