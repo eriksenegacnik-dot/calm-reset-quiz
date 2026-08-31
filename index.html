@@ -6,9 +6,9 @@
     <title>The Calm Reset Method - Perimenopause Quiz</title>
     <style>
         :root {
-            --primary: #5A4AD1;
-            --primary-hover: #4839B3;
-            --primary-light: #F0EEFF;
+            --primary: #5063F0;
+            --primary-hover: #3B4ED8;
+            --primary-light: #F0F4FF;
             --bg-color: #F8F9FA;
             --card-bg: #FFFFFF;
             --text-main: #1E293B;
@@ -49,7 +49,51 @@
             border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
-        /* Sleek Top Progress Header (RiseGuide Style) */
+        /* Top Brand Logo */
+        .brand-logo {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        /* Top Social Badges (RiseGuide Style) */
+        .badges-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .badge-box {
+            border: 1.5 solid var(--primary);
+            border: 1px solid #C7D2FE;
+            background: #F5F7FF;
+            border-radius: 12px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #1E293B;
+            line-height: 1.25;
+        }
+
+        .badge-box span {
+            display: block;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 10px;
+        }
+
+        .badge-icon {
+            font-size: 18px;
+        }
+
+        /* Sleek Top Progress Header */
         .progress-header {
             margin-bottom: 28px;
             transition: opacity 0.3s ease;
@@ -65,8 +109,8 @@
 
         .progress-bar-fill {
             height: 100%;
-            width: 6.6%;
-            background: linear-gradient(90deg, #5A4AD1 0%, #7C3AED 100%);
+            width: 0%;
+            background: linear-gradient(90deg, #5063F0 0%, #7C3AED 100%);
             border-radius: 99px;
             transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -95,6 +139,25 @@
             }
         }
 
+        h1.hero-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            text-align: center;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        p.hero-subtitle {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
         h2 {
             font-size: 24px;
             font-weight: 700;
@@ -121,11 +184,11 @@
         }
 
         .age-card {
-            background: #EBF2FF;
+            background: #F8FAFC;
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
-            border: 2px solid transparent;
+            border: 1px solid var(--border-color);
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
@@ -133,7 +196,7 @@
 
         .age-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(90, 74, 209, 0.15);
+            box-shadow: 0 8px 20px rgba(80, 99, 240, 0.18);
             border-color: var(--primary);
         }
 
@@ -143,13 +206,14 @@
 
         .age-card img {
             width: 100%;
-            height: 170px;
+            height: 180px;
             object-fit: cover;
             display: block;
+            background-color: #FFFFFF;
         }
 
         .age-card-btn {
-            background: #5063F0;
+            background: var(--primary);
             color: white;
             font-size: 17px;
             font-weight: 700;
@@ -196,7 +260,7 @@
             border-color: var(--primary);
             background-color: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(90, 74, 209, 0.12);
+            box-shadow: 0 6px 16px rgba(80, 99, 240, 0.12);
         }
 
         .option-btn:active {
@@ -211,12 +275,12 @@
 
         /* Custom Cards */
         .info-card {
-            background: linear-gradient(135deg, #F0EEFF 0%, #F8F9FF 100%);
+            background: linear-gradient(135deg, #F0F4FF 0%, #F8F9FF 100%);
             border-left: 4px solid var(--primary);
             padding: 26px;
             border-radius: 12px;
             margin-bottom: 24px;
-            box-shadow: 0 4px 12px rgba(90, 74, 209, 0.06);
+            box-shadow: 0 4px 12px rgba(80, 99, 240, 0.06);
         }
 
         .info-card h3 {
@@ -233,10 +297,10 @@
         }
 
         .cta-btn {
-            background: linear-gradient(180deg, #5A4AD1 0%, #4839B3 100%);
+            background: linear-gradient(180deg, #5063F0 0%, #3B4ED8 100%);
             color: white;
             border: none;
-            border-radius: 99px;
+            border-radius: 12px;
             padding: 18px 32px;
             font-size: 17px;
             font-weight: 700;
@@ -245,17 +309,30 @@
             transition: all 0.25s ease;
             margin-top: 20px;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(90, 74, 209, 0.3);
+            box-shadow: 0 8px 20px rgba(80, 99, 240, 0.3);
             letter-spacing: 0.02em;
         }
 
         .cta-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(90, 74, 209, 0.4);
+            box-shadow: 0 12px 24px rgba(80, 99, 240, 0.4);
         }
 
         .cta-btn:active {
             transform: scale(0.98);
+        }
+
+        .legal-terms {
+            margin-top: 24px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .legal-terms a {
+            color: var(--text-muted);
+            text-decoration: underline;
         }
 
         .diagnostic-card {
@@ -351,7 +428,7 @@
         .analysis-bar-fill {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #5A4AD1 0%, #7C3AED 100%);
+            background: linear-gradient(90deg, #5063F0 0%, #7C3AED 100%);
             border-radius: 99px;
             transition: width 0.1s linear;
         }
@@ -457,47 +534,76 @@
 <body>
 
 <div class="quiz-container">
-    <!-- RiseGuide Minimal Line Progress Bar -->
-    <div class="progress-header" id="progressHeader">
+    <!-- RiseGuide Minimal Line Progress Bar (Hidden on Intro Page 0) -->
+    <div class="progress-header" id="progressHeader" style="display: none;">
         <div class="progress-bar-bg">
             <div class="progress-bar-fill" id="progressBar"></div>
         </div>
     </div>
 
-    <!-- STEP 1: What's your age? (Clean 2x2 Grid matching screenshot) -->
-    <div class="step-content active" data-step="1">
+    <!-- STEP 0: RiseGuide Landing Page (Females Market Focus) -->
+    <div class="step-content active" data-step="0">
+        <div class="brand-logo">RISEGUIDE</div>
+
+        <div class="badges-row">
+            <div class="badge-box">
+                <div class="badge-icon">🎯</div>
+                <div>100,000+ WOMEN<span>Balancing Hormones</span></div>
+            </div>
+            <div class="badge-box">
+                <div class="badge-icon">⭐</div>
+                <div>RATED ON TRUSTPILOT<span>4.8 Satisfaction Score</span></div>
+            </div>
+        </div>
+
+        <h1 class="hero-title">Personalized Calm Reset Challenge</h1>
+        <p class="hero-subtitle">TO RECLAIM YOUR ENERGY, SLEEP & HORMONAL BALANCE</p>
+
+        <button class="cta-btn" onclick="startQuiz()">Start My Quiz →</button>
+
+        <p class="legal-terms">
+            By clicking 'Start My Quiz' you agree to the <a href="#">Terms of Use and Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.
+        </p>
+    </div>
+
+    <!-- STEP 1: What's your age? (Updated Ages & Cleaner Portrait Assets) -->
+    <div class="step-content" data-step="1">
         <h2>What's your age?</h2>
         <p class="subtitle">We only use age to personalise your plan</p>
 
         <div class="age-grid">
+            <!-- 35-40: Blonde Hair -->
             <div class="age-card" onclick="nextStep()">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="18-34">
+                <img src="female-18.3hkk6nkxlip9m.webp" alt="35-40">
                 <div class="age-card-btn">
-                    <span>18-34</span>
+                    <span>35-40</span>
                     <span>›</span>
                 </div>
             </div>
 
+            <!-- 41-49: Long Black Hair -->
             <div class="age-card" onclick="nextStep()">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="35-44">
+                <img src="female-35.1_589sr8-6i9m.webp" alt="41-49">
                 <div class="age-card-btn">
-                    <span>35-44</span>
+                    <span>41-49</span>
                     <span>›</span>
                 </div>
             </div>
 
+            <!-- 50-59: Short Black Hair -->
             <div class="age-card" onclick="nextStep()">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="45-54">
+                <img src="female-45.3ek8q4ody9qik.webp" alt="50-59">
                 <div class="age-card-btn">
-                    <span>45-54</span>
+                    <span>50-59</span>
                     <span>›</span>
                 </div>
             </div>
 
+            <!-- 60+: Grey Hair -->
             <div class="age-card" onclick="nextStep()">
-                <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=600&q=80" alt="55+">
+                <img src="female-55.1-t6r5mj_odp0.webp" alt="60+">
                 <div class="age-card-btn">
-                    <span>55+</span>
+                    <span>60+</span>
                     <span>›</span>
                 </div>
             </div>
@@ -700,7 +806,7 @@
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p3-bar"></div></div>
         </div>
 
-        <!-- 3 Reviews Stack (Matching video screenshot) -->
+        <!-- 3 Reviews Stack -->
         <div class="reviews-container">
             <div class="testimonial-box">
                 <div class="review-header">
@@ -735,7 +841,7 @@
 <!-- POPUP MODAL FOR INTERACTIVE LOADER QUESTIONS -->
 <div class="modal-overlay" id="questionModal">
     <div class="modal-card">
-        <p style="font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; tracking: 0.05em; margin-bottom: 8px;">To improve recommendations, specify</p>
+        <p style="font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">To improve recommendations, specify</p>
         <h3 id="modalQuestionText">Question goes here</h3>
         <div class="modal-buttons">
             <button class="modal-btn" onclick="answerModal('No')">No</button>
@@ -745,17 +851,27 @@
 </div>
 
 <script>
-    let currentStep = 1;
-    const totalSteps = 15;
+    let currentStep = 0;
+    const totalQuestionSteps = 15;
     let currentResumeCallback = null;
 
     function updateProgress() {
-        const percent = Math.round((currentStep / totalSteps) * 100);
-        document.getElementById('progressBar').style.width = percent + '%';
+        if (currentStep > 0) {
+            const percent = Math.round((currentStep / totalQuestionSteps) * 100);
+            document.getElementById('progressBar').style.width = percent + '%';
+        }
+    }
+
+    function startQuiz() {
+        document.querySelector(`.step-content[data-step="0"]`).classList.remove('active');
+        document.getElementById('progressHeader').style.display = 'block';
+        currentStep = 1;
+        document.querySelector(`.step-content[data-step="1"]`).classList.add('active');
+        updateProgress();
     }
 
     function nextStep() {
-        if (currentStep < totalSteps) {
+        if (currentStep < totalQuestionSteps) {
             const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
             currentEl.style.animation = 'none';
             currentEl.classList.remove('active');
