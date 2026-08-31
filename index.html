@@ -265,25 +265,8 @@
             flex-shrink: 0;
         }
 
-        .option-btn-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .option-btn-text span {
-            font-size: 13px;
-            font-weight: 400;
-            color: #64748B;
-        }
-
         .option-btn:hover {
             border-color: #A5B4FC;
-            background-color: #EEF2FF;
-        }
-
-        .option-btn.selected {
-            border-color: #6366F1;
             background-color: #EEF2FF;
         }
 
@@ -573,7 +556,7 @@
             line-height: 1.4;
         }
 
-        /* Loader & Reviews */
+        /* Clean Loader & Reviews */
         .loader-container {
             display: none;
             text-align: center;
@@ -592,17 +575,7 @@
         }
 
         .analysis-step {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .analysis-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 8px;
+            margin-bottom: 16px;
         }
 
         .analysis-bar-bg {
@@ -753,7 +726,7 @@
         </div>
     </div>
 
-    <!-- STEP 3: Pain Specification (Dynamically Rendered) -->
+    <!-- STEP 3: Pain Specification -->
     <div class="step-content" data-step="3" data-category="Diagnostic">
         <h2 id="step3Question">Do you wake up between 2–4 AM and struggle to fall back asleep?</h2>
         <div class="options-grid" id="step3Options">
@@ -848,7 +821,7 @@
         </div>
     </div>
 
-    <!-- STEP 11: Objection-Handling Info Card (Conditional) -->
+    <!-- STEP 11: Objection-Handling Info Card -->
     <div class="step-content" data-step="11" data-category="Pre-Objection">
         <div class="info-card">
             <h3>Good news — you don't need hours to feel like yourself again.</h3>
@@ -888,7 +861,6 @@
                 <span class="readiness-pill">HIGH POTENTIAL</span>
             </div>
 
-            <!-- Gradient Level Meter Bar -->
             <div class="level-meter-container">
                 <div class="meter-pointer-pill">YOUR LEVEL</div>
                 <div class="meter-bar">
@@ -996,31 +968,19 @@
         </div>
     </div>
 
-    <!-- DYNAMIC ANALYSIS LOADER -->
+    <!-- CLEAN DYNAMIC ANALYSIS LOADER -->
     <div class="loader-container" id="loaderContainer">
         <h2 class="loader-title">We are calculating your <span>Calm Reset Plan...</span></h2>
 
         <div class="analysis-step">
-            <div class="analysis-label">
-                <span>Analyzing your symptom triggers</span>
-                <span id="p1-text">0%</span>
-            </div>
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p1-bar"></div></div>
         </div>
 
         <div class="analysis-step">
-            <div class="analysis-label">
-                <span>Building personalized roadmap</span>
-                <span id="p2-text">0%</span>
-            </div>
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p2-bar"></div></div>
         </div>
 
         <div class="analysis-step">
-            <div class="analysis-label">
-                <span>Finalizing recommendations</span>
-                <span id="p3-text">0%</span>
-            </div>
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p3-bar"></div></div>
         </div>
 
@@ -1075,35 +1035,28 @@
         updateProgress();
     }
 
+    function jumpToStep(targetStep) {
+        const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+        if (currentEl) currentEl.classList.remove('active');
+
+        currentStep = targetStep;
+
+        const targetEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+        if (targetEl) targetEl.classList.add('active');
+
+        document.getElementById('appHeader').style.display = 'flex';
+        updateProgress();
+    }
+
     function nextStep() {
         if (currentStep === 10 && (selectedTimeVal !== 'Less than 5 minutes' && selectedTimeVal !== '5–10 minutes')) {
-            // Skip Step 11 if time is more than 10 minutes
             jumpToStep(12);
             return;
         }
 
         if (currentStep < totalSteps) {
-            const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-            currentEl.style.animation = 'none';
-            currentEl.classList.remove('active');
-
-            currentStep++;
-
-            const nextEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-            nextEl.classList.add('active');
-            updateProgress();
+            jumpToStep(currentStep + 1);
         }
-    }
-
-    function jumpToStep(targetStep) {
-        const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-        currentEl.classList.remove('active');
-
-        currentStep = targetStep;
-
-        const targetEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-        targetEl.classList.add('active');
-        updateProgress();
     }
 
     function prevStep() {
@@ -1113,16 +1066,11 @@
         }
 
         if (currentStep > 1) {
-            const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-            currentEl.classList.remove('active');
-
-            currentStep--;
-
-            const prevEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-            prevEl.classList.add('active');
-            updateProgress();
+            jumpToStep(currentStep - 1);
         } else if (currentStep === 1) {
-            document.querySelector(`.step-content[data-step="1"]`).classList.remove('active');
+            const currentEl = document.querySelector(`.step-content[data-step="1"]`);
+            if (currentEl) currentEl.classList.remove('active');
+            
             document.getElementById('appHeader').style.display = 'none';
             currentStep = 0;
             document.querySelector(`.step-content[data-step="0"]`).classList.add('active');
@@ -1190,18 +1138,18 @@
     }
 
     function finishQuiz() {
-        nextStep(); // Goes to Step 16
+        nextStep();
     }
 
     function startAnalysisLoader() {
         const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-        currentEl.classList.remove('active');
+        if (currentEl) currentEl.classList.remove('active');
         document.getElementById('appHeader').style.display = 'none';
         document.getElementById('loaderContainer').style.display = 'block';
 
-        runProgressLoader('p1-bar', 'p1-text', 0, () => {
-            runProgressLoader('p2-bar', 'p2-text', 0, () => {
-                runProgressLoader('p3-bar', 'p3-text', 0, () => {
+        runProgressLoader('p1-bar', 0, () => {
+            runProgressLoader('p2-bar', 0, () => {
+                runProgressLoader('p3-bar', 0, () => {
                     setTimeout(() => {
                         window.location.href = "https://yourdomain.com/calm-reset-vsl";
                     }, 600);
@@ -1210,12 +1158,11 @@
         });
     }
 
-    function runProgressLoader(barId, textId, startPercent, onComplete) {
+    function runProgressLoader(barId, startPercent, onComplete) {
         let percent = startPercent;
         function fill() {
             if (percent <= 100) {
                 document.getElementById(barId).style.width = percent + '%';
-                document.getElementById(textId).innerText = percent + '%';
                 percent += 2;
                 setTimeout(fill, 25);
             } else {
