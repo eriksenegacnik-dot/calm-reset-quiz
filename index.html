@@ -44,7 +44,7 @@
             margin: 0 auto;
         }
 
-        /* Top Header Navigation matching screenshots */
+        /* Top Header Navigation */
         .app-header {
             display: flex;
             flex-direction: column;
@@ -110,7 +110,7 @@
             background: #1E293B;
             z-index: 2;
             transition: width 0.3s ease;
-            width: 25%;
+            width: 0%;
         }
 
         .timeline-dots {
@@ -232,7 +232,7 @@
             margin-bottom: 24px;
         }
 
-        /* Questions Option Cards matching Image 1 */
+        /* Question Option Cards */
         .options-grid {
             display: flex;
             flex-direction: column;
@@ -287,53 +287,59 @@
             background-color: #EEF2FF;
         }
 
-        /* Age Grid */
-        .age-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 12px;
-        }
-
-        .age-card {
-            background: #FFFFFF;
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-            transition: all 0.25s ease;
+        /* Avatar Age Selector (Step 1) */
+        .avatar-options-grid {
             display: flex;
             flex-direction: column;
+            gap: 12px;
         }
 
-        .age-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 24px rgba(82, 103, 250, 0.18);
-        }
-
-        .age-card-img-wrap {
-            width: 100%;
-            height: 180px;
-            background-color: #F1F5F9;
-            overflow: hidden;
-        }
-
-        .age-card-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .age-card-btn {
-            background: #5267FA;
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
+        .avatar-option-btn {
+            background: #FFFFFF;
+            border: 1.5px solid transparent;
+            border-radius: 16px;
             padding: 14px 18px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s ease;
+        }
+
+        .avatar-option-btn:hover {
+            border-color: #A5B4FC;
+            background-color: #EEF2FF;
+        }
+
+        .avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #EEF2FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .avatar-details {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .avatar-age {
+            font-size: 17px;
+            font-weight: 800;
+            color: #000000;
+        }
+
+        .avatar-desc {
+            font-size: 13px;
+            color: #64748B;
+            font-weight: 500;
         }
 
         /* Primary Action CTA */
@@ -363,7 +369,7 @@
             transform: translateY(-1px);
         }
 
-        /* Summary Profile Screen Styles matching Image 2 */
+        /* Summary Profile Screen Styles */
         .profile-summary-card {
             background: #FFFFFF;
             border-radius: 20px;
@@ -456,7 +462,6 @@
             margin-top: 8px;
         }
 
-        /* Niche Metrics Grid (Without Photo) */
         .niche-metrics-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -486,7 +491,6 @@
             color: #000000;
         }
 
-        /* Green Insight Box matching Image 2 */
         .insight-box {
             background: #DCFCE7;
             border: 1px solid #86EFAC;
@@ -642,66 +646,16 @@
 
         .stars { color: #10B981; font-size: 13px; }
         .review-date { font-size: 12px; color: #94A3B8; }
-
-        /* Modal Overlay */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.55);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-card {
-            background: white;
-            width: 100%;
-            max-width: 440px;
-            padding: 28px 20px;
-            border-radius: 20px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-
-        .modal-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 12px;
-        }
-
-        .modal-btn {
-            flex: 1;
-            padding: 14px;
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            background: white;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
 
 <div class="quiz-container">
-    <!-- Top Nav Header (Visible during quiz) -->
+    <!-- Top Nav Header -->
     <div class="app-header" id="appHeader" style="display: none;">
         <div class="header-top-bar">
             <button class="back-btn" onclick="prevStep()">‹</button>
-            <span class="category-title" id="headerCategory">Challenges</span>
+            <span class="category-title" id="headerCategory">Diagnostic</span>
         </div>
         <div class="step-timeline">
             <div class="timeline-line-bg"></div>
@@ -741,202 +695,197 @@
         </p>
     </div>
 
-    <!-- STEP 1: Age Selection -->
-    <div class="step-content" data-step="1" data-category="Profile">
-        <h2>What's your age?</h2>
-        <p class="subtitle">We only use age to personalise your plan</p>
-
-        <div class="age-grid">
-            <div class="age-card" onclick="nextStep()">
-                <div class="age-card-img-wrap">
-                    <img src="female-18.3hkk6nkxlip9m.webp" alt="35-40" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80'">
-                </div>
-                <div class="age-card-btn">
-                    <span>35-40</span>
-                    <span>›</span>
+    <!-- STEP 1: Visual Identifier (Age/Avatar) -->
+    <div class="step-content" data-step="1" data-category="Diagnostic">
+        <h2>Let's find your personalized plan. Which stage of life are you in?</h2>
+        <p class="subtitle">Select your age group below</p>
+        <div class="avatar-options-grid">
+            <div class="avatar-option-btn" onclick="selectAge('35–44')">
+                <div class="avatar-circle">🧍‍♀️</div>
+                <div class="avatar-details">
+                    <span class="avatar-age">35–44</span>
+                    <span class="avatar-desc">Perimenopause is likely starting</span>
                 </div>
             </div>
-
-            <div class="age-card" onclick="nextStep()">
-                <div class="age-card-img-wrap">
-                    <img src="female-35.1_589sr8-6i9m.webp" alt="41-49" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'">
-                </div>
-                <div class="age-card-btn">
-                    <span>41-49</span>
-                    <span>›</span>
+            <div class="avatar-option-btn" onclick="selectAge('45–54')">
+                <div class="avatar-circle">🧍‍♀️</div>
+                <div class="avatar-details">
+                    <span class="avatar-age">45–54</span>
+                    <span class="avatar-desc">Right in the thick of it</span>
                 </div>
             </div>
-
-            <div class="age-card" onclick="nextStep()">
-                <div class="age-card-img-wrap">
-                    <img src="female-45.3ek8q4ody9qik.webp" alt="50-59" onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80'">
-                </div>
-                <div class="age-card-btn">
-                    <span>50-59</span>
-                    <span>›</span>
+            <div class="avatar-option-btn" onclick="selectAge('55–64')">
+                <div class="avatar-circle">🧍‍♀️</div>
+                <div class="avatar-details">
+                    <span class="avatar-age">55–64</span>
+                    <span class="avatar-desc">Postmenopause / late transition</span>
                 </div>
             </div>
-
-            <div class="age-card" onclick="nextStep()">
-                <div class="age-card-img-wrap">
-                    <img src="female-55.1-t6r5mj_odp0.webp" alt="60+" onerror="this.src='https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=600&q=80'">
-                </div>
-                <div class="age-card-btn">
-                    <span>60+</span>
-                    <span>›</span>
+            <div class="avatar-option-btn" onclick="selectAge('65+')">
+                <div class="avatar-circle">🧍‍♀️</div>
+                <div class="avatar-details">
+                    <span class="avatar-age">65+</span>
+                    <span class="avatar-desc">Managing long-term symptoms</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- STEP 2 -->
-    <div class="step-content" data-step="2" data-category="Challenges">
-        <h2>Where do you feel the biggest disruption in your daily life right now?</h2>
+    <!-- STEP 2: Pain Location -->
+    <div class="step-content" data-step="2" data-category="Diagnostic">
+        <h2>Where do you feel the changes hitting you the hardest right now?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">
-                <div class="option-btn-icon">🧠</div>
-                <div class="option-btn-text">In my head <span>Brain fog, low motivation, and racing thoughts</span></div>
+            <button class="option-btn" onclick="selectPain('Sleep')">
+                <span class="option-btn-icon">😴</span> My sleep
             </button>
-            <button class="option-btn" onclick="nextStep()">
-                <div class="option-btn-icon">🌙</div>
-                <div class="option-btn-text">In my sleep <span>Waking at 2–4 AM, tossing/turning, morning exhaustion</span></div>
+            <button class="option-btn" onclick="selectPain('Mind')">
+                <span class="option-btn-icon">🧠</span> My mind (focus, memory, clarity)
             </button>
-            <button class="option-btn" onclick="nextStep()">
-                <div class="option-btn-icon">⚡</div>
-                <div class="option-btn-text">In my body <span>Stubborn belly fat, hot flashes, joint/muscle fatigue</span></div>
+            <button class="option-btn" onclick="selectPain('Body')">
+                <span class="option-btn-icon">⚖️</span> My body & weight
             </button>
-            <button class="option-btn" onclick="nextStep()">
-                <div class="option-btn-icon">❤️</div>
-                <div class="option-btn-text">In my emotions <span>Irritability, snapping at loved ones, constantly "on edge"</span></div>
+            <button class="option-btn" onclick="selectPain('Mood')">
+                <span class="option-btn-icon">😩</span> My mood & emotions
+            </button>
+            <button class="option-btn" onclick="selectPain('Energy')">
+                <span class="option-btn-icon">🔋</span> My energy levels
             </button>
         </div>
     </div>
 
-    <!-- STEP 3 -->
-    <div class="step-content" data-step="3" data-category="Challenges">
-        <h2>Do you often wake up between 2:00 AM and 4:00 AM with a racing heart or a surge of heat, unable to drift back to sleep?</h2>
-        <p class="subtitle">Do you agree with the statement above?</p>
-        <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> Strongly disagree</button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">👎</span> Somewhat disagree</button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">👍</span> Somewhat agree</button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Strongly agree</button>
+    <!-- STEP 3: Pain Specification (Dynamically Rendered) -->
+    <div class="step-content" data-step="3" data-category="Diagnostic">
+        <h2 id="step3Question">Do you wake up between 2–4 AM and struggle to fall back asleep?</h2>
+        <div class="options-grid" id="step3Options">
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, almost every night</button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No</button>
         </div>
     </div>
 
-    <!-- STEP 4 -->
-    <div class="step-content" data-step="4" data-category="Challenges">
-        <h2>How much are these physical and emotional changes impacting your quality of life?</h2>
+    <!-- STEP 4: Pain Severity -->
+    <div class="step-content" data-step="4" data-category="Diagnostic">
+        <h2>How much is this affecting your day-to-day life?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🟡</span> Mild <span>It's annoying, but I'm managing to push through</span></button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🟠</span> Moderate <span>I feel exhausted daily, clothes are tight, losing my edge</span></button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🔴</span> Severe <span>I feel like a shell of myself. It strains my life and confidence</span></button>
+            <button class="option-btn" onclick="selectSeverity('It\'s a minor annoyance')">It's a minor annoyance</button>
+            <button class="option-btn" onclick="selectSeverity('It\'s noticeable but manageable')">It's noticeable but manageable</button>
+            <button class="option-btn" onclick="selectSeverity('It\'s affecting my work, mood, or relationships')">It's affecting my work, mood, or relationships</button>
+            <button class="option-btn" onclick="selectSeverity('I don\'t feel like myself anymore')">It's taking over my life — I don't feel like myself anymore</button>
         </div>
     </div>
 
-    <!-- STEP 5 -->
-    <div class="step-content" data-step="5" data-category="Challenges">
-        <h2>How long have you felt like your body is working against you instead of with you?</h2>
+    <!-- STEP 5: Pain Timeline -->
+    <div class="step-content" data-step="5" data-category="Diagnostic">
+        <h2>When did you first start noticing these changes?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Less than 6 months <span>It hit me out of nowhere</span></button>
-            <button class="option-btn" onclick="nextStep()">1 to 3 years <span>It's been a slow, frustrating decline</span></button>
-            <button class="option-btn" onclick="nextStep()">3+ years <span>It feels like a permanent "new normal"</span></button>
+            <button class="option-btn" onclick="nextStep()">Within the last few months</button>
+            <button class="option-btn" onclick="nextStep()">6 months–1 year ago</button>
+            <button class="option-btn" onclick="nextStep()">1–3 years ago</button>
+            <button class="option-btn" onclick="nextStep()">It's been years and it keeps getting worse</button>
         </div>
     </div>
 
-    <!-- STEP 6 -->
-    <div class="step-content" data-step="6" data-category="Goals">
-        <h2>If you could press a button and fix ONE thing by next month, what would it be?</h2>
+    <!-- STEP 6: Desired Outcome -->
+    <div class="step-content" data-step="6" data-category="Desired Outcome">
+        <h2>If one thing changed starting tomorrow, what would make the biggest difference?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">😴</span> Sleep <span>Sleeping 7 to 8 uninterrupted hours and waking refreshed</span></button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">💡</span> Mental Clarity <span>Clearing brain fog to feel sharp and focused again</span></button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🔥</span> Weight & Metabolism <span>Melting stubborn abdominal fat and feeling comfortable in clothes</span></button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🧘</span> Emotional Balance <span>Calming my nervous system to stop feeling anxious and overwhelmed</span></button>
+            <button class="option-btn" onclick="selectOutcome('sleeping through the night again')">
+                <span class="option-btn-icon">😴</span> Sleeping through the night again
+            </button>
+            <button class="option-btn" onclick="selectOutcome('having steady energy all day')">
+                <span class="option-btn-icon">🔋</span> Having steady energy all day
+            </button>
+            <button class="option-btn" onclick="selectOutcome('losing stubborn belly fat')">
+                <span class="option-btn-icon">⚖️</span> Losing the stubborn belly fat
+            </button>
+            <button class="option-btn" onclick="selectOutcome('feeling calm instead of on edge')">
+                <span class="option-btn-icon">🧘</span> Feeling calm instead of on edge
+            </button>
+            <button class="option-btn" onclick="selectOutcome('getting your sharp mind back')">
+                <span class="option-btn-icon">💡</span> Getting my sharp mind back
+            </button>
         </div>
     </div>
 
-    <!-- STEP 7 -->
-    <div class="step-content" data-step="7" data-category="Insights">
+    <!-- STEP 7: Social Proof Info Slide -->
+    <div class="step-content" data-step="7" data-category="Social Proof">
+        <div class="info-card" style="border-left-color: #10B981;">
+            <h3 style="color: #10B981; font-size: 22px;">You are not alone.</h3>
+            <p style="font-size: 15px; margin-top: 10px;">Over 50,000 women have used this exact approach to finally get relief from <strong id="step7DynamicOutcome">sleeping through the night again</strong> — often within weeks, not years.</p>
+        </div>
+        <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
+    </div>
+
+    <!-- STEP 8: Lifestyle -->
+    <div class="step-content" data-step="8" data-category="Personalization">
+        <h2>Which best describes your day-to-day lifestyle?</h2>
+        <div class="options-grid">
+            <button class="option-btn" onclick="nextStep()">Busy professional, always on the go</button>
+            <button class="option-btn" onclick="nextStep()">Full-time caregiver (kids, parents, or both)</button>
+            <button class="option-btn" onclick="nextStep()">Retired / more flexible schedule</button>
+            <button class="option-btn" onclick="nextStep()">Active but exhausted no matter what I do</button>
+        </div>
+    </div>
+
+    <!-- STEP 9: Diet / Body Type -->
+    <div class="step-content" data-step="9" data-category="Personalization">
+        <h2>How would you describe your eating habits right now?</h2>
+        <div class="options-grid">
+            <button class="option-btn" onclick="nextStep()">Pretty healthy, but nothing's working like it used to</button>
+            <button class="option-btn" onclick="nextStep()">I eat well most days, indulge on weekends</button>
+            <button class="option-btn" onclick="nextStep()">I've cut back a lot but still gain weight</button>
+            <button class="option-btn" onclick="nextStep()">I honestly don't know what to eat anymore for my body now</button>
+        </div>
+    </div>
+
+    <!-- STEP 10: Time Availability -->
+    <div class="step-content" data-step="10" data-category="Pre-Objection">
+        <h2>How much time can you realistically commit each day to feeling better?</h2>
+        <div class="options-grid">
+            <button class="option-btn" onclick="selectTime('Less than 5 minutes')">Less than 5 minutes</button>
+            <button class="option-btn" onclick="selectTime('5–10 minutes')">5–10 minutes</button>
+            <button class="option-btn" onclick="selectTime('10–20 minutes')">10–20 minutes</button>
+            <button class="option-btn" onclick="selectTime('20+ minutes')">20+ minutes, I'm ready to prioritize this</button>
+        </div>
+    </div>
+
+    <!-- STEP 11: Objection-Handling Info Card (Conditional) -->
+    <div class="step-content" data-step="11" data-category="Pre-Objection">
         <div class="info-card">
-            <h3>💬 You Are Not "Crazy," and You Are Not Alone.</h3>
-            <p>Millions of women around the world have stood exactly where you are standing right now.</p><br>
-            <p>They thought their sudden anxiety, 3 AM wake-up calls, and weight retention were just "getting older." In reality, their nervous system was stuck in a high-cortisol loop caused by hormonal shifts.</p><br>
-            <p><strong>The good news: Once you address the root nervous system balance, your body naturally resets.</strong></p>
+            <h3>Good news — you don't need hours to feel like yourself again.</h3>
+            <p>A busy schedule doesn't mean you can't take back control of how you feel. Our approach was built for women with 10 minutes or less to spare — because that's most of our members.</p>
         </div>
-        <button class="primary-cta-btn" onclick="nextStep()">Continue to Assessment →</button>
+        <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- STEP 8 -->
-    <div class="step-content" data-step="8" data-category="Lifestyle">
-        <h2>What does your current daily routine look like?</h2>
+    <!-- STEP 12: Stress Levels -->
+    <div class="step-content" data-step="12" data-category="Causation">
+        <h2>How would you rate your stress levels lately?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">High-stress, fast-paced work environment with back-to-back schedules</button>
-            <button class="option-btn" onclick="nextStep()">Busy taking care of family, home, or aging parents with little personal time</button>
-            <button class="option-btn" onclick="nextStep()">Relatively quiet schedule, but internal stress and anxiety remain high</button>
+            <button class="option-btn" onclick="nextStep()">Low — I feel mostly relaxed</button>
+            <button class="option-btn" onclick="nextStep()">Moderate — some days are harder than others</button>
+            <button class="option-btn" onclick="nextStep()">High — I feel wound up most of the time</button>
+            <button class="option-btn" onclick="nextStep()">Constant — I can't remember the last time I felt calm</button>
         </div>
     </div>
 
-    <!-- STEP 9 -->
-    <div class="step-content" data-step="9" data-category="Lifestyle">
-        <h2>Which of these have you tried to fix your symptoms in the past? (Select all that apply)</h2>
+    <!-- STEP 13: Genetics / Family History -->
+    <div class="step-content" data-step="13" data-category="Causation">
+        <h2>Did your mother or close family members struggle with menopause symptoms?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="toggleMultiSelect(this)">Counting calories or strict diets (keto, fasting)</button>
-            <button class="option-btn" onclick="toggleMultiSelect(this)">Over-the-counter menopause supplements or vitamins</button>
-            <button class="option-btn" onclick="toggleMultiSelect(this)">Cutting back on coffee, sugar, or alcohol</button>
-            <button class="option-btn" onclick="toggleMultiSelect(this)">Pushing through hard workouts or high-intensity cardio</button>
-            <button class="option-btn" onclick="toggleMultiSelect(this)">None of the above / I don't know where to start</button>
-        </div>
-        <button class="primary-cta-btn" style="margin-top:20px;" onclick="nextStep()">Continue →</button>
-    </div>
-
-    <!-- STEP 10 -->
-    <div class="step-content" data-step="10" data-category="Lifestyle">
-        <h2>Realistically, how much time can you dedicate each day to a reset routine?</h2>
-        <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">5 to 10 minutes <span>I need something fast and simple</span></button>
-            <button class="option-btn" onclick="nextStep()">15 to 30 minutes <span>I can carve out dedicated time for real results</span></button>
-            <button class="option-btn" onclick="nextStep()">30+ minutes <span>I am ready to make major lifestyle shifts</span></button>
+            <button class="option-btn" onclick="nextStep()">Yes, she had it rough</button>
+            <button class="option-btn" onclick="nextStep()">No, she sailed through it</button>
+            <button class="option-btn" onclick="nextStep()">Not sure / we never talked about it</button>
         </div>
     </div>
 
-    <!-- STEP 11 -->
-    <div class="step-content" data-step="11" data-category="Insights">
-        <div class="info-card">
-            <h3>💡 Good News: You Don't Need Hours a Day.</h3>
-            <p>A common myth is that balancing your body during perimenopause requires hours of gym time or complex meal prepping.</p><br>
-            <p>In fact, aggressive workouts often raise cortisol levels, worsening brain fog, midsection weight retention, and sleep disruption.</p><br>
-            <p>The <strong>Calm Reset Method</strong> works in as little as <strong>7 minutes a day</strong> by directly soothing the nervous system response—fitting seamlessly into even the busiest schedule.</p>
-        </div>
-        <button class="primary-cta-btn" onclick="nextStep()">Proceed to Diagnostic Analysis →</button>
-    </div>
-
-    <!-- STEP 12 -->
-    <div class="step-content" data-step="12" data-category="Diagnostic">
-        <h2>How often do you feel "wired yet tired" at night?</h2>
-        <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Almost every night <span>Brain refuses to shut down while my body is exhausted</span></button>
-            <button class="option-btn" onclick="nextStep()">A few times a week <span>Especially after particularly stressful days</span></button>
-            <button class="option-btn" onclick="nextStep()">Rarely <span>I just sleep lightly and wake up feeling unrested</span></button>
-        </div>
-    </div>
-
-    <!-- STEP 13 -->
-    <div class="step-content" data-step="13" data-category="Diagnostic">
-        <h2>Have you noticed that diets or exercises that used to work easily in your 20s or 30s no longer yield any results?</h2>
-        <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Yes <span>It feels like my metabolism ran into a brick wall overnight</span></button>
-            <button class="option-btn" onclick="nextStep()">No <span>My weight is stable, but my mood, energy, and sleep struggle</span></button>
-        </div>
-    </div>
-
-    <!-- STEP 14: Summary Profile Screen (Matching Image 2 Design in Niche) -->
-    <div class="step-content" data-step="14" data-category="Goals">
-        <h2>Summary of your profile</h2>
+    <!-- STEP 14: Summary / Diagnosis Slide -->
+    <div class="step-content" data-step="14" data-category="Diagnosis">
+        <h2>Your Personalized Results Are Ready</h2>
 
         <div class="profile-summary-card">
             <div class="readiness-header">
-                <span class="readiness-title">Readiness score:</span>
-                <span class="readiness-pill">PERFECT</span>
+                <span class="readiness-title">Readiness Score:</span>
+                <span class="readiness-pill">HIGH POTENTIAL</span>
             </div>
 
             <!-- Gradient Level Meter Bar -->
@@ -953,20 +902,11 @@
                 </div>
             </div>
 
-            <!-- Niche Specific Profile Metrics (No Woman Photo) -->
             <div class="niche-metrics-grid">
                 <div class="metric-item">
-                    <span class="metric-icon">🎯</span>
+                    <span class="metric-icon">📊</span>
                     <div>
-                        <div class="metric-label">Cortisol Burden</div>
-                        <div class="metric-val">High</div>
-                    </div>
-                </div>
-
-                <div class="metric-item">
-                    <span class="metric-icon">📈</span>
-                    <div>
-                        <div class="metric-label">Reset Potential</div>
+                        <div class="metric-label">Hormonal Fluctuation</div>
                         <div class="metric-val">High</div>
                     </div>
                 </div>
@@ -974,61 +914,95 @@
                 <div class="metric-item">
                     <span class="metric-icon">⚡</span>
                     <div>
-                        <div class="metric-label">Stress State</div>
-                        <div class="metric-val">Wired & Tired</div>
+                        <div class="metric-label">Stress-Symptom Link</div>
+                        <div class="metric-val">Significant</div>
                     </div>
                 </div>
 
                 <div class="metric-item">
-                    <span class="metric-icon">⭐</span>
+                    <span class="metric-icon">🎯</span>
                     <div>
-                        <div class="metric-label">Primary Trigger</div>
-                        <div class="metric-val">Night Spikes</div>
+                        <div class="metric-label">Improvement Potential</div>
+                        <div class="metric-val">Very High</div>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <span class="metric-icon">✨</span>
+                    <div>
+                        <div class="metric-label">Reversibility</div>
+                        <div class="metric-val">94% Success</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Green Insight Highlight Box matching Screenshot 2 -->
         <div class="insight-box">
             <div class="insight-box-title">
-                <span>👍</span> Impressive score to reset your Nervous System
+                <span>💡</span> Clinical Symptom Assessment
             </div>
             <p class="insight-box-desc">
-                A recent study in 2025 revealed that women who perform targeted nervous system resetting daily are 84% more likely to reduce night wake-ups and restore natural hormonal equilibrium within 30 days.
+                Based on your answers, your hormonal fluctuation level is <strong>HIGH</strong>, and your stress-symptom connection is significant. The good news: your opportunity for natural improvement is also <strong>HIGH</strong>.
             </p>
         </div>
 
-        <button class="primary-cta-btn" onclick="nextStep()">CONTINUE</button>
+        <button class="primary-cta-btn" onclick="nextStep()">See Your Roadmap →</button>
     </div>
 
-    <!-- STEP 15 -->
-    <div class="step-content" data-step="15" data-category="Plan Roadmap">
-        <h2>Your Expected Progress Timeline</h2>
+    <!-- STEP 15: Transformation Timeline -->
+    <div class="step-content" data-step="15" data-category="Roadmap">
+        <h2>Here's what's possible for you</h2>
         <div class="timeline">
             <div class="timeline-item">
-                <h4>Weeks 1–2 (The Calm Reset)</h4>
-                <p>Deep sleep returns. Night sweats reduce, and morning grogginess begins to clear.</p>
+                <h4>Week 1–2</h4>
+                <p>Early shifts in sleep and energy. Morning fog begins to clear up.</p>
             </div>
             <div class="timeline-item">
-                <h4>Months 2–3 (Metabolic & Mood Stabilization)</h4>
-                <p>Brain fog lifts. Energy stays stable throughout the afternoon without caffeine spikes.</p>
+                <h4>Month 1</h4>
+                <p>Noticeably calmer mood, fewer symptom flare-ups, and improved mental clarity.</p>
             </div>
             <div class="timeline-item">
-                <h4>Months 4–6 (Full Reconstitution)</h4>
-                <p>Abdominal bloating settles, emotional resilience returns, and you feel like yourself again.</p>
+                <h4>Month 3–6</h4>
+                <p>Sustainable, long-term relief — feeling like yourself again.</p>
             </div>
         </div>
         <button class="primary-cta-btn" onclick="finishQuiz()">GENERATE MY CALM RESET PLAN NOW →</button>
     </div>
 
+    <!-- STEP 16: Yes-Streak Micro-Commitment 1 -->
+    <div class="step-content" data-step="16" data-category="Commitment">
+        <h2>Are you ready to finally get relief from these symptoms?</h2>
+        <div class="options-grid">
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">👍</span> Yes, absolutely</button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🙂</span> I think so</button>
+        </div>
+    </div>
+
+    <!-- STEP 17: Yes-Streak Micro-Commitment 2 -->
+    <div class="step-content" data-step="17" data-category="Commitment">
+        <h2>Would you rather feel calm, energized, and in control — without relying on more willpower alone?</h2>
+        <div class="options-grid">
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✨</span> Yes, that's exactly what I want</button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">👍</span> Yes</button>
+        </div>
+    </div>
+
+    <!-- STEP 18: Yes-Streak Micro-Commitment 3 -->
+    <div class="step-content" data-step="18" data-category="Commitment">
+        <h2>Are you open to a natural approach that works with your body, not against it?</h2>
+        <div class="options-grid">
+            <button class="option-btn" onclick="startAnalysisLoader()"><span class="option-btn-icon">🚀</span> Yes, I'm ready</button>
+            <button class="option-btn" onclick="startAnalysisLoader()"><span class="option-btn-icon">👀</span> Yes, show me</button>
+        </div>
+    </div>
+
     <!-- DYNAMIC ANALYSIS LOADER -->
     <div class="loader-container" id="loaderContainer">
-        <h2 class="loader-title">We are creating your <span>Calm Reset Plan...</span></h2>
+        <h2 class="loader-title">We are calculating your <span>Calm Reset Plan...</span></h2>
 
         <div class="analysis-step">
             <div class="analysis-label">
-                <span>Analyzing your answers</span>
+                <span>Analyzing your symptom triggers</span>
                 <span id="p1-text">0%</span>
             </div>
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p1-bar"></div></div>
@@ -1036,7 +1010,7 @@
 
         <div class="analysis-step">
             <div class="analysis-label">
-                <span>Adapting to your triggers</span>
+                <span>Building personalized roadmap</span>
                 <span id="p2-text">0%</span>
             </div>
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p2-bar"></div></div>
@@ -1044,13 +1018,12 @@
 
         <div class="analysis-step">
             <div class="analysis-label">
-                <span>Setting your plan & goals</span>
+                <span>Finalizing recommendations</span>
                 <span id="p3-text">0%</span>
             </div>
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p3-bar"></div></div>
         </div>
 
-        <!-- Reviews Stack -->
         <div class="reviews-container">
             <div class="testimonial-box">
                 <div class="review-header">
@@ -1058,7 +1031,7 @@
                     <span class="review-date">Oct 12, 2024</span>
                 </div>
                 <p style="font-size: 14px; font-weight: 700; color: #1E293B;">My best decision</p>
-                <p style="font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4;">I used to struggle with 3 AM wake-ups and brain fog, but after starting this routine, I can drift right back to sleep. The program helped me approach each day with energy and clear confidence.</p>
+                <p style="font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4;">I used to struggle with 3 AM wake-ups and brain fog, but after starting this routine, I can drift right back to sleep. The program helped me feel like myself again.</p>
             </div>
 
             <div class="testimonial-box">
@@ -1067,41 +1040,24 @@
                     <span class="review-date">Feb 02, 2025</span>
                 </div>
                 <p style="font-size: 14px; font-weight: 700; color: #1E293B;">Game-changing Method</p>
-                <p style="font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4;">I completed the program step-by-step and it improved my daily energy immensely. It helped me manage cortisol spikes naturally and stay grounded throughout my work week.</p>
+                <p style="font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4;">I completed the program step-by-step and it improved my daily energy immensely. It helped me manage cortisol spikes naturally.</p>
             </div>
-
-            <div class="testimonial-box">
-                <div class="review-header">
-                    <div class="stars">★★★★★</div>
-                    <span class="review-date">Mar 15, 2025</span>
-                </div>
-                <p style="font-size: 14px; font-weight: 700; color: #1E293B;">It improved my life</p>
-                <p style="font-size: 13px; color: #64748B; margin-top: 4px; line-height: 1.4;">After a month of practicing the daily reset steps, my physical tension dropped completely. My focus has improved and I feel like myself again. Highly recommend!</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- POPUP MODAL FOR INTERACTIVE LOADER QUESTIONS -->
-<div class="modal-overlay" id="questionModal">
-    <div class="modal-card">
-        <p style="font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">To improve recommendations, specify</p>
-        <h3 id="modalQuestionText">Question goes here</h3>
-        <div class="modal-buttons">
-            <button class="modal-btn" onclick="answerModal('No')">No</button>
-            <button class="modal-btn" style="background: var(--primary); color: white; border-color: var(--primary);" onclick="answerModal('Yes')">Yes</button>
         </div>
     </div>
 </div>
 
 <script>
     let currentStep = 0;
-    const totalQuestionSteps = 15;
-    let currentResumeCallback = null;
+    const totalSteps = 18;
+    let selectedAge = '';
+    let selectedPainCluster = 'Sleep';
+    let selectedSeverityVal = '';
+    let selectedOutcomeVal = 'sleeping through the night again';
+    let selectedTimeVal = '';
 
     function updateProgress() {
         if (currentStep > 0) {
-            const percent = Math.round((currentStep / totalQuestionSteps) * 100);
+            const percent = Math.round((currentStep / totalSteps) * 100);
             document.getElementById('timelineProgress').style.width = percent + '%';
 
             const activeEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
@@ -1120,7 +1076,13 @@
     }
 
     function nextStep() {
-        if (currentStep < totalQuestionSteps) {
+        if (currentStep === 10 && (selectedTimeVal !== 'Less than 5 minutes' && selectedTimeVal !== '5–10 minutes')) {
+            // Skip Step 11 if time is more than 10 minutes
+            jumpToStep(12);
+            return;
+        }
+
+        if (currentStep < totalSteps) {
             const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
             currentEl.style.animation = 'none';
             currentEl.classList.remove('active');
@@ -1133,7 +1095,23 @@
         }
     }
 
+    function jumpToStep(targetStep) {
+        const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+        currentEl.classList.remove('active');
+
+        currentStep = targetStep;
+
+        const targetEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+        targetEl.classList.add('active');
+        updateProgress();
+    }
+
     function prevStep() {
+        if (currentStep === 12 && (selectedTimeVal !== 'Less than 5 minutes' && selectedTimeVal !== '5–10 minutes')) {
+            jumpToStep(10);
+            return;
+        }
+
         if (currentStep > 1) {
             const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
             currentEl.classList.remove('active');
@@ -1151,18 +1129,79 @@
         }
     }
 
-    function toggleMultiSelect(element) {
-        element.classList.toggle('selected');
+    function selectAge(age) {
+        selectedAge = age;
+        nextStep();
+    }
+
+    function selectPain(pain) {
+        selectedPainCluster = pain;
+        const questionEl = document.getElementById('step3Question');
+        const optionsEl = document.getElementById('step3Options');
+
+        if (pain === 'Sleep') {
+            questionEl.innerText = 'Do you wake up between 2–4 AM and struggle to fall back asleep?';
+            optionsEl.innerHTML = `
+                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, almost every night</button>
+                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No</button>
+            `;
+        } else if (pain === 'Mind') {
+            questionEl.innerText = 'Do you regularly forget words mid-sentence or walk into a room and forget why?';
+            optionsEl.innerHTML = `
+                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, all the time</button>
+                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No, rarely</button>
+            `;
+        } else if (pain === 'Body') {
+            questionEl.innerText = 'Have you gained weight recently despite eating and exercising the same as before?';
+            optionsEl.innerHTML = `
+                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, stubborn belly fat especially</button>
+                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No</button>
+            `;
+        } else if (pain === 'Mood') {
+            questionEl.innerText = 'Do you find yourself snapping at people you love over small things?';
+            optionsEl.innerHTML = `
+                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, I feel irritable often</button>
+                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No</button>
+            `;
+        } else if (pain === 'Energy') {
+            questionEl.innerText = 'Do you wake up already feeling exhausted, even after a full night in bed?';
+            optionsEl.innerHTML = `
+                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, completely drained</button>
+                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No</button>
+            `;
+        }
+        nextStep();
+    }
+
+    function selectSeverity(severity) {
+        selectedSeverityVal = severity;
+        nextStep();
+    }
+
+    function selectOutcome(outcome) {
+        selectedOutcomeVal = outcome;
+        document.getElementById('step7DynamicOutcome').innerText = outcome;
+        nextStep();
+    }
+
+    function selectTime(time) {
+        selectedTimeVal = time;
+        nextStep();
     }
 
     function finishQuiz() {
-        document.querySelector(`.step-content[data-step="${currentStep}"]`).classList.remove('active');
+        nextStep(); // Goes to Step 16
+    }
+
+    function startAnalysisLoader() {
+        const currentEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+        currentEl.classList.remove('active');
         document.getElementById('appHeader').style.display = 'none';
         document.getElementById('loaderContainer').style.display = 'block';
 
-        runBarWithPopup('p1-bar', 'p1-text', "Are you ready to stop guessing with random supplements and follow a clinically structured plan?", () => {
-            runBarWithPopup('p2-bar', 'p2-text', "If we show you a natural method to calm your nervous system, will you give it a fair try?", () => {
-                runBarWithPopup('p3-bar', 'p3-text', "Are you ready to stop feeling like a stranger in your skin and reclaim your body?", () => {
+        runProgressLoader('p1-bar', 'p1-text', 0, () => {
+            runProgressLoader('p2-bar', 'p2-text', 0, () => {
+                runProgressLoader('p3-bar', 'p3-text', 0, () => {
                     setTimeout(() => {
                         window.location.href = "https://yourdomain.com/calm-reset-vsl";
                     }, 600);
@@ -1171,48 +1210,19 @@
         });
     }
 
-    function runBarWithPopup(barId, textId, questionText, onComplete) {
-        let currentPercent = 0;
-        let hasPopped = false;
-
-        function animateBar() {
-            if (!hasPopped && currentPercent >= 75) {
-                hasPopped = true;
-                showModal(questionText, () => {
-                    resumeBar();
-                });
-                return;
-            }
-
-            if (currentPercent < 100) {
-                currentPercent++;
-                document.getElementById(barId).style.width = currentPercent + '%';
-                document.getElementById(textId).innerText = currentPercent + '%';
-                setTimeout(animateBar, 25);
+    function runProgressLoader(barId, textId, startPercent, onComplete) {
+        let percent = startPercent;
+        function fill() {
+            if (percent <= 100) {
+                document.getElementById(barId).style.width = percent + '%';
+                document.getElementById(textId).innerText = percent + '%';
+                percent += 2;
+                setTimeout(fill, 25);
             } else {
                 if (onComplete) onComplete();
             }
         }
-
-        function resumeBar() {
-            setTimeout(animateBar, 25);
-        }
-
-        animateBar();
-    }
-
-    function showModal(questionText, onAnswer) {
-        document.getElementById('modalQuestionText').innerText = questionText;
-        document.getElementById('questionModal').style.display = 'flex';
-        currentResumeCallback = onAnswer;
-    }
-
-    function answerModal(choice) {
-        document.getElementById('questionModal').style.display = 'none';
-        if (currentResumeCallback) {
-            currentResumeCallback();
-            currentResumeCallback = null;
-        }
+        fill();
     }
 </script>
 
