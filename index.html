@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Calm Reset Method - Perimenopause Quiz</title>
+    <title>Personalized Calm Reset Challenge</title>
     <style>
         :root {
-            --primary: #5063F0;
-            --primary-hover: #3B4ED8;
-            --primary-light: #F0F4FF;
-            --bg-color: #F8F9FA;
+            --primary: #5267FA;
+            --primary-hover: #3E53E8;
+            --primary-light: #EEF2FF;
+            --bg-color: #F8F9FE;
             --card-bg: #FFFFFF;
-            --text-main: #1E293B;
+            --text-main: #1D2129;
             --text-muted: #64748B;
             --border-color: #E2E8F0;
-            --radius: 16px;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --radius: 20px;
         }
 
         * {
@@ -33,76 +32,66 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 24px 16px;
             overflow-x: hidden;
         }
 
         .quiz-container {
             width: 100%;
             max-width: 580px;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 36px 32px;
+            background: transparent;
             position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            margin: 0 auto;
         }
 
-        /* Top Brand Logo */
-        .brand-logo {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 2px;
-            margin-bottom: 24px;
-        }
-
-        /* Top Social Badges (RiseGuide Style) */
+        /* Top Social Badges (Exact match to image) */
         .badges-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-bottom: 28px;
+            margin-bottom: 40px;
         }
 
         .badge-box {
-            border: 1.5 solid var(--primary);
-            border: 1px solid #C7D2FE;
-            background: #F5F7FF;
+            border: 1.5px solid #6366F1;
+            background: #FFFFFF;
             border-radius: 12px;
-            padding: 10px 12px;
+            padding: 12px 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 800;
             color: #1E293B;
             line-height: 1.25;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.05);
         }
 
         .badge-box span {
             display: block;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
             font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .badge-icon {
-            font-size: 18px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Sleek Top Progress Header */
+        /* Header Progress Bar */
         .progress-header {
             margin-bottom: 28px;
-            transition: opacity 0.3s ease;
         }
 
         .progress-bar-bg {
             width: 100%;
             height: 6px;
-            background-color: #EDF2F7;
+            background-color: #E2E8F0;
             border-radius: 99px;
             overflow: hidden;
         }
@@ -110,52 +99,52 @@
         .progress-bar-fill {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #5063F0 0%, #7C3AED 100%);
+            background: linear-gradient(90deg, #5267FA 0%, #7C3AED 100%);
             border-radius: 99px;
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: width 0.4s ease;
         }
 
-        /* RiseGuide Smooth Slide Animation */
+        /* Screen Animations */
         .step-content {
             display: none;
             opacity: 0;
-            transform: translateY(20px) scale(0.99);
-            will-change: transform, opacity;
+            transform: translateY(16px);
         }
 
         .step-content.active {
             display: block;
-            animation: slideUpFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes slideUpFade {
+        @keyframes slideUp {
             0% {
                 opacity: 0;
-                transform: translateY(24px) scale(0.98);
+                transform: translateY(16px);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
 
         h1.hero-title {
-            font-size: 28px;
+            font-size: 34px;
             font-weight: 800;
-            color: var(--primary);
+            color: #5267FA;
             text-align: center;
-            line-height: 1.25;
-            margin-bottom: 12px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
         }
 
         p.hero-subtitle {
             font-size: 13px;
             font-weight: 700;
-            color: var(--text-muted);
+            color: #64748B;
             text-align: center;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.8px;
             text-transform: uppercase;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
 
         h2 {
@@ -163,8 +152,7 @@
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 8px;
-            line-height: 1.35;
-            letter-spacing: -0.01em;
+            line-height: 1.3;
             text-align: center;
         }
 
@@ -172,52 +160,57 @@
             font-size: 15px;
             color: var(--text-muted);
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
-        /* 2x2 Image Card Grid for Age Question */
+        /* Age Image Grid */
         .age-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .age-card {
-            background: #F8FAFC;
-            border-radius: 16px;
+            background: #FFFFFF;
+            border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
-            border: 1px solid var(--border-color);
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s ease;
             display: flex;
             flex-direction: column;
         }
 
         .age-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(80, 99, 240, 0.18);
-            border-color: var(--primary);
+            box-shadow: 0 10px 24px rgba(82, 103, 250, 0.18);
         }
 
         .age-card:active {
-            transform: scale(0.97);
+            transform: scale(0.98);
         }
 
-        .age-card img {
+        .age-card-img-wrap {
             width: 100%;
-            height: 180px;
+            height: 200px;
+            background-color: #F1F5F9;
+            overflow: hidden;
+        }
+
+        .age-card-img-wrap img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
-            background-color: #FFFFFF;
         }
 
         .age-card-btn {
-            background: var(--primary);
+            background: #5267FA;
             color: white;
             font-size: 17px;
             font-weight: 700;
-            padding: 14px 18px;
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -227,26 +220,25 @@
         .options-grid {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
 
         .option-btn {
             background: #FFFFFF;
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius);
+            border: 1.5px solid var(--border-color);
+            border-radius: 16px;
             padding: 18px 20px;
             text-align: left;
             font-size: 16px;
             font-weight: 600;
             color: var(--text-main);
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: 4px;
-            position: relative;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
         }
 
         .option-btn span {
@@ -260,11 +252,6 @@
             border-color: var(--primary);
             background-color: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(80, 99, 240, 0.12);
-        }
-
-        .option-btn:active {
-            transform: scale(0.98);
         }
 
         .option-btn.selected {
@@ -273,14 +260,44 @@
             box-shadow: 0 0 0 1px var(--primary);
         }
 
-        /* Custom Cards */
+        /* Primary Action Button (Matches Screenshot Styling) */
+        .primary-cta-btn {
+            background: linear-gradient(180deg, #5267FA 0%, #3B4ED8 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            padding: 20px 32px;
+            font-size: 18px;
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(82, 103, 250, 0.35);
+            letter-spacing: 0.01em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .primary-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(82, 103, 250, 0.45);
+        }
+
+        .primary-cta-btn:active {
+            transform: scale(0.98);
+        }
+
         .info-card {
-            background: linear-gradient(135deg, #F0F4FF 0%, #F8F9FF 100%);
+            background: #FFFFFF;
             border-left: 4px solid var(--primary);
             padding: 26px;
-            border-radius: 12px;
+            border-radius: 16px;
             margin-bottom: 24px;
-            box-shadow: 0 4px 12px rgba(80, 99, 240, 0.06);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
         }
 
         .info-card h3 {
@@ -296,38 +313,12 @@
             color: var(--text-main);
         }
 
-        .cta-btn {
-            background: linear-gradient(180deg, #5063F0 0%, #3B4ED8 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 18px 32px;
-            font-size: 17px;
-            font-weight: 700;
-            width: 100%;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            margin-top: 20px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(80, 99, 240, 0.3);
-            letter-spacing: 0.02em;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(80, 99, 240, 0.4);
-        }
-
-        .cta-btn:active {
-            transform: scale(0.98);
-        }
-
         .legal-terms {
-            margin-top: 24px;
+            margin-top: 32px;
             font-size: 12px;
             color: var(--text-muted);
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .legal-terms a {
@@ -339,7 +330,7 @@
             background: #1E293B;
             color: white;
             padding: 24px;
-            border-radius: var(--radius);
+            border-radius: 20px;
             margin-bottom: 20px;
         }
 
@@ -385,7 +376,7 @@
             line-height: 1.4;
         }
 
-        /* Dynamic Analysis Engine */
+        /* Loader & Reviews */
         .loader-container {
             display: none;
             text-align: center;
@@ -420,7 +411,7 @@
         .analysis-bar-bg {
             width: 100%;
             height: 10px;
-            background-color: #EDF2F7;
+            background-color: #E2E8F0;
             border-radius: 99px;
             overflow: hidden;
         }
@@ -428,12 +419,11 @@
         .analysis-bar-fill {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #5063F0 0%, #7C3AED 100%);
+            background: linear-gradient(90deg, #5267FA 0%, #7C3AED 100%);
             border-radius: 99px;
             transition: width 0.1s linear;
         }
 
-        /* Reviews Stack */
         .reviews-container {
             margin-top: 28px;
             display: flex;
@@ -443,11 +433,11 @@
         }
 
         .testimonial-box {
-            background: #F8FAFC;
+            background: #FFFFFF;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 18px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         }
 
         .review-header {
@@ -467,7 +457,7 @@
             color: #94A3B8;
         }
 
-        /* Modal Overlay & Popup Styling */
+        /* Modal Overlay */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -488,7 +478,7 @@
             width: 100%;
             max-width: 480px;
             padding: 30px 24px;
-            border-radius: var(--radius);
+            border-radius: 20px;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
             animation: modalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             text-align: center;
@@ -534,17 +524,15 @@
 <body>
 
 <div class="quiz-container">
-    <!-- RiseGuide Minimal Line Progress Bar (Hidden on Intro Page 0) -->
+    <!-- Sleek Progress Bar Header -->
     <div class="progress-header" id="progressHeader" style="display: none;">
         <div class="progress-bar-bg">
             <div class="progress-bar-fill" id="progressBar"></div>
         </div>
     </div>
 
-    <!-- STEP 0: RiseGuide Landing Page (Females Market Focus) -->
+    <!-- STEP 0: Clean Landing Page (No Borders/Boxes) -->
     <div class="step-content active" data-step="0">
-        <div class="brand-logo">RISEGUIDE</div>
-
         <div class="badges-row">
             <div class="badge-box">
                 <div class="badge-icon">🎯</div>
@@ -559,14 +547,17 @@
         <h1 class="hero-title">Personalized Calm Reset Challenge</h1>
         <p class="hero-subtitle">TO RECLAIM YOUR ENERGY, SLEEP & HORMONAL BALANCE</p>
 
-        <button class="cta-btn" onclick="startQuiz()">Start My Quiz →</button>
+        <button class="primary-cta-btn" onclick="startQuiz()">
+            <span>Start My Quiz</span>
+            <span style="font-size: 20px;">›</span>
+        </button>
 
         <p class="legal-terms">
-            By clicking 'Start My Quiz' you agree to the <a href="#">Terms of Use and Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.
+            By clicking 'Start My Quiz' you agree to the <a href="#">Terms of Use and Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a> (including the use of tracking technologies, e.g., Meta Pixel)
         </p>
     </div>
 
-    <!-- STEP 1: What's your age? (Updated Ages & Cleaner Portrait Assets) -->
+    <!-- STEP 1: Age Selection with Clean Images -->
     <div class="step-content" data-step="1">
         <h2>What's your age?</h2>
         <p class="subtitle">We only use age to personalise your plan</p>
@@ -574,25 +565,31 @@
         <div class="age-grid">
             <!-- 35-40: Blonde Hair -->
             <div class="age-card" onclick="nextStep()">
-                <img src="female-18.3hkk6nkxlip9m.webp" alt="35-40">
+                <div class="age-card-img-wrap">
+                    <img src="female-18.3hkk6nkxlip9m.webp" alt="35-40" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80'">
+                </div>
                 <div class="age-card-btn">
                     <span>35-40</span>
                     <span>›</span>
                 </div>
             </div>
 
-            <!-- 41-49: Long Black Hair -->
+            <!-- 41-49: Long Dark Hair -->
             <div class="age-card" onclick="nextStep()">
-                <img src="female-35.1_589sr8-6i9m.webp" alt="41-49">
+                <div class="age-card-img-wrap">
+                    <img src="female-35.1_589sr8-6i9m.webp" alt="41-49" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'">
+                </div>
                 <div class="age-card-btn">
                     <span>41-49</span>
                     <span>›</span>
                 </div>
             </div>
 
-            <!-- 50-59: Short Black Hair -->
+            <!-- 50-59: Short Dark Hair -->
             <div class="age-card" onclick="nextStep()">
-                <img src="female-45.3ek8q4ody9qik.webp" alt="50-59">
+                <div class="age-card-img-wrap">
+                    <img src="female-45.3ek8q4ody9qik.webp" alt="50-59" onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80'">
+                </div>
                 <div class="age-card-btn">
                     <span>50-59</span>
                     <span>›</span>
@@ -601,7 +598,9 @@
 
             <!-- 60+: Grey Hair -->
             <div class="age-card" onclick="nextStep()">
-                <img src="female-55.1-t6r5mj_odp0.webp" alt="60+">
+                <div class="age-card-img-wrap">
+                    <img src="female-55.1-t6r5mj_odp0.webp" alt="60+" onerror="this.src='https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=600&q=80'">
+                </div>
                 <div class="age-card-btn">
                     <span>60+</span>
                     <span>›</span>
@@ -669,7 +668,7 @@
             <p>They thought their sudden anxiety, 3 AM wake-up calls, and weight retention were just "getting older." In reality, their nervous system was stuck in a high-cortisol loop caused by hormonal shifts.</p><br>
             <p><strong>The good news: Once you address the root nervous system balance, your body naturally resets.</strong></p>
         </div>
-        <button class="cta-btn" onclick="nextStep()">Continue to Your Customized Assessment →</button>
+        <button class="primary-cta-btn" onclick="nextStep()">Continue to Assessment →</button>
     </div>
 
     <!-- STEP 8 -->
@@ -692,7 +691,7 @@
             <button class="option-btn" onclick="toggleMultiSelect(this)">Pushing through hard workouts or high-intensity cardio</button>
             <button class="option-btn" onclick="toggleMultiSelect(this)">None of the above / I don't know where to start</button>
         </div>
-        <button class="cta-btn" onclick="nextStep()">Continue →</button>
+        <button class="primary-cta-btn" style="margin-top:20px;" onclick="nextStep()">Continue →</button>
     </div>
 
     <!-- STEP 10 -->
@@ -713,7 +712,7 @@
             <p>In fact, aggressive workouts often raise cortisol levels, worsening brain fog, midsection weight retention, and sleep disruption.</p><br>
             <p>The <strong>Calm Reset Method</strong> works in as little as <strong>7 minutes a day</strong> by directly soothing the nervous system response—fitting seamlessly into even the busiest schedule.</p>
         </div>
-        <button class="cta-btn" onclick="nextStep()">Proceed to Diagnostic Analysis →</button>
+        <button class="primary-cta-btn" onclick="nextStep()">Proceed to Diagnostic Analysis →</button>
     </div>
 
     <!-- STEP 12 -->
@@ -755,7 +754,7 @@
                 <strong>Analysis:</strong> Your responses indicate your symptoms are driven by your body being stuck in a <em>Fight-or-Flight</em> cycle triggered by declining estrogen and soaring cortisol.
             </p>
         </div>
-        <button class="cta-btn" onclick="nextStep()">View Your 6-Month Roadmap →</button>
+        <button class="primary-cta-btn" onclick="nextStep()">View Your 6-Month Roadmap →</button>
     </div>
 
     <!-- STEP 15 -->
@@ -775,10 +774,10 @@
                 <p>Abdominal bloating settles, emotional resilience returns, and you feel like yourself again.</p>
             </div>
         </div>
-        <button class="cta-btn" onclick="finishQuiz()">GENERATE MY CALM RESET PLAN NOW →</button>
+        <button class="primary-cta-btn" onclick="finishQuiz()">GENERATE MY CALM RESET PLAN NOW →</button>
     </div>
 
-    <!-- DYNAMIC ANALYSIS LOADER WITH POPUPS & 3 REVIEWS -->
+    <!-- DYNAMIC ANALYSIS LOADER -->
     <div class="loader-container" id="loaderContainer">
         <h2 class="loader-title">We are creating your <span>Calm Reset Plan...</span></h2>
 
@@ -806,7 +805,7 @@
             <div class="analysis-bar-bg"><div class="analysis-bar-fill" id="p3-bar"></div></div>
         </div>
 
-        <!-- 3 Reviews Stack -->
+        <!-- Reviews Stack -->
         <div class="reviews-container">
             <div class="testimonial-box">
                 <div class="review-header">
@@ -894,7 +893,6 @@
         setTimeout(() => { document.getElementById('progressHeader').style.display = 'none'; }, 300);
         document.getElementById('loaderContainer').style.display = 'block';
 
-        // Run sequential progress bars with 75% popup checkpoints
         runBarWithPopup('p1-bar', 'p1-text', "Are you ready to stop guessing with random supplements and follow a clinically structured plan?", () => {
             runBarWithPopup('p2-bar', 'p2-text', "If we show you a natural method to calm your nervous system, will you give it a fair try?", () => {
                 runBarWithPopup('p3-bar', 'p3-text', "Are you ready to stop feeling like a stranger in your skin and reclaim your body?", () => {
