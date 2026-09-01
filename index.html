@@ -161,6 +161,88 @@
             margin-bottom: 24px;
         }
 
+        /* LANDER SPECIFIC STYLES */
+        .lander-badges {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .lander-badge-card {
+            flex: 1;
+            background: #FFFFFF;
+            border: 1.5px solid var(--primary-light);
+            border-radius: 16px;
+            padding: 14px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.05);
+        }
+
+        .lander-badge-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .lander-badge-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .lander-badge-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .lander-badge-sub {
+            font-size: 11px;
+            font-weight: 700;
+            color: #64748B;
+            line-height: 1.2;
+            margin-top: 2px;
+        }
+
+        .lander-headline {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--primary);
+            text-align: center;
+            line-height: 1.25;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .lander-subhead {
+            font-size: 14px;
+            font-weight: 700;
+            color: #64748B;
+            text-align: center;
+            line-height: 1.5;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 32px;
+            padding: 0 8px;
+        }
+
+        .lander-disclaimer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #94A3B8;
+            text-align: center;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+
+        .lander-disclaimer a {
+            color: #94A3B8;
+            text-decoration: underline;
+        }
+
         /* Options Grid */
         .options-grid {
             display: flex;
@@ -651,7 +733,42 @@
 
 <div class="quiz-container">
 
-    <!-- Top Navigation Header -->
+    <!-- SCREEN 0: NEW LANDING PAGE -->
+    <div class="step-content active" data-step="0">
+        <!-- Top Proof Badges -->
+        <div class="lander-badges">
+            <div class="lander-badge-card">
+                <span class="lander-badge-icon">🎯</span>
+                <div class="lander-badge-text">
+                    <span class="lander-badge-title">100,000+ Women</span>
+                    <span class="lander-badge-sub">Balancing Hormones</span>
+                </div>
+            </div>
+            <div class="lander-badge-card">
+                <span class="lander-badge-icon">⭐</span>
+                <div class="lander-badge-text">
+                    <span class="lander-badge-title">Rated on Trustpilot</span>
+                    <span class="lander-badge-sub">4.8 Satisfaction Score</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Headline & Subhead -->
+        <h1 class="lander-headline">Find Out Why You Don't Feel Like Yourself Anymore</h1>
+        <p class="lander-subhead">Take the free 60-second quiz to get your personalized plan for better sleep, energy & hormonal balance</p>
+
+        <!-- CTA Button -->
+        <button class="primary-cta-btn" onclick="nextStep()" style="font-size: 18px; padding: 20px 32px;">
+            <span>Start My Quiz</span> <span>›</span>
+        </button>
+
+        <!-- Dynamic Disclaimer Terms -->
+        <p class="lander-disclaimer">
+            By clicking 'Start My Quiz' you agree to the <a href="#">Terms of Use and Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a> (including the use of tracking technologies, e.g., Meta Pixel).
+        </p>
+    </div>
+
+    <!-- Top Navigation Header (hidden on Screen 0) -->
     <div class="app-header" id="appHeader" style="display: none;">
         <div class="header-top-bar">
             <button class="back-btn" onclick="prevStep()">‹</button>
@@ -669,7 +786,7 @@
     </div>
 
     <!-- SCREEN 1: Age Bracket -->
-    <div class="step-content active" data-step="1">
+    <div class="step-content" data-step="1">
         <h2>What age bracket are you in?</h2>
         <p class="subtitle">Helps fine-tune your hormonal assessment benchmarks</p>
         <div class="options-grid">
@@ -941,7 +1058,7 @@
         </div>
     </div>
 
-    <!-- SCREEN 20: Diagnosis / Summary Screen (Moved to be the last slide before offer) -->
+    <!-- SCREEN 20: Summary Profile Screen (Pre-offer position) -->
     <div class="step-content" data-step="20">
         <h2>Summary of your Hormonal Profile</h2>
 
@@ -1010,7 +1127,7 @@
         <button class="primary-cta-btn" onclick="nextStep()">Build My Plan →</button>
     </div>
 
-    <!-- FINAL STEP 21: Pitch / Offer Screen -->
+    <!-- FINAL STEP 21: Offer Screen -->
     <div class="step-content" data-step="21">
         <h2>Your Personalized Calm Reset Challenge is Ready</h2>
         <p class="subtitle">Designed specifically around your profile and symptoms</p>
@@ -1029,7 +1146,7 @@
 
 </div>
 
-<!-- YES-STREAK INTERSTITIAL MICRO-MODALS (SECTION 6: STEPS 17–19) -->
+<!-- YES-STREAK INTERSTITIAL MICRO-MODALS -->
 <div class="loading-modal-overlay" id="loadingModal">
     <div class="loading-modal-card">
         
@@ -1064,7 +1181,7 @@
 </div>
 
 <script>
-    let currentStep = 1;
+    let currentStep = 0;
     const totalSteps = 15; 
 
     const userAnswers = {
@@ -1082,7 +1199,7 @@
 
     function updateTimeline() {
         const header = id('appHeader');
-        if (currentStep > 1 && currentStep <= 15) {
+        if (currentStep > 0 && currentStep <= 15) {
             header.style.display = 'flex';
         } else {
             header.style.display = 'none';
@@ -1091,7 +1208,6 @@
         const progressPercent = Math.min(((currentStep - 1) / (totalSteps - 1)) * 100, 100);
         id('timelineProgress').style.width = `${progressPercent}%`;
 
-        // Update dot states dynamically
         const dots = [id('dot1'), id('dot2'), id('dot3'), id('dot4')];
         const stepInterval = totalSteps / 4;
         
@@ -1122,7 +1238,7 @@
     }
 
     function prevStep() {
-        if (currentStep > 1) {
+        if (currentStep > 0) {
             showStep(currentStep - 1);
         }
     }
@@ -1244,7 +1360,7 @@
         id('gridImpact').innerText = userAnswers.spillovers.length > 1 ? 'Noticeable' : 'Moderate';
     }
 
-    /* YES-STREAK LOADING & MODAL SEQUENCING (RUNS BEFORE SUMMARY SCREEN 20) */
+    /* YES-STREAK LOADING & MODAL SEQUENCING */
     function startLoadingSequence() {
         showStep(16);
         
@@ -1270,7 +1386,7 @@
             } else if (progress >= 100) {
                 clearInterval(interval);
                 setTimeout(() => {
-                    showStep(20); // Goes to Summary Profile
+                    showStep(20);
                 }, 400);
             }
         }, 30);
@@ -1295,7 +1411,7 @@
             } else if (progress >= 100) {
                 clearInterval(window.loaderInterval);
                 setTimeout(() => {
-                    showStep(20); // Goes to Summary Profile
+                    showStep(20);
                 }, 400);
             }
         }, 30);
