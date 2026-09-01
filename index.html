@@ -386,7 +386,7 @@
             line-height: 1.5;
         }
 
-        /* WARRIORBABE STYLE LOADING & MICRO-POPUP INTERSTITIALS */
+        /* LOADER CONTAINER */
         .loader-card {
             background: #FFFFFF;
             border-radius: 24px;
@@ -546,31 +546,31 @@
         </div>
     </div>
 
-    <!-- SCREEN 0: Age Selection Section -->
+    <!-- STEP 0: Age Selection Block (First Block) -->
     <div class="step-content active" data-step="0">
         <h2>Select Your Age Range</h2>
         <p class="subtitle">To help tailor your personalized roadmap</p>
         <div class="age-grid">
             <div class="age-card" onclick="selectAge('30-39')">
-                <img src="female-18.3hkk6nkxlip9m_2.webp" alt="30-39 years old" class="age-img">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&auto=format&fit=crop&q=80" alt="Blonde 30-39" class="age-img">
                 <span class="age-label">30–39</span>
             </div>
             <div class="age-card" onclick="selectAge('40-49')">
-                <img src="female-35.1_589sr8-6i9m_2.webp" alt="40-49 years old" class="age-img">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80" alt="Long Dark Hair 40-49" class="age-img">
                 <span class="age-label">40–49</span>
             </div>
             <div class="age-card" onclick="selectAge('50-59')">
-                <img src="female-45.3ek8q4ody9qik_2.webp" alt="50-59 years old" class="age-img">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80" alt="Short Dark Hair 50-59" class="age-img">
                 <span class="age-label">50–59</span>
             </div>
             <div class="age-card" onclick="selectAge('60+')">
-                <img src="female-55.1-t6r5mj_odp0_2.webp" alt="60+ years old" class="age-img">
+                <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=300&auto=format&fit=crop&q=80" alt="Grey Hair 60+" class="age-img">
                 <span class="age-label">60+</span>
             </div>
         </div>
     </div>
 
-    <!-- SCREEN 1: Symptom Checklist -->
+    <!-- STEP 1: First Question — Symptom Checklist -->
     <div class="step-content" data-step="1">
         <h2>Check off any of these you've experienced — even just once.</h2>
         <p class="subtitle">Select all that apply to you</p>
@@ -617,7 +617,7 @@
         </button>
     </div>
 
-    <!-- SCREEN 3: Dominant Cluster (Question 2) -->
+    <!-- STEP 3: Second Question — Dominant Cluster -->
     <div class="step-content" data-step="3">
         <h2>Of everything you checked, which is hitting you hardest right now?</h2>
         <div class="options-grid">
@@ -636,7 +636,7 @@
         </div>
     </div>
 
-    <!-- SCREEN 2: Interstitial — It's Not Random (Moved After Dominant Cluster Question) -->
+    <!-- STEP 2: Interstitial — Relocated Immediately After Question 2 -->
     <div class="step-content" data-step="2">
         <div class="info-card">
             <h3>These Symptoms Aren't a Coincidence.</h3>
@@ -645,7 +645,7 @@
         <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 4: Isolation Question -->
+    <!-- STEP 4: Isolation Question -->
     <div class="step-content" data-step="4">
         <h2>Has anyone actually understood what you're going through?</h2>
         <div class="options-grid">
@@ -656,7 +656,7 @@
         </div>
     </div>
 
-    <!-- SCREEN 5: Interstitial — The Real Cost -->
+    <!-- STEP 5: Interstitial — The Real Cost -->
     <div class="step-content" data-step="5">
         <div class="info-card">
             <h3>This Isn't Just About Symptoms Anymore.</h3>
@@ -665,7 +665,7 @@
         <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 6: What Has It Already Cost You? -->
+    <!-- STEP 6: What Has It Already Cost You? -->
     <div class="step-content" data-step="6">
         <h2>Be honest — what has this already taken from you?</h2>
         <p class="subtitle">Select all that apply</p>
@@ -694,7 +694,7 @@
         <button class="primary-cta-btn" id="costNextBtn" disabled onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 7: Duration -->
+    <!-- STEP 7: Duration -->
     <div class="step-content" data-step="7">
         <h2>How long has this pattern been going on?</h2>
         <div class="options-grid">
@@ -705,7 +705,7 @@
         </div>
     </div>
 
-    <!-- SCREEN 8: Trend Check -->
+    <!-- STEP 8: Trend Check -->
     <div class="step-content" data-step="8">
         <h2>Over the last few months, would you say it's...</h2>
         <div class="options-grid">
@@ -716,7 +716,7 @@
         </div>
     </div>
 
-    <!-- SCREEN 9: Compounding Impact -->
+    <!-- STEP 9: Compounding Impact -->
     <div class="step-content" data-step="9">
         <h2>Which of these is spilling over into other parts of your life?</h2>
         <p class="subtitle">Select all that apply</p>
@@ -741,7 +741,7 @@
         <button class="primary-cta-btn" id="spilloverNextBtn" disabled onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 10: Interstitial — Waiting Doesn't Fix This -->
+    <!-- STEP 10: Interstitial -->
     <div class="step-content" data-step="10">
         <div class="info-card">
             <h3>Here's What Most Women Don't Realize.</h3>
@@ -750,7 +750,7 @@
         <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 11: Desired Outcome -->
+    <!-- STEP 11: Desired Outcome -->
     <div class="step-content" data-step="11">
         <h2>If this were fully resolved in 90 days, what would change first?</h2>
         <div class="options-grid">
@@ -761,7 +761,7 @@
         </div>
     </div>
 
-    <!-- SCREEN 12: Social Proof Interstitial -->
+    <!-- STEP 12: Social Proof Interstitial -->
     <div class="step-content" data-step="12">
         <div class="info-card" style="border-left-color: #10B981;">
             <h3 style="color: #10B981;">You're Not Imagining It, and You're Not Alone.</h3>
@@ -770,7 +770,7 @@
         <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 13: Surfacing the Objection -->
+    <!-- STEP 13: Surfacing the Objection -->
     <div class="step-content" data-step="13">
         <h2>What's stopped you from fixing this already?</h2>
         <div class="options-grid">
@@ -781,7 +781,7 @@
         </div>
     </div>
 
-    <!-- SCREEN 14: Objection-Handling Interstitial -->
+    <!-- STEP 14: Objection-Handling Interstitial -->
     <div class="step-content" data-step="14">
         <div class="info-card">
             <h3 id="objectionCardTitle">Understanding Your Frustration</h3>
@@ -790,7 +790,7 @@
         <button class="primary-cta-btn" onclick="nextStep()">See My Assessment Results →</button>
     </div>
 
-    <!-- SCREEN 15: Diagnosis / Summary Slide -->
+    <!-- STEP 15: Diagnosis / Summary Slide -->
     <div class="step-content" data-step="15">
         <h2>Your Personalized Results Are Ready</h2>
 
@@ -805,7 +805,7 @@
         <button class="primary-cta-btn" onclick="nextStep()">What to Expect Next →</button>
     </div>
 
-    <!-- SCREEN 16: Transformation Timeline -->
+    <!-- STEP 16: Transformation Timeline -->
     <div class="step-content" data-step="16">
         <h2>What to Expect From Your Personalized Guide</h2>
         <div class="timeline-card">
@@ -826,7 +826,7 @@
         <button class="primary-cta-btn" onclick="startLoadingSequence()">Build My Plan →</button>
     </div>
 
-    <!-- LOADER CARD (WarriorBabe style loader container) -->
+    <!-- STEP 20: Loader Sequence Container -->
     <div class="step-content" data-step="20" id="loadingStepContent">
         <div class="loader-card">
             <div class="spinner-ring-wrapper">
@@ -868,7 +868,6 @@
 <!-- INTERSTITIAL POPUP MODAL FOR STEPS 17-19 -->
 <div class="loading-modal-overlay" id="loadingModalOverlay">
     <div class="loading-modal-card">
-        <!-- Question 17 -->
         <div class="modal-question-block" id="modalQ17" style="display:none;">
             <h2>Are you ready to finally get relief from these symptoms?</h2>
             <div class="options-grid" style="margin-top:20px;">
@@ -877,7 +876,6 @@
             </div>
         </div>
 
-        <!-- Question 18 -->
         <div class="modal-question-block" id="modalQ18" style="display:none;">
             <h2>Would you rather feel calm, energized, and in control — without relying on willpower alone?</h2>
             <div class="options-grid" style="margin-top:20px;">
@@ -886,7 +884,6 @@
             </div>
         </div>
 
-        <!-- Question 19 -->
         <div class="modal-question-block" id="modalQ19" style="display:none;">
             <h2>Are you open to a natural approach that works with your body, not against it?</h2>
             <div class="options-grid" style="margin-top:20px;">
@@ -901,7 +898,6 @@
     let currentStep = 0;
     const totalSteps = 16;
     
-    // User responses storage
     let selectedAge = '';
     let userSymptoms = [];
     let dominantCluster = '';
@@ -942,13 +938,11 @@
         }
     }
 
-    // Step 0: Age selection
     function selectAge(ageRange) {
         selectedAge = ageRange;
         jumpToStep(1);
     }
 
-    // Step 1: Multi-select symptoms
     function toggleSymptom(btn, symptomName) {
         btn.classList.toggle('selected');
         if (userSymptoms.includes(symptomName)) {
@@ -959,29 +953,24 @@
         document.getElementById('symptomNextBtn').disabled = userSymptoms.length === 0;
     }
 
-    // Step 3: Dominant cluster (Question 2)
     function selectCluster(clusterKey, label) {
         dominantCluster = clusterKey;
         dominantClusterLabel = label;
         
-        // Update Screen 5 Dynamic Text
         document.getElementById('screen5DynamicText').innerText = 
             `When ${dominantCluster.toLowerCase()} symptoms go unaddressed, they rarely stay contained. Sleep problems bleed into mood. Mood bleeds into relationships. Brain fog bleeds into confidence at work. Women often tell us the symptom itself wasn't the hardest part — it was slowly losing pieces of who they used to be.`;
 
-        // Update Section 16 timeline label
         document.getElementById('timelineDominantCluster').innerText = dominantClusterLabel;
 
-        // Advance to Screen 2 (Interstitial "These Symptoms Aren't a Coincidence")
+        // Route to Screen 2 ("These Symptoms Aren't a Coincidence") directly after selecting Q2
         jumpToStep(2);
     }
 
-    // Step 4: Isolation
     function selectIsolation(ans) {
         isolationAnswer = ans;
         nextStep();
     }
 
-    // Step 6: Cost multi-select
     function toggleCost(btn, item) {
         btn.classList.toggle('selected');
         if (selectedCosts.includes(item)) {
@@ -992,7 +981,6 @@
         document.getElementById('costNextBtn').disabled = selectedCosts.length === 0;
     }
 
-    // Step 8: Trend
     function selectTrend(ans) {
         trendAnswer = ans;
         document.getElementById('screen10DynamicText').innerText = 
@@ -1000,7 +988,6 @@
         nextStep();
     }
 
-    // Step 9: Spillover multi-select
     function toggleSpillover(btn, item) {
         btn.classList.toggle('selected');
         if (selectedSpillover.includes(item)) {
@@ -1011,13 +998,11 @@
         document.getElementById('spilloverNextBtn').disabled = selectedSpillover.length === 0;
     }
 
-    // Step 11: Desired Outcome
     function selectOutcome(outcome) {
         desiredOutcome = outcome;
         nextStep();
     }
 
-    // Step 13 & 14: Objection surfacing & handling
     function selectObjection(type) {
         const titleEl = document.getElementById('objectionCardTitle');
         const bodyEl = document.getElementById('objectionCardBody');
@@ -1040,7 +1025,6 @@
         nextStep();
     }
 
-    // Prepare Step 15 Diagnosis Content when reaching it
     function renderDiagnosisScreen() {
         const lineEl = document.getElementById('diagValidationLine');
         if (isolationAnswer.includes("doctor brushed")) {
@@ -1080,7 +1064,6 @@
             `You told us this is already affecting ${spilloverStr}. Most approaches treat symptoms one at a time. But ${dominantCluster || 'hormonal'} symptoms share a root driver: the relationship between your hormones and your stress response. Treat the connection, and things start shifting together.`;
     }
 
-    // Hook render into step jump
     const origJump = jumpToStep;
     jumpToStep = function(target) {
         origJump(target);
@@ -1089,10 +1072,9 @@
         }
     };
 
-    /* WARRIORBABE STYLE LOADING SEQUENCE WITH STEPS 17-19 POPUP INTERSTITIALS */
     let currentLoadingProgress = 0;
     let loadingTimer = null;
-    let popupStepIndex = 0; // 0: Q17, 1: Q18, 2: Q19
+    let popupStepIndex = 0;
 
     function startLoadingSequence() {
         jumpToStep(20);
@@ -1109,13 +1091,11 @@
             currentLoadingProgress += 1;
             fillBar.style.width = currentLoadingProgress + '%';
 
-            // Checkmark triggers
             if (currentLoadingProgress >= 25) document.getElementById('check1').classList.add('active');
             if (currentLoadingProgress >= 50) document.getElementById('check2').classList.add('active');
             if (currentLoadingProgress >= 75) document.getElementById('check3').classList.add('active');
             if (currentLoadingProgress >= 95) document.getElementById('check4').classList.add('active');
 
-            // Trigger Popups at 35%, 65%, 85%
             if (currentLoadingProgress === 35 && popupStepIndex === 0) {
                 pauseAndShowPopup('modalQ17');
             } else if (currentLoadingProgress === 65 && popupStepIndex === 1) {
@@ -1127,7 +1107,6 @@
             if (currentLoadingProgress >= 100) {
                 clearInterval(loadingTimer);
                 setTimeout(() => {
-                    // Final Offer Bridge Redirect
                     window.location.href = "https://yourdomain.com/personalized-calm-reset-plan";
                 }, 500);
             }
