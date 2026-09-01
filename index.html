@@ -44,7 +44,6 @@
             margin: 0 auto;
         }
 
-        /* Top Header Navigation */
         .app-header {
             display: flex;
             flex-direction: column;
@@ -128,7 +127,6 @@
             border-color: var(--primary);
         }
 
-        /* Screen Animations */
         .step-content {
             display: none;
             opacity: 0;
@@ -161,7 +159,6 @@
             margin-bottom: 24px;
         }
 
-        /* LANDER SPECIFIC STYLES */
         .lander-badges {
             display: flex;
             gap: 12px;
@@ -243,7 +240,6 @@
             text-decoration: underline;
         }
 
-        /* Options Grid */
         .options-grid {
             display: flex;
             flex-direction: column;
@@ -288,7 +284,6 @@
             background-color: var(--primary-light);
         }
 
-        /* Checkbox styling */
         .checkbox-circle {
             width: 22px;
             height: 22px;
@@ -356,7 +351,6 @@
             cursor: not-allowed;
         }
 
-        /* Info Card */
         .info-card {
             background: #FFFFFF;
             border-left: 4px solid var(--primary);
@@ -379,7 +373,6 @@
             color: var(--text-main);
         }
 
-        /* SUMMARY ASSESSMENT LAYOUT */
         .summary-main-card {
             background: #FFFFFF;
             border-radius: 20px;
@@ -412,7 +405,6 @@
             text-transform: uppercase;
         }
 
-        /* Gradient Meter Bar */
         .meter-container {
             margin: 20px 0 10px 0;
             position: relative;
@@ -473,7 +465,6 @@
             margin-top: 8px;
         }
 
-        /* Highlight Info Box */
         .summary-alert-box {
             background: var(--primary-light);
             border-radius: 12px;
@@ -511,7 +502,6 @@
             margin-bottom: 2px;
         }
 
-        /* 2x2 Feature Grid */
         .summary-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -556,7 +546,6 @@
             line-height: 1.2;
         }
 
-        /* LOADER CARD & MICRO-POPUP INTERSTITIALS */
         .loader-card {
             background: #FFFFFF;
             border-radius: 24px;
@@ -663,7 +652,6 @@
             transition: width 0.1s linear;
         }
 
-        /* Modal Overlay for Steps Micro Questions */
         .loading-modal-overlay {
             position: fixed;
             top: 0;
@@ -707,25 +695,314 @@
             text-decoration: underline;
         }
 
-        .pricing-card {
-            background: #FFFFFF;
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        /* ============================================
+           UPDATED SALES PAGE (Step 21)
+        ============================================ */
+        .sales-headline {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--primary);
             text-align: center;
-            margin-top: 20px;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .sales-subhead {
+            font-size: 15px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .sales-urgency-note {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            background: var(--primary-light);
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border: 1px solid var(--primary);
+        }
+        .sales-countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 8px 0 16px;
+        }
+        .sales-countdown .unit {
+            background: #FFFFFF;
+            border-radius: 10px;
+            padding: 6px 12px;
+            min-width: 50px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+        .sales-countdown .unit .num {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0F172A;
+            display: block;
+            line-height: 1.2;
+        }
+        .sales-countdown .unit .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #94A3B8;
         }
 
-        .price-badge {
-            background: var(--primary-light);
-            color: var(--primary);
-            font-weight: 800;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            display: inline-block;
-            margin-bottom: 12px;
+        .sales-snapshot {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 16px 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 8px 16px;
+            border: 1px solid var(--border-color);
+        }
+        .snapshot-item {
+            flex: 1 0 auto;
+            min-width: 100px;
+        }
+        .snapshot-label {
+            font-size: 10px;
             text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #94A3B8;
+            font-weight: 700;
+        }
+        .snapshot-value {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0F172A;
+            margin-top: 2px;
+        }
+
+        .sales-offer-list {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+        }
+        .offer-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-bottom: 1px solid #F1F5F9;
+            gap: 8px;
+        }
+        .offer-item:last-child {
+            border-bottom: none;
+        }
+        .offer-item .item-desc {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0F172A;
+            flex: 1;
+        }
+        .offer-item .item-desc-small {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+        .offer-item .item-price {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+        .offer-item .item-free {
+            color: #10B981;
+            font-weight: 800;
+            font-size: 13px;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+        .total-value {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            margin-top: 8px;
+            border-top: 2px solid var(--primary-light);
+            font-weight: 800;
+            font-size: 18px;
+        }
+        .total-value .total-label {
+            color: #0F172A;
+        }
+        .total-value .total-price {
+            color: var(--primary);
+        }
+
+        .sales-price-box {
+            background: var(--primary-light);
+            border-radius: 16px;
+            padding: 20px 20px 16px;
+            text-align: center;
+            margin: 16px 0 0;
+            border: 1px solid var(--primary);
+        }
+        .sales-price-box .discount-price {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        .sales-price-box .original-price {
+            font-size: 18px;
+            color: #94A3B8;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+        .sales-price-box .price-note {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .sales-price-box .btn {
+            margin-top: 12px;
+        }
+        .sales-price-box .guarantee-under-cta {
+            font-size: 13px;
+            font-weight: 600;
+            color: #0F172A;
+            background: #FFFFFF;
+            padding: 10px 12px;
+            border-radius: 12px;
+            margin-top: 12px;
+            display: inline-block;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .sales-price-box .guarantee-under-cta i {
+            color: #10B981;
+            margin-right: 6px;
+        }
+
+        .sales-scarcity {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin: 12px 0 4px;
+        }
+
+        .testimonial-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 16px 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+            margin-bottom: 16px;
+        }
+        .testimonial-card .stars {
+            color: #F59E0B;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card blockquote {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #1E293B;
+            margin: 8px 0;
+            font-style: italic;
+        }
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0F172A;
+        }
+        .testimonial-card .author .verified {
+            color: #10B981;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .faq-sales {
+            margin-top: 24px;
+        }
+        .faq-sales .faq-item {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        .faq-sales .faq-item .q {
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            color: #0F172A;
+        }
+        .faq-sales .faq-item .q i {
+            transition: 0.2s;
+            color: var(--text-muted);
+        }
+        .faq-sales .faq-item .q.active i {
+            transform: rotate(180deg);
+        }
+        .faq-sales .faq-item .a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 16px;
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .faq-sales .faq-item .a.open {
+            max-height: 200px;
+            padding: 0 16px 16px;
+        }
+
+        @media (max-width: 480px) {
+            .sales-snapshot {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .snapshot-item {
+                min-width: auto;
+            }
+            .offer-item {
+                flex-wrap: wrap;
+                gap: 4px 0;
+            }
+            .offer-item .item-price,
+            .offer-item .item-free {
+                margin-left: auto;
+            }
+            .total-value {
+                font-size: 16px;
+            }
+            .sales-price-box .discount-price {
+                font-size: 28px;
+            }
+            .sales-countdown .unit {
+                min-width: 40px;
+                padding: 4px 8px;
+            }
+            .sales-countdown .unit .num {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
@@ -733,9 +1010,8 @@
 
 <div class="quiz-container">
 
-    <!-- SCREEN 0: NEW LANDING PAGE -->
+    <!-- SCREEN 0: LANDING PAGE -->
     <div class="step-content active" data-step="0">
-        <!-- Top Proof Badges -->
         <div class="lander-badges">
             <div class="lander-badge-card">
                 <span class="lander-badge-icon">🎯</span>
@@ -752,23 +1028,17 @@
                 </div>
             </div>
         </div>
-
-        <!-- Headline & Subhead -->
         <h1 class="lander-headline">Find Out Why You Don't Feel Like Yourself Anymore</h1>
         <p class="lander-subhead">Take the free 60-second quiz to get your personalized plan for better sleep, energy & hormonal balance</p>
-
-        <!-- CTA Button -->
         <button class="primary-cta-btn" onclick="nextStep()" style="font-size: 18px; padding: 20px 32px;">
             <span>Start My Quiz</span> <span>›</span>
         </button>
-
-        <!-- Dynamic Disclaimer Terms -->
         <p class="lander-disclaimer">
             By clicking 'Start My Quiz' you agree to the <a href="#">Terms of Use and Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a> (including the use of tracking technologies, e.g., Meta Pixel).
         </p>
     </div>
 
-    <!-- Top Navigation Header (hidden on Screen 0) -->
+    <!-- HEADER (hidden on screen 0) -->
     <div class="app-header" id="appHeader" style="display: none;">
         <div class="header-top-bar">
             <button class="back-btn" onclick="prevStep()">‹</button>
@@ -785,102 +1055,54 @@
         </div>
     </div>
 
-    <!-- SCREEN 1: Age Bracket -->
+    <!-- SCREEN 1: Age -->
     <div class="step-content" data-step="1">
         <h2>What age bracket are you in?</h2>
         <p class="subtitle">Helps fine-tune your hormonal assessment benchmarks</p>
         <div class="options-grid">
-            <button class="option-btn" onclick="selectAge('Under 40')">
-                <span class="option-content">Under 40</span>
-            </button>
-            <button class="option-btn" onclick="selectAge('40 – 45')">
-                <span class="option-content">40 – 45</span>
-            </button>
-            <button class="option-btn" onclick="selectAge('46 – 52')">
-                <span class="option-content">46 – 52</span>
-            </button>
-            <button class="option-btn" onclick="selectAge('53+')">
-                <span class="option-content">53+</span>
-            </button>
+            <button class="option-btn" onclick="selectAge('Under 40')"><span class="option-content">Under 40</span></button>
+            <button class="option-btn" onclick="selectAge('40 – 45')"><span class="option-content">40 – 45</span></button>
+            <button class="option-btn" onclick="selectAge('46 – 52')"><span class="option-content">46 – 52</span></button>
+            <button class="option-btn" onclick="selectAge('53+')"><span class="option-content">53+</span></button>
         </div>
     </div>
 
-    <!-- SCREEN 2: Symptom Checklist -->
+    <!-- SCREEN 2: Symptoms -->
     <div class="step-content" data-step="2">
         <h2>Check off any of these you've experienced — even just once.</h2>
         <p class="subtitle">Select all that apply to you</p>
         <div class="options-grid">
-            <button class="option-btn" onclick="toggleSymptom(this, '3 AM wake-ups')">
-                <div class="option-content"><span class="option-btn-icon">⏰</span> Waking up around 3 AM and unable to fall back asleep</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Sudden anxiety')">
-                <div class="option-content"><span class="option-btn-icon">🫀</span> Sudden anxiety or "doom" feelings with no clear cause</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Itching/Flushing')">
-                <div class="option-content"><span class="option-btn-icon">🔥</span> Random itching, flushing, or heat waves out of nowhere</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Brain fog')">
-                <div class="option-content"><span class="option-btn-icon">🧠</span> Brain fog so bad you forget words mid-sentence</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Mood swings')">
-                <div class="option-content"><span class="option-btn-icon">😡</span> Mood swings that feel like PMS on steroids</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Belly fat')">
-                <div class="option-content"><span class="option-btn-icon">⚖️</span> Belly fat that showed up despite no change in diet</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Hair thinning')">
-                <div class="option-content"><span class="option-btn-icon">💇‍♀️</span> Hair thinning, especially at the temples</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Flooding periods')">
-                <div class="option-content"><span class="option-btn-icon">🩸</span> Heavier, "flooding" periods</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Joint aches')">
-                <div class="option-content"><span class="option-btn-icon">🦴</span> New joint aches or stiffness you didn't have before</div>
-                <div class="checkbox-circle"></div>
-            </button>
+            <button class="option-btn" onclick="toggleSymptom(this, '3 AM wake-ups')"><div class="option-content"><span class="option-btn-icon">⏰</span> Waking up around 3 AM and unable to fall back asleep</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Sudden anxiety')"><div class="option-content"><span class="option-btn-icon">🫀</span> Sudden anxiety or "doom" feelings with no clear cause</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Itching/Flushing')"><div class="option-content"><span class="option-btn-icon">🔥</span> Random itching, flushing, or heat waves out of nowhere</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Brain fog')"><div class="option-content"><span class="option-btn-icon">🧠</span> Brain fog so bad you forget words mid-sentence</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Mood swings')"><div class="option-content"><span class="option-btn-icon">😡</span> Mood swings that feel like PMS on steroids</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Belly fat')"><div class="option-content"><span class="option-btn-icon">⚖️</span> Belly fat that showed up despite no change in diet</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Hair thinning')"><div class="option-content"><span class="option-btn-icon">💇‍♀️</span> Hair thinning, especially at the temples</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Flooding periods')"><div class="option-content"><span class="option-btn-icon">🩸</span> Heavier, "flooding" periods</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Joint aches')"><div class="option-content"><span class="option-btn-icon">🦴</span> New joint aches or stiffness you didn't have before</div><div class="checkbox-circle"></div></button>
         </div>
-        <button class="primary-cta-btn" id="symptomNextBtn" disabled onclick="nextStep()">
-            <span>Continue</span><span>›</span>
-        </button>
+        <button class="primary-cta-btn" id="symptomNextBtn" disabled onclick="nextStep()"><span>Continue</span><span>›</span></button>
     </div>
 
-    <!-- SCREEN 3: Interstitial — It's Not Random -->
+    <!-- SCREEN 3: Interstitial -->
     <div class="step-content" data-step="3">
-        <div class="info-card">
-            <h3>These Symptoms Aren't a Coincidence.</h3>
-            <p>Most women think of these as separate problems — bad sleep here, a stressful week there, weight that 'just happens' with age. They're not separate. They're connected by the same underlying shift happening in your body right now. And most women don't realize that until years later.</p>
-        </div>
+        <div class="info-card"><h3>These Symptoms Aren't a Coincidence.</h3><p>Most women think of these as separate problems — bad sleep here, a stressful week there, weight that 'just happens' with age. They're not separate. They're connected by the same underlying shift happening in your body right now. And most women don't realize that until years later.</p></div>
         <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 4: Dominant Cluster -->
+    <!-- SCREEN 4: Cluster -->
     <div class="step-content" data-step="4">
         <h2>Of everything you checked, which is hitting you hardest right now?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="selectCluster('Sleep', 'sleep quality')">
-                <span class="option-content"><span class="option-btn-icon">😴</span> Sleep — waking up, exhaustion, never feeling rested</span>
-            </button>
-            <button class="option-btn" onclick="selectCluster('Emotional', 'emotional stability')">
-                <span class="option-content"><span class="option-btn-icon">😰</span> Emotional — anxiety, mood swings, feeling on edge</span>
-            </button>
-            <button class="option-btn" onclick="selectCluster('Mental', 'mental clarity')">
-                <span class="option-content"><span class="option-btn-icon">🧠</span> Mental — brain fog, forgetfulness, trouble focusing</span>
-            </button>
-            <button class="option-btn" onclick="selectCluster('Physical', 'metabolic & body health')">
-                <span class="option-content"><span class="option-btn-icon">🌡️</span> Physical — weight, hair, joints, hot flashes, periods</span>
-            </button>
+            <button class="option-btn" onclick="selectCluster('Sleep', 'sleep quality')"><span class="option-content"><span class="option-btn-icon">😴</span> Sleep — waking up, exhaustion, never feeling rested</span></button>
+            <button class="option-btn" onclick="selectCluster('Emotional', 'emotional stability')"><span class="option-content"><span class="option-btn-icon">😰</span> Emotional — anxiety, mood swings, feeling on edge</span></button>
+            <button class="option-btn" onclick="selectCluster('Mental', 'mental clarity')"><span class="option-content"><span class="option-btn-icon">🧠</span> Mental — brain fog, forgetfulness, trouble focusing</span></button>
+            <button class="option-btn" onclick="selectCluster('Physical', 'metabolic & body health')"><span class="option-content"><span class="option-btn-icon">🌡️</span> Physical — weight, hair, joints, hot flashes, periods</span></button>
         </div>
     </div>
 
-    <!-- SCREEN 5: Isolation Question -->
+    <!-- SCREEN 5: Isolation -->
     <div class="step-content" data-step="5">
         <h2>Has anyone actually understood what you're going through?</h2>
         <div class="options-grid">
@@ -891,40 +1113,22 @@
         </div>
     </div>
 
-    <!-- SCREEN 6: Interstitial — The Real Cost -->
+    <!-- SCREEN 6: Interstitial -->
     <div class="step-content" data-step="6">
-        <div class="info-card">
-            <h3>This Isn't Just About Symptoms Anymore.</h3>
-            <p id="screen5DynamicText">When your symptoms go unaddressed, they rarely stay contained. Sleep problems bleed into mood. Mood bleeds into relationships. Brain fog bleeds into confidence at work. Women often tell us the symptom itself wasn't the hardest part — it was slowly losing pieces of who they used to be.</p>
-        </div>
+        <div class="info-card"><h3>This Isn't Just About Symptoms Anymore.</h3><p id="screen5DynamicText">When your symptoms go unaddressed, they rarely stay contained. Sleep problems bleed into mood. Mood bleeds into relationships. Brain fog bleeds into confidence at work. Women often tell us the symptom itself wasn't the hardest part — it was slowly losing pieces of who they used to be.</p></div>
         <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 7: What Has It Already Cost You? -->
+    <!-- SCREEN 7: Costs -->
     <div class="step-content" data-step="7">
         <h2>Be honest — what has this already taken from you?</h2>
         <p class="subtitle">Select all that apply</p>
         <div class="options-grid">
-            <button class="option-btn" onclick="toggleCost(this, 'Patience with loved ones')">
-                <div class="option-content"><span class="option-btn-icon">❤️</span> Patience with the people I love</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleCost(this, 'Confidence in appearance')">
-                <div class="option-content"><span class="option-btn-icon">🪞</span> Confidence in how I look or feel</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleCost(this, 'Energy for hobbies')">
-                <div class="option-content"><span class="option-btn-icon">🔋</span> Energy to do things I used to enjoy</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleCost(this, 'Work performance')">
-                <div class="option-content"><span class="option-btn-icon">💼</span> Focus and performance at work</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleCost(this, 'Feeling like myself')">
-                <div class="option-content"><span class="option-btn-icon">🪞</span> Feeling like "myself"</div>
-                <div class="checkbox-circle"></div>
-            </button>
+            <button class="option-btn" onclick="toggleCost(this, 'Patience with loved ones')"><div class="option-content"><span class="option-btn-icon">❤️</span> Patience with the people I love</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleCost(this, 'Confidence in appearance')"><div class="option-content"><span class="option-btn-icon">🪞</span> Confidence in how I look or feel</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleCost(this, 'Energy for hobbies')"><div class="option-content"><span class="option-btn-icon">🔋</span> Energy to do things I used to enjoy</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleCost(this, 'Work performance')"><div class="option-content"><span class="option-btn-icon">💼</span> Focus and performance at work</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleCost(this, 'Feeling like myself')"><div class="option-content"><span class="option-btn-icon">🪞</span> Feeling like "myself"</div><div class="checkbox-circle"></div></button>
         </div>
         <button class="primary-cta-btn" id="costNextBtn" disabled onclick="nextStep()">Continue →</button>
     </div>
@@ -940,7 +1144,7 @@
         </div>
     </div>
 
-    <!-- SCREEN 9: Trend Check -->
+    <!-- SCREEN 9: Trend -->
     <div class="step-content" data-step="9">
         <h2>Over the last few months, would you say it's...</h2>
         <div class="options-grid">
@@ -951,41 +1155,26 @@
         </div>
     </div>
 
-    <!-- SCREEN 10: Compounding Impact -->
+    <!-- SCREEN 10: Spillover -->
     <div class="step-content" data-step="10">
         <h2>Which of these is spilling over into other parts of your life?</h2>
         <p class="subtitle">Select all that apply</p>
         <div class="options-grid">
-            <button class="option-btn" onclick="toggleSpillover(this, 'my work performance')">
-                <div class="option-content">My work performance or focus</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSpillover(this, 'my relationships')">
-                <div class="option-content">My relationship or patience with family</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSpillover(this, 'my confidence')">
-                <div class="option-content">My confidence in how I look</div>
-                <div class="checkbox-circle"></div>
-            </button>
-            <button class="option-btn" onclick="toggleSpillover(this, 'my motivation')">
-                <div class="option-content">My motivation to do things I used to enjoy</div>
-                <div class="checkbox-circle"></div>
-            </button>
+            <button class="option-btn" onclick="toggleSpillover(this, 'my work performance')"><div class="option-content">My work performance or focus</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSpillover(this, 'my relationships')"><div class="option-content">My relationship or patience with family</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSpillover(this, 'my confidence')"><div class="option-content">My confidence in how I look</div><div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSpillover(this, 'my motivation')"><div class="option-content">My motivation to do things I used to enjoy</div><div class="checkbox-circle"></div></button>
         </div>
         <button class="primary-cta-btn" id="spilloverNextBtn" disabled onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 11: Interstitial — Waiting Doesn't Fix This -->
+    <!-- SCREEN 11: Interstitial -->
     <div class="step-content" data-step="11">
-        <div class="info-card">
-            <h3>Here's What Most Women Don't Realize.</h3>
-            <p id="screen10DynamicText">Hormonal symptoms don't resolve on their own by 'waiting it out.' For most women, the pattern you're in right now continues until something actually addresses the root cause. The women who feel best 12 months from now aren't the ones who waited longest. They're the ones who acted at the point you're at right now.</p>
-        </div>
+        <div class="info-card"><h3>Here's What Most Women Don't Realize.</h3><p id="screen10DynamicText">Hormonal symptoms don't resolve on their own by 'waiting it out.' For most women, the pattern you're in right now continues until something actually addresses the root cause. The women who feel best 12 months from now aren't the ones who waited longest. They're the ones who acted at the point you're at right now.</p></div>
         <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 12: Desired Outcome -->
+    <!-- SCREEN 12: Outcome -->
     <div class="step-content" data-step="12">
         <h2>If this were fully resolved in 90 days, what would change first?</h2>
         <div class="options-grid">
@@ -996,16 +1185,13 @@
         </div>
     </div>
 
-    <!-- SCREEN 13: Social Proof Interstitial -->
+    <!-- SCREEN 13: Social Proof -->
     <div class="step-content" data-step="13">
-        <div class="info-card" style="border-left-color: #10B981;">
-            <h3 style="color: #10B981;">You're Not Imagining It, and You're Not Alone.</h3>
-            <p>94% of women in our community had 4+ of these symptoms before finding relief. Over 100,000 have already reset their hormonal balance — without hormone therapy or drastic diets.</p>
-        </div>
+        <div class="info-card" style="border-left-color: #10B981;"><h3 style="color: #10B981;">You're Not Imagining It, and You're Not Alone.</h3><p>94% of women in our community had 4+ of these symptoms before finding relief. Over 100,000 have already reset their hormonal balance — without hormone therapy or drastic diets.</p></div>
         <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 14: Surfacing the Objection -->
+    <!-- SCREEN 14: Objection -->
     <div class="step-content" data-step="14">
         <h2>What's stopped you from fixing this already?</h2>
         <div class="options-grid">
@@ -1016,129 +1202,182 @@
         </div>
     </div>
 
-    <!-- SCREEN 15: Objection-Handling Interstitial -->
+    <!-- SCREEN 15: Objection handling -->
     <div class="step-content" data-step="15">
-        <div class="info-card">
-            <h3 id="objectionCardTitle">Understanding Your Frustration</h3>
-            <p id="objectionCardBody">We know taking the next step requires confidence that this time will be different.</p>
-        </div>
+        <div class="info-card"><h3 id="objectionCardTitle">Understanding Your Frustration</h3><p id="objectionCardBody">We know taking the next step requires confidence that this time will be different.</p></div>
         <button class="primary-cta-btn" onclick="startLoadingSequence()">Analyze My Responses →</button>
     </div>
 
-    <!-- LOADER CARD (Step 16 Container with Popups) -->
+    <!-- SCREEN 16: Loader -->
     <div class="step-content" data-step="16" id="loadingStepContent">
         <div class="loader-card">
-            <div class="spinner-ring-wrapper">
-                <svg class="spinner-svg" viewBox="0 0 100 100">
-                    <circle class="spinner-track" cx="50" cy="50" r="40"></circle>
-                    <circle class="spinner-head" cx="50" cy="50" r="40"></circle>
-                </svg>
-            </div>
-
+            <div class="spinner-ring-wrapper"><svg class="spinner-svg" viewBox="0 0 100 100"><circle class="spinner-track" cx="50" cy="50" r="40"></circle><circle class="spinner-head" cx="50" cy="50" r="40"></circle></svg></div>
             <h2 class="wb-loader-title">Analyzing Your Profile...</h2>
-
             <div class="wb-checklist">
-                <div class="wb-check-item" id="chk1">
-                    <div class="wb-check-icon">✓</div>
-                    <span>Evaluating symptom combination</span>
-                </div>
-                <div class="wb-check-item" id="chk2">
-                    <div class="wb-check-icon">✓</div>
-                    <span>Mapping hormonal pattern match</span>
-                </div>
-                <div class="wb-check-item" id="chk3">
-                    <div class="wb-check-icon">✓</div>
-                    <span>Structuring personalized reset protocol</span>
-                </div>
+                <div class="wb-check-item" id="chk1"><div class="wb-check-icon">✓</div><span>Evaluating symptom combination</span></div>
+                <div class="wb-check-item" id="chk2"><div class="wb-check-icon">✓</div><span>Mapping hormonal pattern match</span></div>
+                <div class="wb-check-item" id="chk3"><div class="wb-check-icon">✓</div><span>Structuring personalized reset protocol</span></div>
             </div>
-
-            <div class="wb-progress-bar-bg">
-                <div class="wb-progress-bar-fill" id="loaderFill"></div>
-            </div>
+            <div class="wb-progress-bar-bg"><div class="wb-progress-bar-fill" id="loaderFill"></div></div>
         </div>
     </div>
 
-    <!-- SCREEN 20: Summary Profile Screen (Pre-offer position) -->
+    <!-- SCREEN 20: Summary -->
     <div class="step-content" data-step="20">
         <h2>Summary of your Hormonal Profile</h2>
-
         <div class="summary-main-card">
-            <div class="summary-card-header">
-                <span class="summary-card-title">Hormonal Disruption Level</span>
-                <span class="summary-badge-high" id="diagBadge">High</span>
-            </div>
-
-            <!-- Interactive Gauge / Progress Meter -->
+            <div class="summary-card-header"><span class="summary-card-title">Hormonal Disruption Level</span><span class="summary-badge-high" id="diagBadge">High</span></div>
             <div class="meter-container">
                 <div class="meter-tooltip" id="meterTooltip">Elevated Disruptions</div>
-                <div class="meter-bar">
-                    <div class="meter-pointer" id="meterPointer"></div>
-                </div>
-                <div class="meter-labels">
-                    <span>Low</span>
-                    <span>Moderate</span>
-                    <span>Elevated</span>
-                    <span>High</span>
-                </div>
+                <div class="meter-bar"><div class="meter-pointer" id="meterPointer"></div></div>
+                <div class="meter-labels"><span>Low</span><span>Moderate</span><span>Elevated</span><span>High</span></div>
             </div>
-
-            <!-- Alert Highlight Box -->
             <div class="summary-alert-box">
                 <div class="summary-alert-icon">!</div>
-                <div class="summary-alert-text">
-                    <strong id="diagAlertTitle">ELEVATED Symptom Cascade</strong>
-                    <span id="diagAlertBody">Your body is displaying systemic symptoms linked to estrogen-cortisol fluctuations.</span>
-                </div>
+                <div class="summary-alert-text"><strong id="diagAlertTitle">ELEVATED Symptom Cascade</strong><span id="diagAlertBody">Your body is displaying systemic symptoms linked to estrogen-cortisol fluctuations.</span></div>
             </div>
         </div>
-
-        <!-- 2x2 Metric Grid -->
         <div class="summary-grid">
-            <div class="summary-grid-card">
-                <div class="grid-card-icon">🎯</div>
-                <div class="grid-card-info">
-                    <h5>System Focus</h5>
-                    <p id="gridSystemFocus">Mental</p>
-                </div>
-            </div>
-            <div class="summary-grid-card">
-                <div class="grid-card-icon">📈</div>
-                <div class="grid-card-info">
-                    <h5>Room For Reset</h5>
-                    <p id="gridImprovement">High</p>
-                </div>
-            </div>
-            <div class="summary-grid-card">
-                <div class="grid-card-icon">⚡</div>
-                <div class="grid-card-info">
-                    <h5>Primary Trigger</h5>
-                    <p id="gridTrigger">Cortisol Shift</p>
-                </div>
-            </div>
-            <div class="summary-grid-card">
-                <div class="grid-card-icon">🔍</div>
-                <div class="grid-card-info">
-                    <h5>Impact Level</h5>
-                    <p id="gridImpact">Noticeable</p>
-                </div>
-            </div>
+            <div class="summary-grid-card"><div class="grid-card-icon">🎯</div><div class="grid-card-info"><h5>System Focus</h5><p id="gridSystemFocus">Mental</p></div></div>
+            <div class="summary-grid-card"><div class="grid-card-icon">📈</div><div class="grid-card-info"><h5>Room For Reset</h5><p id="gridImprovement">High</p></div></div>
+            <div class="summary-grid-card"><div class="grid-card-icon">⚡</div><div class="grid-card-info"><h5>Primary Trigger</h5><p id="gridTrigger">Cortisol Shift</p></div></div>
+            <div class="summary-grid-card"><div class="grid-card-icon">🔍</div><div class="grid-card-info"><h5>Impact Level</h5><p id="gridImpact">Noticeable</p></div></div>
         </div>
-
-        <button class="primary-cta-btn" onclick="nextStep()">Build My Plan →</button>
+        <button class="primary-cta-btn" onclick="showStep(21)">Build My Plan →</button>
     </div>
 
-    <!-- FINAL STEP 21: Offer Screen -->
+    <!-- ============================================ -->
+    <!-- SCREEN 21: UPDATED OFFER & PRICING PAGE       -->
+    <!-- ============================================ -->
     <div class="step-content" data-step="21">
-        <h2>Your Personalized Calm Reset Challenge is Ready</h2>
-        <p class="subtitle">Designed specifically around your profile and symptoms</p>
-
-        <div class="pricing-card">
-            <span class="price-badge">Custom Plan Prepared</span>
-            <h3 style="font-size: 28px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">30-Day Protocol</h3>
-            <p style="color: #64748B; font-size: 14px; margin-bottom: 20px;">Get full digital access to your targeted reset plan today.</p>
-            <button class="primary-cta-btn" style="margin-top: 0;" onclick="alert('Proceeding to checkout/plan download...')">Get My 30-Day Plan Now</button>
+        <!-- Eyebrow -->
+        <div style="text-align: center; font-size: 13px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px;">
+            Based on your quiz results
         </div>
 
+        <!-- Headline -->
+        <div class="sales-headline" id="salesHeadline">Your Complete {{dominant_cluster}} Relief System</div>
+
+        <!-- Subhead -->
+        <div class="sales-subhead" id="salesSubhead">Everything you need to understand what's happening, act on it today, and eat without the daily guesswork.</div>
+
+        <!-- Countdown timer (10 minutes) -->
+        <div class="sales-urgency-note">
+            <i class="fas fa-clock" style="margin-right: 6px;"></i> This special price expires in:
+        </div>
+        <div class="sales-countdown" id="salesCountdown">
+            <div class="unit">
+                <span class="num" id="salesMinutes">10</span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="unit">
+                <span class="num" id="salesSeconds">00</span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+
+        <!-- Snapshot (age, priority) – optional, we keep for personalization -->
+        <div class="sales-snapshot">
+            <div class="snapshot-item">
+                <div class="snapshot-label">Your Profile</div>
+                <div class="snapshot-value" id="salesAgeDisplay">Age 46 – 52</div>
+            </div>
+            <div class="snapshot-item">
+                <div class="snapshot-label">Primary Focus</div>
+                <div class="snapshot-value" id="salesClusterDisplay">Physical</div>
+            </div>
+            <div class="snapshot-item">
+                <div class="snapshot-label">Protocol Match</div>
+                <div class="snapshot-value" id="salesMatchDisplay">98%</div>
+            </div>
+        </div>
+
+        <!-- Value Stack -->
+        <div class="sales-offer-list">
+            <!-- Main product -->
+            <div class="offer-item">
+                <div class="item-desc">
+                    Menopause, Decoded™ – The Complete Guide
+                    <span class="item-desc-small">102 pages – Evidence‑based (NICE, ACOG, WHO, The Menopause Society)</span>
+                </div>
+                <span class="item-price">$197</span>
+            </div>
+            <!-- Bonus 1 -->
+            <div class="offer-item">
+                <div class="item-desc">
+                    30‑Day Meal & Grocery System
+                    <span class="item-desc-small">30 days of meal combos – weekly grocery lists – 20 fast breakfasts – low‑friction lunches/dinners – no‑cook page – substitution chart</span>
+                </div>
+                <span class="item-price">$47</span>
+                <span class="item-free">FREE TODAY</span>
+            </div>
+            <!-- Bonus 2 -->
+            <div class="offer-item">
+                <div class="item-desc">
+                    Quick‑Relief Toolkit
+                    <span class="item-desc-small">10 phone‑friendly action cards: Hot Flash Now, 3 A.M. Wake‑Up, Brain‑Fog Rescue, Overwhelm Reset, Doctor Appointment Prep & more</span>
+                </div>
+                <span class="item-price">$27</span>
+                <span class="item-free">FREE TODAY</span>
+            </div>
+            <div class="total-value">
+                <span class="total-label">Total Value</span>
+                <span class="total-price">$271</span>
+            </div>
+        </div>
+
+        <!-- Scarcity line -->
+        <div class="sales-scarcity">
+            <i class="fas fa-tag" style="margin-right: 6px;"></i> This price is only available because you completed your personalized assessment.
+        </div>
+
+        <!-- Price Box -->
+        <div class="sales-price-box">
+            <div>
+                <span class="discount-price" id="salesFinalPrice">$49</span>
+                <span class="original-price">$271</span>
+            </div>
+            <div class="price-note">One‑time payment. Instant access. No subscription.</div>
+            <button class="primary-cta-btn" onclick="handleCheckout()" style="margin-top:12px;">
+                Get My Complete Plan – $49 →
+            </button>
+            <!-- Guarantee under CTA -->
+            <div class="guarantee-under-cta">
+                <i class="fas fa-shield-alt"></i> If Menopause, Decoded™ doesn't help you understand what's happening and what to do next, email us within 30 days for a full refund — no questions asked.
+            </div>
+        </div>
+
+        <!-- Reviews (keep existing) -->
+        <div style="margin-top: 20px;">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"By day 4 of following the audio resets and evening protocol, I slept 7 hours straight for the first time in 2 years. I finally feel like myself again!"</blockquote>
+                <div class="author"><span>Sarah M., 44</span><span class="verified">✔ Verified Buyer</span></div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"My doctor kept telling me it was just stress. This 28-day program explained EXACTLY why my body was reacting this way and fixed my afternoon crashes."</blockquote>
+                <div class="author"><span>Elena R., 51</span><span class="verified">✔ Verified Buyer</span></div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-sales">
+            <div class="faq-item">
+                <div class="q" onclick="toggleSalesFaq(this)">How fast will I receive access? <i class="fas fa-chevron-down"></i></div>
+                <div class="a">Instant digital access. You’ll get a link to your dashboard immediately after purchase.</div>
+            </div>
+            <div class="faq-item">
+                <div class="q" onclick="toggleSalesFaq(this)">Is this a monthly subscription? <i class="fas fa-chevron-down"></i></div>
+                <div class="a">No – it’s a one‑time payment. You get lifetime access to all materials.</div>
+            </div>
+            <div class="faq-item">
+                <div class="q" onclick="toggleSalesFaq(this)">What if I don't have hours to spare each day? <i class="fas fa-chevron-down"></i></div>
+                <div class="a">The system is designed for busy women – most steps take 5–15 minutes daily.</div>
+            </div>
+        </div>
+
+        <!-- Legal -->
         <div class="legal-terms">
             By clicking above, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
         </div>
@@ -1146,11 +1385,9 @@
 
 </div>
 
-<!-- YES-STREAK INTERSTITIAL MICRO-MODALS -->
+<!-- YES-STREAK MODALS -->
 <div class="loading-modal-overlay" id="loadingModal">
     <div class="loading-modal-card">
-        
-        <!-- SCREEN 17 -->
         <div class="modal-question" id="modalStep17" style="display: none;">
             <h2>Are you ready to finally get relief from these symptoms?</h2>
             <div class="options-grid" style="margin-top: 20px;">
@@ -1158,8 +1395,6 @@
                 <button class="option-btn" onclick="onYesStreakSelected(17)">I think so</button>
             </div>
         </div>
-
-        <!-- SCREEN 18 -->
         <div class="modal-question" id="modalStep18" style="display: none;">
             <h2>Would you rather feel calm, energized, and in control — without relying on willpower alone?</h2>
             <div class="options-grid" style="margin-top: 20px;">
@@ -1167,8 +1402,6 @@
                 <button class="option-btn" onclick="onYesStreakSelected(18)">Yes</button>
             </div>
         </div>
-
-        <!-- SCREEN 19 -->
         <div class="modal-question" id="modalStep19" style="display: none;">
             <h2>Are you open to a natural approach that works with your body, not against it?</h2>
             <div class="options-grid" style="margin-top: 20px;">
@@ -1176,9 +1409,10 @@
                 <button class="option-btn" onclick="onYesStreakSelected(19)">Yes, show me</button>
             </div>
         </div>
-
     </div>
 </div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
 <script>
     let currentStep = 0;
@@ -1204,13 +1438,10 @@
         } else {
             header.style.display = 'none';
         }
-
         const progressPercent = Math.min(((currentStep - 1) / (totalSteps - 1)) * 100, 100);
         id('timelineProgress').style.width = `${progressPercent}%`;
-
         const dots = [id('dot1'), id('dot2'), id('dot3'), id('dot4')];
         const stepInterval = totalSteps / 4;
-        
         dots.forEach((dot, idx) => {
             if (!dot) return;
             const targetStep = (idx + 1) * stepInterval;
@@ -1231,27 +1462,20 @@
         currentStep = stepNumber;
         updateTimeline();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function nextStep() {
-        showStep(currentStep + 1);
-    }
-
-    function prevStep() {
-        if (currentStep > 0) {
-            showStep(currentStep - 1);
+        if (stepNumber === 21) {
+            populateSalesPage();
+            startCountdown();
         }
     }
 
+    function nextStep() { showStep(currentStep + 1); }
+    function prevStep() { if (currentStep > 0) showStep(currentStep - 1); }
     function id(str) { return document.getElementById(str); }
 
-    /* STEP 1: Select Age */
-    function selectAge(val) {
-        userAnswers.age = val;
-        nextStep();
-    }
+    /* STEP 1 */
+    function selectAge(val) { userAnswers.age = val; nextStep(); }
 
-    /* STEP 2: Toggle Symptoms */
+    /* STEP 2 */
     function toggleSymptom(btn, symptomName) {
         btn.classList.toggle('selected');
         if (userAnswers.symptoms.includes(symptomName)) {
@@ -1262,20 +1486,17 @@
         id('symptomNextBtn').disabled = userAnswers.symptoms.length === 0;
     }
 
-    /* STEP 4: Select Cluster */
+    /* STEP 4 */
     function selectCluster(clusterName, labelText) {
         userAnswers.dominantCluster = clusterName;
         userAnswers.dominantClusterLabel = labelText;
         nextStep();
     }
 
-    /* STEP 5: Select Isolation */
-    function selectIsolation(val) {
-        userAnswers.isolation = val;
-        nextStep();
-    }
+    /* STEP 5 */
+    function selectIsolation(val) { userAnswers.isolation = val; nextStep(); }
 
-    /* STEP 7: Toggle Cost */
+    /* STEP 7 */
     function toggleCost(btn, costName) {
         btn.classList.toggle('selected');
         if (userAnswers.costs.includes(costName)) {
@@ -1286,13 +1507,10 @@
         id('costNextBtn').disabled = userAnswers.costs.length === 0;
     }
 
-    /* STEP 9: Select Trend */
-    function selectTrend(val) {
-        userAnswers.trend = val;
-        nextStep();
-    }
+    /* STEP 9 */
+    function selectTrend(val) { userAnswers.trend = val; nextStep(); }
 
-    /* STEP 10: Toggle Spillover */
+    /* STEP 10 */
     function toggleSpillover(btn, item) {
         btn.classList.toggle('selected');
         if (userAnswers.spillovers.includes(item)) {
@@ -1303,18 +1521,14 @@
         id('spilloverNextBtn').disabled = userAnswers.spillovers.length === 0;
     }
 
-    /* STEP 12: Select Outcome */
-    function selectOutcome(val) {
-        userAnswers.outcome = val;
-        nextStep();
-    }
+    /* STEP 12 */
+    function selectOutcome(val) { userAnswers.outcome = val; nextStep(); }
 
-    /* STEP 14: Select Objection & Update Step 15 Content */
+    /* STEP 14 */
     function selectObjection(key) {
         userAnswers.objection = key;
         const titleEl = id('objectionCardTitle');
         const bodyEl = id('objectionCardBody');
-
         if (key === 'dont_know_what_works') {
             titleEl.innerText = "It's Not Your Fault You're Confused";
             bodyEl.innerText = "There is so much conflicting medical advice out there. Our protocol cuts through the noise with practical, root-cause interventions tailored directly to your specific symptom cluster.";
@@ -1328,92 +1542,52 @@
             titleEl.innerText = "You Don't Have to Just 'Suffer Through'";
             bodyEl.innerText = "Many women minimize their discomfort until it severely disrupts their lives. Addressing your symptoms early prevents deeper metabolic and emotional strain down the road.";
         }
-
         buildDiagnosisSummary();
         nextStep();
     }
 
     function buildDiagnosisSummary() {
         const count = userAnswers.symptoms.length || 1;
-        
         let meterPos = 50;
         let badgeText = "Moderate";
-        if (count >= 4) {
-            meterPos = 85;
-            badgeText = "High";
-        } else if (count >= 2) {
-            meterPos = 68;
-            badgeText = "Elevated";
-        }
-
+        if (count >= 4) { meterPos = 85; badgeText = "High"; }
+        else if (count >= 2) { meterPos = 68; badgeText = "Elevated"; }
         id('diagBadge').innerText = badgeText;
         id('meterPointer').style.left = `${meterPos}%`;
         id('meterTooltip').style.left = `${meterPos}%`;
         id('meterTooltip').innerText = `${badgeText} Disruptions`;
-
         id('diagAlertTitle').innerText = `${badgeText.toUpperCase()} Symptom Cascade`;
         id('diagAlertBody').innerText = `You identified ${count} key symptom${count > 1 ? 's' : ''}. Your experience with ${userAnswers.symptoms[0] || 'symptoms'} shows an active hormonal transition.`;
-
         id('gridSystemFocus').innerText = userAnswers.dominantCluster || 'Mental';
         id('gridImprovement').innerText = count > 3 ? 'High' : 'Significant';
         id('gridTrigger').innerText = 'Estrogen Shift';
         id('gridImpact').innerText = userAnswers.spillovers.length > 1 ? 'Noticeable' : 'Moderate';
     }
 
-    /* YES-STREAK LOADING & MODAL SEQUENCING */
+    /* LOADER */
     function startLoadingSequence() {
         showStep(16);
-        
         let progress = 0;
         const loaderFill = id('loaderFill');
-        
         const interval = setInterval(() => {
             progress += 1;
             if (loaderFill) loaderFill.style.width = `${progress}%`;
-
-            if (progress === 30) {
-                id('chk1').classList.add('active');
-                pauseForModal('modalStep17');
-                clearInterval(interval);
-            } else if (progress === 60) {
-                id('chk2').classList.add('active');
-                pauseForModal('modalStep18');
-                clearInterval(interval);
-            } else if (progress === 90) {
-                id('chk3').classList.add('active');
-                pauseForModal('modalStep19');
-                clearInterval(interval);
-            } else if (progress >= 100) {
-                clearInterval(interval);
-                setTimeout(() => {
-                    showStep(20);
-                }, 400);
-            }
+            if (progress === 30) { id('chk1').classList.add('active'); pauseForModal('modalStep17'); clearInterval(interval); }
+            else if (progress === 60) { id('chk2').classList.add('active'); pauseForModal('modalStep18'); clearInterval(interval); }
+            else if (progress === 90) { id('chk3').classList.add('active'); pauseForModal('modalStep19'); clearInterval(interval); }
+            else if (progress >= 100) { clearInterval(interval); setTimeout(() => { showStep(20); }, 400); }
         }, 30);
     }
 
     function resumeLoadingSequence(startProgress) {
         let progress = startProgress;
         const loaderFill = id('loaderFill');
-
         window.loaderInterval = setInterval(() => {
             progress += 1;
             if (loaderFill) loaderFill.style.width = `${progress}%`;
-
-            if (progress === 60 && startProgress < 60) {
-                id('chk2').classList.add('active');
-                pauseForModal('modalStep18');
-                clearInterval(window.loaderInterval);
-            } else if (progress === 90 && startProgress < 90) {
-                id('chk3').classList.add('active');
-                pauseForModal('modalStep19');
-                clearInterval(window.loaderInterval);
-            } else if (progress >= 100) {
-                clearInterval(window.loaderInterval);
-                setTimeout(() => {
-                    showStep(20);
-                }, 400);
-            }
+            if (progress === 60 && startProgress < 60) { id('chk2').classList.add('active'); pauseForModal('modalStep18'); clearInterval(window.loaderInterval); }
+            else if (progress === 90 && startProgress < 90) { id('chk3').classList.add('active'); pauseForModal('modalStep19'); clearInterval(window.loaderInterval); }
+            else if (progress >= 100) { clearInterval(window.loaderInterval); setTimeout(() => { showStep(20); }, 400); }
         }, 30);
     }
 
@@ -1424,21 +1598,108 @@
         modalOverlay.style.display = 'flex';
     }
 
-    function closeModal() {
-        id('loadingModal').style.display = 'none';
-    }
+    function closeModal() { id('loadingModal').style.display = 'none'; }
 
     function onYesStreakSelected(stepNum) {
         closeModal();
-        if (stepNum === 17) {
-            resumeLoadingSequence(31);
-        } else if (stepNum === 18) {
-            resumeLoadingSequence(61);
-        } else if (stepNum === 19) {
-            resumeLoadingSequence(91);
+        if (stepNum === 17) resumeLoadingSequence(31);
+        else if (stepNum === 18) resumeLoadingSequence(61);
+        else if (stepNum === 19) resumeLoadingSequence(91);
+    }
+
+    /* ============================================
+       SALES PAGE POPULATION (Step 21)
+    ============================================ */
+    function populateSalesPage() {
+        const priority = userAnswers.dominantCluster || 'Physical';
+        const age = userAnswers.age || '46 – 52';
+        const symptomCount = userAnswers.symptoms.length || 1;
+        let match = 85;
+        if (symptomCount >= 5) match = 98;
+        else if (symptomCount >= 3) match = 92;
+        else if (symptomCount >= 1) match = 78;
+        const matchDisplay = match + '%';
+
+        // Headline
+        id('salesHeadline').innerText = `Your Complete ${priority} Relief System`;
+        // Subhead is static
+        // Snapshot
+        id('salesAgeDisplay').innerText = `Age ${age}`;
+        id('salesClusterDisplay').innerText = priority;
+        id('salesMatchDisplay').innerText = matchDisplay;
+    }
+
+    /* ============================================
+       10-MINUTE COUNTDOWN (stored in localStorage, expires once)
+    ============================================ */
+    let countdownInterval = null;
+    function startCountdown() {
+        if (countdownInterval) clearInterval(countdownInterval);
+
+        const storageKey = 'salesCountdownExpiry';
+        let expiry = localStorage.getItem(storageKey);
+        const now = Date.now();
+
+        if (!expiry || parseInt(expiry, 10) < now) {
+            // Set expiry to 10 minutes from now
+            expiry = now + 10 * 60 * 1000;
+            localStorage.setItem(storageKey, expiry);
+        }
+
+        function update() {
+            const now = Date.now();
+            let diff = Math.max(0, parseInt(expiry, 10) - now);
+            const minutes = Math.floor(diff / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            const mEl = id('salesMinutes');
+            const sEl = id('salesSeconds');
+            if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
+            if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
+
+            if (diff <= 0) {
+                clearInterval(countdownInterval);
+                if (mEl) mEl.innerText = '00';
+                if (sEl) sEl.innerText = '00';
+                // Optionally hide or change the urgency message
+                document.querySelector('.sales-urgency-note').innerHTML = '<i class="fas fa-clock"></i> This offer has expired.';
+            }
+        }
+
+        update();
+        countdownInterval = setInterval(update, 1000);
+    }
+
+    /* FAQ toggle */
+    function toggleSalesFaq(el) {
+        const answer = el.nextElementSibling;
+        const isOpen = answer.classList.contains('open');
+        document.querySelectorAll('.faq-sales .faq-item .a').forEach(a => {
+            if (a !== answer) { a.classList.remove('open'); a.previousElementSibling.classList.remove('active'); }
+        });
+        if (isOpen) {
+            answer.classList.remove('open');
+            el.classList.remove('active');
+        } else {
+            answer.classList.add('open');
+            el.classList.add('active');
         }
     }
-</script>
 
+    /* Checkout */
+    function handleCheckout() {
+        alert('Proceed to checkout / payment page.\nReplace this with your actual checkout URL.');
+        // window.location.href = 'https://your-checkout.com/...';
+    }
+
+    // Auto-init if step 21 is active on load
+    (function init() {
+        const step21 = document.querySelector('.step-content[data-step="21"]');
+        if (step21 && step21.classList.contains('active')) {
+            populateSalesPage();
+            startCountdown();
+        }
+    })();
+</script>
 </body>
 </html>
