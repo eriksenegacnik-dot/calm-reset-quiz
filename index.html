@@ -134,42 +134,6 @@
             font-size: 8px;
         }
 
-        /* Social Badges */
-        .badges-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .badge-box {
-            border: 1.5px solid var(--primary);
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 12px 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 11px;
-            font-weight: 800;
-            color: #1E293B;
-            line-height: 1.25;
-            box-shadow: 0 2px 8px rgba(236, 72, 153, 0.05);
-        }
-
-        .badge-box span {
-            display: block;
-            color: var(--text-muted);
-            font-weight: 600;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .badge-icon {
-            font-size: 20px;
-        }
-
         /* Screen Animations */
         .step-content {
             display: none;
@@ -185,26 +149,6 @@
         @keyframes slideUp {
             0% { opacity: 0; transform: translateY(12px); }
             100% { opacity: 1; transform: translateY(0); }
-        }
-
-        h1.hero-title {
-            font-size: 30px;
-            font-weight: 800;
-            color: var(--primary);
-            text-align: center;
-            line-height: 1.25;
-            margin-bottom: 14px;
-            letter-spacing: -0.02em;
-        }
-
-        p.hero-subtitle {
-            font-size: 13px;
-            font-weight: 700;
-            color: #64748B;
-            text-align: center;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 32px;
         }
 
         h2 {
@@ -400,7 +344,7 @@
             line-height: 1.5;
         }
 
-        /* WARRIORBABE STYLE LOADING & MICRO-POPUP INTERSTITIALS */
+        /* LOADING CARD & MICRO-POPUP INTERSTITIALS */
         .loader-card {
             background: #FFFFFF;
             border-radius: 24px;
@@ -550,6 +494,27 @@
             color: var(--text-muted);
             text-decoration: underline;
         }
+
+        .pricing-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .price-badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
@@ -565,8 +530,8 @@
             <div class="timeline-line-bg"></div>
             <div class="timeline-line-progress" id="timelineProgress"></div>
             <div class="timeline-dots">
-                <div class="timeline-dot completed"></div>
-                <div class="timeline-dot active" id="dot2"></div>
+                <div class="timeline-dot active" id="dot1"></div>
+                <div class="timeline-dot" id="dot2"></div>
                 <div class="timeline-dot" id="dot3"></div>
                 <div class="timeline-dot" id="dot4"></div>
             </div>
@@ -829,7 +794,7 @@
         <button class="primary-cta-btn" onclick="startLoadingSequence()">Build My Plan →</button>
     </div>
 
-    <!-- LOADER CARD (WarriorBabe style loader container) -->
+    <!-- LOADER CARD (Step 20 Container) -->
     <div class="step-content" data-step="20" id="loadingStepContent">
         <div class="loader-card">
             <div class="spinner-ring-wrapper">
@@ -842,304 +807,339 @@
             <h2 class="wb-loader-title">Analyzing Your Profile...</h2>
 
             <div class="wb-checklist">
-                <div class="wb-check-item" id="check1">
+                <div class="wb-check-item" id="chk1">
                     <div class="wb-check-icon">✓</div>
-                    <span>Analyzing your current approach and goals...</span>
+                    <span>Evaluating symptom combination</span>
                 </div>
-                <div class="wb-check-item" id="check2">
+                <div class="wb-check-item" id="chk2">
                     <div class="wb-check-icon">✓</div>
-                    <span>Identifying which key shift you need most...</span>
+                    <span>Mapping hormonal pattern match</span>
                 </div>
-                <div class="wb-check-item" id="check3">
+                <div class="wb-check-item" id="chk3">
                     <div class="wb-check-icon">✓</div>
-                    <span>Customizing your transformation roadmap...</span>
-                </div>
-                <div class="wb-check-item" id="check4">
-                    <div class="wb-check-icon">✓</div>
-                    <span>Preparing your personalized guide...</span>
+                    <span>Structuring personalized reset protocol</span>
                 </div>
             </div>
 
             <div class="wb-progress-bar-bg">
-                <div class="wb-progress-bar-fill" id="wbLoaderFill"></div>
+                <div class="wb-progress-bar-fill" id="loaderFill"></div>
             </div>
+        </div>
+    </div>
+
+    <!-- FINAL STEP 21: Pitch / Offer Screen -->
+    <div class="step-content" data-step="21">
+        <h2>Your Personalized Calm Reset Challenge is Ready</h2>
+        <p class="subtitle">Designed specifically around your profile and symptoms</p>
+
+        <div class="pricing-card">
+            <span class="price-badge">Custom Plan Prepared</span>
+            <h3 style="font-size: 28px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">30-Day Protocol</h3>
+            <p style="color: #64748B; font-size: 14px; margin-bottom: 20px;">Get full digital access to your targeted reset plan today.</p>
+            <button class="primary-cta-btn" style="margin-top: 0;" onclick="alert('Proceeding to checkout/plan download...')">Get My 30-Day Plan Now</button>
+        </div>
+
+        <div class="legal-terms">
+            By clicking above, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
         </div>
     </div>
 
 </div>
 
-<!-- INTERSTITIAL POPUP MODAL FOR STEPS 17-19 -->
-<div class="loading-modal-overlay" id="loadingModalOverlay">
+<!-- INTERSTITIAL MICRO-MODALS FOR STEPS 17, 18, 19 -->
+<div class="loading-modal-overlay" id="loadingModal">
     <div class="loading-modal-card">
-        <!-- Question 17 -->
-        <div class="modal-question-block" id="modalQ17" style="display:none;">
-            <h2>Are you ready to finally get relief from these symptoms?</h2>
-            <div class="options-grid" style="margin-top:20px;">
-                <button class="option-btn" onclick="answerModalQuestion()"><span class="option-content"><span class="option-btn-icon">👍</span> Yes, absolutely</span></button>
-                <button class="option-btn" onclick="answerModalQuestion()"><span class="option-content"><span class="option-btn-icon">🙂</span> I think so</span></button>
+        
+        <!-- STEP 17 QUESTION: AGE -->
+        <div class="modal-question" id="modalStep17" style="display: none;">
+            <h2>What age bracket are you in?</h2>
+            <p class="subtitle">Helps fine-tune hormonal benchmarks</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="onAgeSelected('Under 40')">Under 40</button>
+                <button class="option-btn" onclick="onAgeSelected('40 - 45')">40 – 45</button>
+                <button class="option-btn" onclick="onAgeSelected('46 - 52')">46 – 52</button>
+                <button class="option-btn" onclick="onAgeSelected('53+')">53+</button>
             </div>
         </div>
 
-        <!-- Question 18 -->
-        <div class="modal-question-block" id="modalQ18" style="display:none;">
-            <h2>Would you rather feel calm, energized, and in control — without relying on willpower alone?</h2>
-            <div class="options-grid" style="margin-top:20px;">
-                <button class="option-btn" onclick="answerModalQuestion()"><span class="option-content"><span class="option-btn-icon">✨</span> Yes, that's exactly what I want</span></button>
-                <button class="option-btn" onclick="answerModalQuestion()"><span class="option-content"><span class="option-btn-icon">👍</span> Yes</span></button>
+        <!-- STEP 18 QUESTION: PREVIOUS HRT / SUPPLEMENTS -->
+        <div class="modal-question" id="modalStep18" style="display: none;">
+            <h2>Have you tried HRT or targeted supplements before?</h2>
+            <p class="subtitle">So we don't recommend what hasn't worked</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="onSupplementSelected('Currently taking HRT/Supplements')">Yes, currently taking them</button>
+                <button class="option-btn" onclick="onSupplementSelected('Tried in past')">Tried in the past, but stopped</button>
+                <button class="option-btn" onclick="onSupplementSelected('Never tried')">No, never tried</button>
             </div>
         </div>
 
-        <!-- Question 19 -->
-        <div class="modal-question-block" id="modalQ19" style="display:none;">
-            <h2>Are you open to a natural approach that works with your body, not against it?</h2>
-            <div class="options-grid" style="margin-top:20px;">
-                <button class="option-btn" onclick="answerModalQuestion()"><span class="option-content"><span class="option-btn-icon">🚀</span> Yes, I'm ready</span></button>
-                <button class="option-btn" onclick="answerModalQuestion()"><span class="option-content"><span class="option-btn-icon">👀</span> Yes, show me</span></button>
+        <!-- STEP 19 QUESTION: DAILY TIME COMMITMENT -->
+        <div class="modal-question" id="modalStep19" style="display: none;">
+            <h2>How much time can you spend on your reset daily?</h2>
+            <p class="subtitle">We will customize daily steps to match your lifestyle</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="onTimeSelected('5 mins/day')">5 minutes a day (Micro-habits)</button>
+                <button class="option-btn" onclick="onTimeSelected('15 mins/day')">15 minutes a day (Standard)</button>
+                <button class="option-btn" onclick="onTimeSelected('30+ mins/day')">30+ minutes a day (Deep immersion)</button>
             </div>
         </div>
+
     </div>
 </div>
 
 <script>
     let currentStep = 1;
-    const totalSteps = 16;
-    
-    // User responses storage
-    let userSymptoms = [];
-    let dominantCluster = '';
-    let dominantClusterLabel = '';
-    let isolationAnswer = '';
-    let selectedCosts = [];
-    let trendAnswer = '';
-    let selectedSpillover = [];
-    let desiredOutcome = '';
+    const totalSteps = 16; // Standard flow steps before micro-modals
 
-    function updateHeader() {
-        if (currentStep >= 1 && currentStep <= 16) {
-            document.getElementById('appHeader').style.display = 'flex';
-            const progress = (currentStep / totalSteps) * 100;
-            document.getElementById('timelineProgress').style.width = progress + '%';
+    const userAnswers = {
+        symptoms: [],
+        dominantCluster: '',
+        dominantClusterLabel: '',
+        isolation: '',
+        costs: [],
+        trend: '',
+        spillovers: [],
+        outcome: '',
+        objection: '',
+        age: '',
+        supplements: '',
+        dailyTime: ''
+    };
+
+    function updateTimeline() {
+        const header = id('appHeader');
+        if (currentStep > 1 && currentStep <= 16) {
+            header.style.display = 'flex';
         } else {
-            document.getElementById('appHeader').style.display = 'none';
+            header.style.display = 'none';
         }
+
+        const progressPercent = Math.min(((currentStep - 1) / (totalSteps - 1)) * 100, 100);
+        id('timelineProgress').style.width = `${progressPercent}%`;
+
+        // Update dot states dynamically
+        const dots = [id('dot1'), id('dot2'), id('dot3'), id('dot4')];
+        const stepInterval = totalSteps / 4;
+        
+        dots.forEach((dot, idx) => {
+            if (!dot) return;
+            const targetStep = (idx + 1) * stepInterval;
+            if (currentStep >= targetStep) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
     }
 
-    function jumpToStep(target) {
+    function showStep(stepNumber) {
         document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
-        currentStep = target;
-        const targetEl = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-        if (targetEl) targetEl.classList.add('active');
-        updateHeader();
+        const nextEl = document.querySelector(`.step-content[data-step="${stepNumber}"]`);
+        if (nextEl) {
+            nextEl.classList.add('active');
+        }
+        currentStep = stepNumber;
+        updateTimeline();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function nextStep() {
-        if (currentStep < 16) {
-            jumpToStep(currentStep + 1);
-        }
+        showStep(currentStep + 1);
     }
 
     function prevStep() {
         if (currentStep > 1) {
-            jumpToStep(currentStep - 1);
+            showStep(currentStep - 1);
         }
     }
 
-    // Step 1: Multi-select symptoms
+    function id(str) { return document.getElementById(str); }
+
+    /* STEP 1: Toggle Symptoms */
     function toggleSymptom(btn, symptomName) {
         btn.classList.toggle('selected');
-        if (userSymptoms.includes(symptomName)) {
-            userSymptoms = userSymptoms.filter(s => s !== symptomName);
+        if (userAnswers.symptoms.includes(symptomName)) {
+            userAnswers.symptoms = userAnswers.symptoms.filter(s => s !== symptomName);
         } else {
-            userSymptoms.push(symptomName);
+            userAnswers.symptoms.push(symptomName);
         }
-        document.getElementById('symptomNextBtn').disabled = userSymptoms.length === 0;
+        id('symptomNextBtn').disabled = userAnswers.symptoms.length === 0;
     }
 
-    // Step 3: Dominant cluster
-    function selectCluster(clusterKey, label) {
-        dominantCluster = clusterKey;
-        dominantClusterLabel = label;
-        
-        // Update Screen 5 Dynamic Text
-        document.getElementById('screen5DynamicText').innerText = 
-            `When ${dominantCluster.toLowerCase()} symptoms go unaddressed, they rarely stay contained. Sleep problems bleed into mood. Mood bleeds into relationships. Brain fog bleeds into confidence at work. Women often tell us the symptom itself wasn't the hardest part — it was slowly losing pieces of who they used to be.`;
-
-        // Update Section 16 timeline label
-        document.getElementById('timelineDominantCluster').innerText = dominantClusterLabel;
-
+    /* STEP 3: Select Cluster */
+    function selectCluster(clusterName, labelText) {
+        userAnswers.dominantCluster = clusterName;
+        userAnswers.dominantClusterLabel = labelText;
         nextStep();
     }
 
-    // Step 4: Isolation
-    function selectIsolation(ans) {
-        isolationAnswer = ans;
+    /* STEP 4: Select Isolation */
+    function selectIsolation(val) {
+        userAnswers.isolation = val;
         nextStep();
     }
 
-    // Step 6: Cost multi-select
-    function toggleCost(btn, item) {
+    /* STEP 6: Toggle Cost */
+    function toggleCost(btn, costName) {
         btn.classList.toggle('selected');
-        if (selectedCosts.includes(item)) {
-            selectedCosts = selectedCosts.filter(c => c !== item);
+        if (userAnswers.costs.includes(costName)) {
+            userAnswers.costs = userAnswers.costs.filter(c => c !== costName);
         } else {
-            selectedCosts.push(item);
+            userAnswers.costs.push(costName);
         }
-        document.getElementById('costNextBtn').disabled = selectedCosts.length === 0;
+        id('costNextBtn').disabled = userAnswers.costs.length === 0;
     }
 
-    // Step 8: Trend
-    function selectTrend(ans) {
-        trendAnswer = ans;
-        document.getElementById('screen10DynamicText').innerText = 
-            `Hormonal symptoms don't resolve on their own by 'waiting it out.' For most women, the pattern you're in right now — ${trendAnswer} — continues until something actually addresses the root cause. The women who feel best 12 months from now aren't the ones who waited longest. They're the ones who acted at the point you're at right now.`;
+    /* STEP 8: Select Trend */
+    function selectTrend(val) {
+        userAnswers.trend = val;
         nextStep();
     }
 
-    // Step 9: Spillover multi-select
+    /* STEP 9: Toggle Spillover */
     function toggleSpillover(btn, item) {
         btn.classList.toggle('selected');
-        if (selectedSpillover.includes(item)) {
-            selectedSpillover = selectedSpillover.filter(s => s !== item);
+        if (userAnswers.spillovers.includes(item)) {
+            userAnswers.spillovers = userAnswers.spillovers.filter(i => i !== item);
         } else {
-            selectedSpillover.push(item);
+            userAnswers.spillovers.push(item);
         }
-        document.getElementById('spilloverNextBtn').disabled = selectedSpillover.length === 0;
+        id('spilloverNextBtn').disabled = userAnswers.spillovers.length === 0;
     }
 
-    // Step 11: Desired Outcome
-    function selectOutcome(outcome) {
-        desiredOutcome = outcome;
+    /* STEP 11: Select Outcome */
+    function selectOutcome(val) {
+        userAnswers.outcome = val;
         nextStep();
     }
 
-    // Step 13 & 14: Objection surfacing & handling
-    function selectObjection(type) {
-        const titleEl = document.getElementById('objectionCardTitle');
-        const bodyEl = document.getElementById('objectionCardBody');
+    /* STEP 13: Select Objection & Update Step 14 Content */
+    function selectObjection(key) {
+        userAnswers.objection = key;
+        const titleEl = id('objectionCardTitle');
+        const bodyEl = id('objectionCardBody');
 
-        if (type === 'dont_know_what_works') {
-            titleEl.innerText = "You're About to See Something Built Differently.";
-            bodyEl.innerText = "That's exactly why most approaches fail — they throw random fixes at you instead of addressing what's actually driving your symptoms.";
-        } else if (type === 'tried_things') {
-            titleEl.innerText = "You Didn't Fail.";
-            bodyEl.innerText = "Most solutions only address one symptom at a time instead of the root connection between them — so of course they didn't stick.";
-        } else if (type === 'no_time') {
-            titleEl.innerText = "Good News — You Don't Need Hours.";
-            bodyEl.innerText = "This was built for women with 10 minutes or less to spare, because that's most of our members.";
-        } else if (type === 'not_bad_enough') {
-            const count = userSymptoms.length || 3;
-            titleEl.innerText = "Your Body Is Asking for Help.";
-            bodyEl.innerText = `You checked ${count} symptoms. That's not 'not bad enough.' That's your body letting you know it needs support.`;
+        if (key === 'dont_know_what_works') {
+            titleEl.innerText = "It's Not Your Fault You're Confused";
+            bodyEl.innerText = "There is so much conflicting medical advice out there. Our protocol cuts through the noise with practical, root-cause interventions tailored directly to your specific symptom cluster.";
+        } else if (key === 'tried_things') {
+            titleEl.innerText = "Why Other Solutions Didn't Stick";
+            bodyEl.innerText = "Generic advice fails because it doesn't target the underlying hormonal triggers causing your exact symptom mix. Customizing your approach is what makes it sustainable.";
+        } else if (key === 'no_time') {
+            titleEl.innerText = "Designed for Busy Lives";
+            bodyEl.innerText = "You don't need a 2-hour daily routine. Small, high-impact changes engineered to fit into your existing day produce the fastest, most noticeable relief.";
+        } else {
+            titleEl.innerText = "You Don't Have to Just 'Suffer Through'";
+            bodyEl.innerText = "Many women minimize their discomfort until it severely disrupts their lives. Addressing your symptoms early prevents deeper metabolic and emotional strain down the road.";
         }
 
+        // Build Step 15 Summary dynamically
+        buildDiagnosisSummary();
         nextStep();
     }
 
-    // Prepare Step 15 Diagnosis Content when reaching it
-    function renderDiagnosisScreen() {
-        const lineEl = document.getElementById('diagValidationLine');
-        if (isolationAnswer.includes("doctor brushed")) {
-            lineEl.innerText = "You weren't being dramatic. Here's what's actually happening.";
-        } else if (isolationAnswer.includes("haven't told anyone")) {
-            lineEl.innerText = "You're not the only one hiding this.";
-        } else if (isolationAnswer.includes("Friends/family")) {
-            lineEl.innerText = "They don't get it because they're not living in your body. We do.";
-        } else {
-            lineEl.innerText = "Here's what your support system might be missing.";
-        }
-
-        const count = userSymptoms.length || 4;
-        const top2 = userSymptoms.slice(0, 2).join(" and ") || "sleep disruption and anxiety";
-        document.getElementById('diagSymptomRecognition').innerText = 
-            `You checked ${count} out of 9 common perimenopause symptoms — including ${top2}. 94% of women who complete this quiz have 4 or more before finding relief.`;
-
-        const titleEl = document.getElementById('diagClusterTitle');
-        const bodyEl = document.getElementById('diagClusterBody');
-
-        if (dominantCluster === 'Sleep') {
-            titleEl.innerText = "Sleep Cluster Profile";
-            bodyEl.innerText = "Your body is stuck in a cycle where falling — or staying — asleep has become unpredictable. This is your nervous system responding to shifting hormone levels, which is why sleep hygiene tricks and even melatonin often stop working.";
-        } else if (dominantCluster === 'Emotional') {
-            titleEl.innerText = "Emotional Shift Profile";
-            bodyEl.innerText = "Your nervous system is running in a heightened state more often than it should. This is a physiological shift in mood regulation — not you being 'too sensitive.'";
-        } else if (dominantCluster === 'Mental') {
-            titleEl.innerText = "Mental Clarity Profile";
-            bodyEl.innerText = "What you're calling 'brain fog' is a real, measurable shift tied to hormonal fluctuation — not a sign something is wrong with your mind.";
-        } else {
-            titleEl.innerText = "Physical & Metabolic Profile";
-            bodyEl.innerText = "Your body is holding onto weight and reacting in ways that feel out of your control — because they are. Diet and exercise alone can't override a shift this significant.";
-        }
-
-        const spilloverStr = selectedSpillover.join(", ") || "your daily wellbeing";
-        document.getElementById('diagRootCause').innerText = 
-            `You told us this is already affecting ${spilloverStr}. Most approaches treat symptoms one at a time. But ${dominantCluster || 'hormonal'} symptoms share a root driver: the relationship between your hormones and your stress response. Treat the connection, and things start shifting together.`;
-    }
-
-    // Hook render into step jump
-    const origJump = jumpToStep;
-    jumpToStep = function(target) {
-        origJump(target);
-        if (target === 15) {
-            renderDiagnosisScreen();
-        }
-    };
-
-    /* WARRIORBABE STYLE LOADING SEQUENCE WITH STEPS 17-19 POPUP INTERSTITIALS */
-    let currentLoadingProgress = 0;
-    let loadingTimer = null;
-    let popupStepIndex = 0; // 0: Q17, 1: Q18, 2: Q19
-
-    function startLoadingSequence() {
-        jumpToStep(20);
-        document.getElementById('appHeader').style.display = 'none';
-        currentLoadingProgress = 0;
-        popupStepIndex = 0;
-        resumeLoadingProgress();
-    }
-
-    function resumeLoadingProgress() {
-        const fillBar = document.getElementById('wbLoaderFill');
+    function buildDiagnosisSummary() {
+        const count = userAnswers.symptoms.length || 1;
+        id('diagValidationLine').innerText = `You identified ${count} key symptom${count > 1 ? 's' : ''}.`;
+        id('diagSymptomRecognition').innerText = `Your experience with ${userAnswers.symptoms.slice(0, 3).join(', ') || 'these symptoms'} indicates an active hormonal transition.`;
+        id('diagClusterTitle').innerText = `${userAnswers.dominantCluster || 'Primary'} System Focus`;
+        id('diagClusterBody').innerText = `Your responses show that ${userAnswers.dominantClusterLabel || 'your symptoms'} are currently taking the highest toll on your day-to-day balance.`;
+        id('diagRootCause').innerText = `Root Cause Insight: Fluctuation in estrogen and cortisol patterns is aggravating these specific pathways.`;
         
-        loadingTimer = setInterval(() => {
-            currentLoadingProgress += 1;
-            fillBar.style.width = currentLoadingProgress + '%';
+        if (id('timelineDominantCluster')) {
+            id('timelineDominantCluster').innerText = `${userAnswers.dominantCluster || 'primary'} symptoms`;
+        }
+    }
 
-            // Checkmark triggers
-            if (currentLoadingProgress >= 25) document.getElementById('check1').classList.add('active');
-            if (currentLoadingProgress >= 50) document.getElementById('check2').classList.add('active');
-            if (currentLoadingProgress >= 75) document.getElementById('check3').classList.add('active');
-            if (currentLoadingProgress >= 95) document.getElementById('check4').classList.add('active');
+    /* LOADING & MODAL SEQUENCING (STEPS 16 -> 21) */
+    function startLoadingSequence() {
+        showStep(20); // Show background loader screen
+        
+        let progress = 0;
+        const loaderFill = id('loaderFill');
+        
+        // Progress bar simulation
+        const interval = setInterval(() => {
+            progress += 1;
+            if (loaderFill) loaderFill.style.width = `${progress}%`;
 
-            // Trigger Popups at 35%, 65%, 85%
-            if (currentLoadingProgress === 35 && popupStepIndex === 0) {
-                pauseAndShowPopup('modalQ17');
-            } else if (currentLoadingProgress === 65 && popupStepIndex === 1) {
-                pauseAndShowPopup('modalQ18');
-            } else if (currentLoadingProgress === 85 && popupStepIndex === 2) {
-                pauseAndShowPopup('modalQ19');
-            }
-
-            if (currentLoadingProgress >= 100) {
-                clearInterval(loadingTimer);
+            if (progress === 30) {
+                id('chk1').classList.add('active');
+                pauseForModal('modalStep17');
+                clearInterval(interval);
+            } else if (progress === 60) {
+                id('chk2').classList.add('active');
+                pauseForModal('modalStep18');
+                clearInterval(interval);
+            } else if (progress === 90) {
+                id('chk3').classList.add('active');
+                pauseForModal('modalStep19');
+                clearInterval(interval);
+            } else if (progress >= 100) {
+                clearInterval(interval);
                 setTimeout(() => {
-                    // Final Offer Bridge Redirect
-                    window.location.href = "https://yourdomain.com/personalized-calm-reset-plan";
-                }, 500);
+                    showStep(21); // Navigate to Pitch Screen
+                }, 400);
             }
-        }, 60);
+        }, 30);
+
+        window.currentLoaderProgress = progress;
+        window.loaderInterval = interval;
     }
 
-    function pauseAndShowPopup(qId) {
-        clearInterval(loadingTimer);
-        document.querySelectorAll('.modal-question-block').forEach(el => el.style.display = 'none');
-        document.getElementById(qId).style.display = 'block';
-        document.getElementById('loadingModalOverlay').style.display = 'flex';
+    function resumeLoadingSequence(startProgress) {
+        let progress = startProgress;
+        const loaderFill = id('loaderFill');
+
+        window.loaderInterval = setInterval(() => {
+            progress += 1;
+            if (loaderFill) loaderFill.style.width = `${progress}%`;
+
+            if (progress === 60 && startProgress < 60) {
+                id('chk2').classList.add('active');
+                pauseForModal('modalStep18');
+                clearInterval(window.loaderInterval);
+            } else if (progress === 90 && startProgress < 90) {
+                id('chk3').classList.add('active');
+                pauseForModal('modalStep19');
+                clearInterval(window.loaderInterval);
+            } else if (progress >= 100) {
+                clearInterval(window.loaderInterval);
+                setTimeout(() => {
+                    showStep(21);
+                }, 400);
+            }
+        }, 30);
     }
 
-    function answerModalQuestion() {
-        document.getElementById('loadingModalOverlay').style.display = 'none';
-        popupStepIndex++;
-        resumeLoadingProgress();
+    function pauseForModal(modalId) {
+        const modalOverlay = id('loadingModal');
+        document.querySelectorAll('.modal-question').forEach(m => m.style.display = 'none');
+        id(modalId).style.display = 'block';
+        modalOverlay.style.display = 'flex';
+    }
+
+    function closeModal() {
+        id('loadingModal').style.display = 'none';
+    }
+
+    /* Handlers for Modal Options */
+    function onAgeSelected(val) {
+        userAnswers.age = val;
+        closeModal();
+        resumeLoadingSequence(31);
+    }
+
+    function onSupplementSelected(val) {
+        userAnswers.supplements = val;
+        closeModal();
+        resumeLoadingSequence(61);
+    }
+
+    function onTimeSelected(val) {
+        userAnswers.dailyTime = val;
+        closeModal();
+        resumeLoadingSequence(91);
     }
 </script>
 
