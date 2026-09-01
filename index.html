@@ -134,42 +134,6 @@
             font-size: 8px;
         }
 
-        /* Social Badges */
-        .badges-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .badge-box {
-            border: 1.5px solid var(--primary);
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 12px 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 11px;
-            font-weight: 800;
-            color: #1E293B;
-            line-height: 1.25;
-            box-shadow: 0 2px 8px rgba(236, 72, 153, 0.05);
-        }
-
-        .badge-box span {
-            display: block;
-            color: var(--text-muted);
-            font-weight: 600;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .badge-icon {
-            font-size: 20px;
-        }
-
         /* Screen Animations */
         .step-content {
             display: none;
@@ -187,26 +151,6 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        h1.hero-title {
-            font-size: 30px;
-            font-weight: 800;
-            color: var(--primary);
-            text-align: center;
-            line-height: 1.25;
-            margin-bottom: 14px;
-            letter-spacing: -0.02em;
-        }
-
-        p.hero-subtitle {
-            font-size: 13px;
-            font-weight: 700;
-            color: #64748B;
-            text-align: center;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 32px;
-        }
-
         h2 {
             font-size: 22px;
             font-weight: 800;
@@ -221,6 +165,48 @@
             color: #64748B;
             text-align: center;
             margin-bottom: 24px;
+        }
+
+        /* Age Selector Grid Styles */
+        .age-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .age-card {
+            background: #FFFFFF;
+            border: 2px solid #E2E8F0;
+            border-radius: 20px;
+            padding: 16px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .age-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.12);
+        }
+
+        .age-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+            border: 3px solid #F1F5F9;
+        }
+
+        .age-label {
+            font-size: 16px;
+            font-weight: 800;
+            color: #1E293B;
         }
 
         /* Options Grid */
@@ -537,19 +523,6 @@
             0% { opacity: 0; transform: scale(0.95); }
             100% { opacity: 1; transform: scale(1); }
         }
-
-        .legal-terms {
-            margin-top: 28px;
-            font-size: 11px;
-            color: var(--text-muted);
-            text-align: center;
-            line-height: 1.6;
-        }
-
-        .legal-terms a {
-            color: var(--text-muted);
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
@@ -573,8 +546,32 @@
         </div>
     </div>
 
+    <!-- SCREEN 0: Age Selection Section -->
+    <div class="step-content active" data-step="0">
+        <h2>Select Your Age Range</h2>
+        <p class="subtitle">To help tailor your personalized roadmap</p>
+        <div class="age-grid">
+            <div class="age-card" onclick="selectAge('30-39')">
+                <img src="female-18.3hkk6nkxlip9m_2.webp" alt="30-39 years old" class="age-img">
+                <span class="age-label">30–39</span>
+            </div>
+            <div class="age-card" onclick="selectAge('40-49')">
+                <img src="female-35.1_589sr8-6i9m_2.webp" alt="40-49 years old" class="age-img">
+                <span class="age-label">40–49</span>
+            </div>
+            <div class="age-card" onclick="selectAge('50-59')">
+                <img src="female-45.3ek8q4ody9qik_2.webp" alt="50-59 years old" class="age-img">
+                <span class="age-label">50–59</span>
+            </div>
+            <div class="age-card" onclick="selectAge('60+')">
+                <img src="female-55.1-t6r5mj_odp0_2.webp" alt="60+ years old" class="age-img">
+                <span class="age-label">60+</span>
+            </div>
+        </div>
+    </div>
+
     <!-- SCREEN 1: Symptom Checklist -->
-    <div class="step-content active" data-step="1">
+    <div class="step-content" data-step="1">
         <h2>Check off any of these you've experienced — even just once.</h2>
         <p class="subtitle">Select all that apply to you</p>
         <div class="options-grid">
@@ -620,16 +617,7 @@
         </button>
     </div>
 
-    <!-- SCREEN 2: Interstitial — It's Not Random -->
-    <div class="step-content" data-step="2">
-        <div class="info-card">
-            <h3>These Symptoms Aren't a Coincidence.</h3>
-            <p>Most women think of these as separate problems — bad sleep here, a stressful week there, weight that 'just happens' with age. They're not separate. They're connected by the same underlying shift happening in your body right now. And most women don't realize that until years later.</p>
-        </div>
-        <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
-    </div>
-
-    <!-- SCREEN 3: Dominant Cluster -->
+    <!-- SCREEN 3: Dominant Cluster (Question 2) -->
     <div class="step-content" data-step="3">
         <h2>Of everything you checked, which is hitting you hardest right now?</h2>
         <div class="options-grid">
@@ -646,6 +634,15 @@
                 <span class="option-content"><span class="option-btn-icon">🌡️</span> Physical — weight, hair, joints, hot flashes, periods</span>
             </button>
         </div>
+    </div>
+
+    <!-- SCREEN 2: Interstitial — It's Not Random (Moved After Dominant Cluster Question) -->
+    <div class="step-content" data-step="2">
+        <div class="info-card">
+            <h3>These Symptoms Aren't a Coincidence.</h3>
+            <p>Most women think of these as separate problems — bad sleep here, a stressful week there, weight that 'just happens' with age. They're not separate. They're connected by the same underlying shift happening in your body right now. And most women don't realize that until years later.</p>
+        </div>
+        <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
     <!-- SCREEN 4: Isolation Question -->
@@ -901,10 +898,11 @@
 </div>
 
 <script>
-    let currentStep = 1;
+    let currentStep = 0;
     const totalSteps = 16;
     
     // User responses storage
+    let selectedAge = '';
     let userSymptoms = [];
     let dominantCluster = '';
     let dominantClusterLabel = '';
@@ -939,9 +937,15 @@
     }
 
     function prevStep() {
-        if (currentStep > 1) {
+        if (currentStep > 0) {
             jumpToStep(currentStep - 1);
         }
+    }
+
+    // Step 0: Age selection
+    function selectAge(ageRange) {
+        selectedAge = ageRange;
+        jumpToStep(1);
     }
 
     // Step 1: Multi-select symptoms
@@ -955,7 +959,7 @@
         document.getElementById('symptomNextBtn').disabled = userSymptoms.length === 0;
     }
 
-    // Step 3: Dominant cluster
+    // Step 3: Dominant cluster (Question 2)
     function selectCluster(clusterKey, label) {
         dominantCluster = clusterKey;
         dominantClusterLabel = label;
@@ -967,7 +971,8 @@
         // Update Section 16 timeline label
         document.getElementById('timelineDominantCluster').innerText = dominantClusterLabel;
 
-        nextStep();
+        // Advance to Screen 2 (Interstitial "These Symptoms Aren't a Coincidence")
+        jumpToStep(2);
     }
 
     // Step 4: Isolation
