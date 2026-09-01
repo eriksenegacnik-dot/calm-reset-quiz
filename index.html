@@ -15,6 +15,8 @@
             --text-muted: #64748B;
             --border-color: #E2E8F0;
             --radius: 20px;
+            --success: #10B981;
+            --warning: #F59E0B;
         }
 
         * {
@@ -343,6 +345,7 @@
             align-items: center;
             gap: 8px;
             margin-top: 20px;
+            text-decoration: none;
         }
 
         .primary-cta-btn:hover {
@@ -663,6 +666,330 @@
             transition: width 0.1s linear;
         }
 
+        /* Modal Overlay for Micro Questions */
+        .loading-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .loading-modal-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 28px 24px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes modalPop {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* SALES PAGE SPECIFIC STYLES (WARRIOR BABE STYLE) */
+        .sales-page {
+            display: none;
+            width: 100%;
+        }
+
+        .banner-urgency {
+            background: #1E293B;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .banner-timer {
+            color: #F43F5E;
+            font-weight: 900;
+        }
+
+        .sales-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .sales-tag {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .sales-title {
+            font-size: 26px;
+            font-weight: 900;
+            line-height: 1.25;
+            color: #0F172A;
+            margin-bottom: 12px;
+        }
+
+        .sales-subtitle {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        /* Offer Stack List */
+        .stack-box {
+            background: #FFFFFF;
+            border: 2px solid var(--primary-light);
+            border-radius: 20px;
+            padding: 24px 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.06);
+        }
+
+        .stack-header-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0F172A;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #F1F5F9;
+        }
+
+        .stack-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .stack-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stack-icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .stack-details h4 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 4px;
+        }
+
+        .stack-details p {
+            font-size: 13px;
+            color: #64748B;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .stack-value {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        /* Warrior Babe Pricing Table Stack */
+        .pricing-anchor-card {
+            background: #FFFFFF;
+            border: 2px solid var(--primary);
+            border-radius: 24px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(236, 72, 153, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ribbon-popular {
+            position: absolute;
+            top: 16px;
+            right: -32px;
+            background: var(--primary);
+            color: white;
+            font-size: 10px;
+            font-weight: 900;
+            padding: 4px 36px;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .val-total-strike {
+            font-size: 16px;
+            color: #94A3B8;
+            text-decoration: line-through;
+            font-weight: 700;
+        }
+
+        .val-today-price {
+            font-size: 42px;
+            font-weight: 900;
+            color: #0F172A;
+            line-height: 1;
+            margin: 8px 0;
+        }
+
+        .val-today-price span {
+            font-size: 16px;
+            font-weight: 700;
+            color: #64748B;
+        }
+
+        .guarantee-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px dashed #E2E8F0;
+            font-size: 13px;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        /* Testimonials Slider/Cards */
+        .testimonial-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border: 1px solid #F1F5F9;
+        }
+
+        .stars {
+            color: #F59E0B;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .testimonial-text {
+            font-size: 13px;
+            color: #334155;
+            line-height: 1.5;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-author {
+            font-size: 12px;
+            font-weight: 800;
+            color: #0F172A;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .verified-check {
+            color: #10B981;
+            font-size: 12px;
+        }
+
+        /* FAQ Section Accordion */
+        .faq-section {
+            margin-top: 32px;
+        }
+
+        .faq-item {
+            background: #FFFFFF;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
+        }
+
+        .faq-question {
+            padding: 16px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #0F172A;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 16px 16px 16px;
+            font-size: 13px;
+            color: #64748B;
+            line-height: 1.5;
+            display: none;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .sticky-mobile-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #FFFFFF;
+            padding: 12px 16px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+            display: none;
+        }
+
+        .social-proof-toast {
+            position: fixed;
+            bottom: 80px;
+            left: 16px;
+            background: #1E293B;
+            color: #FFFFFF;
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+            z-index: 998;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .social-proof-toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .legal-terms {
             margin-top: 28px;
             font-size: 11px;
@@ -675,36 +1002,14 @@
             color: var(--text-muted);
             text-decoration: underline;
         }
-
-        .pricing-card {
-            background: #FFFFFF;
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .price-badge {
-            background: var(--primary-light);
-            color: var(--primary);
-            font-weight: 800;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            display: inline-block;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
     </style>
 </head>
 <body>
 
 <div class="quiz-container">
 
-    <!-- SCREEN 0: NEW LANDING PAGE -->
+    <!-- SCREEN 0: LANDING PAGE -->
     <div class="step-content active" data-step="0">
-        <!-- Top Proof Badges -->
         <div class="lander-badges">
             <div class="lander-badge-card">
                 <span class="lander-badge-icon">🎯</span>
@@ -722,22 +1027,19 @@
             </div>
         </div>
 
-        <!-- Headline & Subhead -->
         <h1 class="lander-headline">Find Out Why You Don't Feel Like Yourself Anymore</h1>
         <p class="lander-subhead">Take the free 60-second quiz to get your personalized plan for better sleep, energy & hormonal balance</p>
 
-        <!-- CTA Button -->
         <button class="primary-cta-btn" onclick="nextStep()" style="font-size: 18px; padding: 20px 32px;">
             <span>Start My Quiz</span> <span>›</span>
         </button>
 
-        <!-- Dynamic Disclaimer Terms -->
         <p class="lander-disclaimer">
-            By clicking 'Start My Quiz' you agree to the <a href="#">Terms of Use and Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a> (including the use of tracking technologies, e.g., Meta Pixel).
+            By clicking 'Start My Quiz' you agree to the <a href="#">Terms of Use and Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.
         </p>
     </div>
 
-    <!-- Top Navigation Header (hidden on Screen 0) -->
+    <!-- Top Navigation Header (hidden on Screen 0 & Sales Page) -->
     <div class="app-header" id="appHeader" style="display: none;">
         <div class="header-top-bar">
             <button class="back-btn" onclick="prevStep()">‹</button>
@@ -916,252 +1218,508 @@
             <button class="option-btn" onclick="selectTrend('getting worse')">Getting worse</button>
             <button class="option-btn" onclick="selectTrend('staying about the same')">Staying about the same</button>
             <button class="option-btn" onclick="selectTrend('unpredictable — good weeks, then crashing')">Unpredictable — good weeks, then it crashes</button>
-            <button class="option-btn" onclick="selectTrend('becoming your new normal')">Hard to tell, it's become the new normal</button>
+            <button class="option-btn" onclick="selectTrend('becoming my new normal')">Becoming my new normal</button>
         </div>
     </div>
 
-    <!-- SCREEN 10: Commit Assessment Interstitial -->
+    <!-- SCREEN 10: Summary Assessment Preview -->
     <div class="step-content" data-step="10">
-        <div class="info-card">
-            <h3>Are You Ready to Reset Your Hormone Balance?</h3>
-            <p>Our 28-day Calm Reset Protocol is designed to deliver measurable improvements in deep sleep, anxiety relief, and mental clarity within 4 weeks.</p>
-        </div>
-        <button class="primary-cta-btn" onclick="startAnalysis()">Analyze My Results →</button>
-    </div>
+        <h2>Your Hormonal Stress Summary</h2>
+        <p class="subtitle">Based on your responses across age <span id="summaryAgeDisplay">40-45</span></p>
 
-    <!-- SCREEN 11: LOADING / ANALYSIS ANIMATION -->
-    <div class="step-content" data-step="11">
-        <div class="loader-card">
-            <div class="spinner-ring-wrapper">
-                <svg class="spinner-svg" viewBox="0 0 50 50">
-                    <circle class="spinner-track" cx="25" cy="25" r="20"></circle>
-                    <circle class="spinner-head" cx="25" cy="25" r="20"></circle>
-                </svg>
-            </div>
-            <h3 class="wb-loader-title">Analyzing Your Answers...</h3>
-            <div class="wb-checklist">
-                <div class="wb-check-item" id="check1">
-                    <div class="wb-check-icon">✓</div>
-                    <span>Processing symptom markers</span>
-                </div>
-                <div class="wb-check-item" id="check2">
-                    <div class="wb-check-icon">✓</div>
-                    <span>Mapping hormonal stress profile</span>
-                </div>
-                <div class="wb-check-item" id="check3">
-                    <div class="wb-check-icon">✓</div>
-                    <span>Generating custom 28-day reset plan</span>
-                </div>
-            </div>
-            <div class="wb-progress-bar-bg">
-                <div class="wb-progress-bar-fill" id="loaderProgressBar"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SCREEN 12: PERSONALIZED RESULTS SUMMARY -->
-    <div class="step-content" data-step="12">
-        <h2 style="text-align: left; margin-bottom: 16px;">Your Hormonal Assessment</h2>
-        
         <div class="summary-main-card">
             <div class="summary-card-header">
-                <span class="summary-card-title">Hormonal Strain Level</span>
-                <span class="summary-badge-high">High Shift</span>
+                <span class="summary-card-title">Hormonal Strain Score</span>
+                <span class="summary-badge-high">High Alert</span>
             </div>
-
+            
             <div class="meter-container">
+                <div class="meter-tooltip" id="meterTooltip">84% Elevate</div>
                 <div class="meter-bar">
-                    <div class="meter-pointer" id="meterPointer">
-                        <div class="meter-tooltip">82% High Strain</div>
-                    </div>
+                    <div class="meter-pointer" id="meterPointer"></div>
                 </div>
                 <div class="meter-labels">
-                    <span>Mild</span>
+                    <span>Balanced</span>
                     <span>Moderate</span>
-                    <span>High Shift</span>
+                    <span>Severe Strain</span>
                 </div>
             </div>
 
             <div class="summary-alert-box">
                 <div class="summary-alert-icon">!</div>
                 <div class="summary-alert-text">
-                    <strong>Primary Focus Target: <span id="resPrimaryCluster">Sleep & Recovery</span></strong>
-                    Your answers show your body is undergoing a severe cortisol-estrogen shift requiring target intervention.
+                    <strong>Primary Trigger: <span id="summaryTriggerDisplay">Sleep & Cortisol Dysregulation</span></strong>
+                    Your responses indicate cortisol peaks interfering with deep REM sleep and natural progesterone recovery.
                 </div>
             </div>
         </div>
 
         <div class="summary-grid">
             <div class="summary-grid-card">
-                <div class="grid-card-icon">👤</div>
+                <div class="grid-card-icon">⚡</div>
                 <div class="grid-card-info">
-                    <h5>Age Bracket</h5>
-                    <p id="resAgeBracket">40 – 45</p>
+                    <h5>Metabolic Status</h5>
+                    <p id="summaryMetabolic">Sluggish / Stalled</p>
                 </div>
             </div>
             <div class="summary-grid-card">
-                <div class="grid-card-icon">⚡</div>
+                <div class="grid-card-icon">🧠</div>
                 <div class="grid-card-info">
-                    <h5>Symptoms</h5>
-                    <p id="resSymptomCount">4 Tracked</p>
+                    <h5>Focus & Clarity</h5>
+                    <p id="summaryClarity">High Brain Fog</p>
                 </div>
             </div>
         </div>
 
-        <button class="primary-cta-btn" onclick="nextStep()">See My 28-Day Plan →</button>
+        <button class="primary-cta-btn" onclick="startWarriorBabeLoader()">
+            <span>Generate My Reset Blueprint</span> <span>›</span>
+        </button>
     </div>
 
-    <!-- SCREEN 13: SALES OFFER CARD -->
-    <div class="step-content" data-step="13">
-        <h2>Your Personalized 28-Day Calm Reset Challenge</h2>
-        <p class="subtitle">Designed specifically for your hormonal profile</p>
+    <!-- SCREEN 11: WARRIOR BABE STYLE PROGRESS LOADER -->
+    <div class="step-content" data-step="11">
+        <div class="loader-card">
+            <div class="spinner-ring-wrapper">
+                <svg class="spinner-svg" viewBox="0 0 100 100">
+                    <circle class="spinner-track" cx="50" cy="50" r="42"></circle>
+                    <circle class="spinner-head" cx="50" cy="50" r="42"></circle>
+                </svg>
+            </div>
+            <h3 class="wb-loader-title" id="wbLoaderText">Analyzing Your Answers...</h3>
+            
+            <div class="wb-checklist">
+                <div class="wb-check-item" id="chk1">
+                    <div class="wb-check-icon">✓</div>
+                    <span>Evaluating hormonal risk markers...</span>
+                </div>
+                <div class="wb-check-item" id="chk2">
+                    <div class="wb-check-icon">✓</div>
+                    <span>Mapping circadian cortisol response...</span>
+                </div>
+                <div class="wb-check-item" id="chk3">
+                    <div class="wb-check-icon">✓</div>
+                    <span>Structuring 28-day daily protocol...</span>
+                </div>
+            </div>
 
-        <div class="pricing-card">
-            <span class="price-badge">Custom Plan Ready</span>
-            <h3 style="font-size: 24px; color: #000; margin-bottom: 12px;">28-Day Hormone Reset</h3>
-            <p style="font-size: 14px; color: #64748B; margin-bottom: 20px;">Daily guided protocols to restore sleep, mental clarity, and metabolic function.</p>
-            <button class="primary-cta-btn" onclick="alert('Redirecting to Checkout...')">Claim My Custom Plan</button>
+            <div class="wb-progress-bar-bg">
+                <div class="wb-progress-bar-fill" id="wbProgressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SALES PAGE CONTAINER -->
+    <div class="sales-page" id="salesPage">
+        <!-- Urgency Top Banner -->
+        <div class="banner-urgency">
+            <span>⚡ Reserved Custom Plan Expires In:</span>
+            <span class="banner-timer" id="timer">14:59</span>
         </div>
 
-        <p class="legal-terms">
-            Guaranteed 30-day money-back guarantee. <a href="#">Terms & Conditions</a> apply.
-        </p>
+        <div class="sales-header">
+            <span class="sales-tag">Your Custom Protocol Is Ready</span>
+            <h1 class="sales-title">Reset Your Hormones & Reclaim Your Energy in 28 Days</h1>
+            <p class="sales-subtitle">A science-backed, step-by-step daily system tailored specifically for women dealing with <span id="salesDynamicFocus" style="color: var(--primary); font-weight: 800;">sleep disruption & brain fog</span>.</p>
+        </div>
+
+        <!-- Dynamic Summary Box -->
+        <div class="info-card" style="border-left-color: #10B981; margin-bottom: 24px;">
+            <h3 style="color: #10B981;">Quiz Results Snapshot:</h3>
+            <p>Target Age Group: <strong id="salesAge">40 - 45</strong><br>
+            Primary Priority: <strong id="salesPriority">Sleep Quality</strong><br>
+            Estimated Protocol Match: <strong style="color: #10B981;">98.4% Optimal</strong></p>
+        </div>
+
+        <!-- Offer Stack Section -->
+        <div class="stack-box">
+            <h3 class="stack-header-title">Here Is Everything Included In Your Stack Today:</h3>
+            
+            <div class="stack-item">
+                <div class="stack-icon-box">📘</div>
+                <div class="stack-details">
+                    <h4>1. The 28-Day Calm Reset Blueprint</h4>
+                    <p>Your step-by-step daily roadmap to naturally balance cortisol, smooth out hormone drops, and restore deep restorative sleep without restrictive diets.</p>
+                    <span class="stack-value">Regular Price: $97 (Included)</span>
+                </div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-icon-box">🎧</div>
+                <div class="stack-details">
+                    <h4>2. 5-Minute Nervous System Audio Resets</h4>
+                    <p>On-demand guided audio tracks to shut off vagus-nerve stress spikes, stop 3 AM panic wake-ups, and melt afternoon anxiety fast.</p>
+                    <span class="stack-value">Regular Price: $47 (FREE Today)</span>
+                </div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-icon-box">🥗</div>
+                <div class="stack-details">
+                    <h4>3. Cortisol & Hormone Meal Alignment Guide</h4>
+                    <p>Quick 15-minute recipes engineered to optimize insulin and thyroid function so you can eliminate stubborn belly bloat.</p>
+                    <span class="stack-value">Regular Price: $67 (FREE Today)</span>
+                </div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-icon-box">👥</div>
+                <div class="stack-details">
+                    <h4>4. Private VIP Sisterhood & Daily Support</h4>
+                    <p>Direct daily accountability and community support from specialists who actually listen and understand what you are going through.</p>
+                    <span class="stack-value">Regular Price: $86 (FREE Today)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Warrior Babe Pricing Table Anchor -->
+        <div class="pricing-anchor-card">
+            <div class="ribbon-popular">87% OFF</div>
+            <p style="font-size: 13px; font-weight: 800; color: #64748B; text-transform: uppercase;">Total Value: $297</p>
+            <div class="val-total-strike">$297</div>
+            <div class="val-today-price">$37 <span>One-Time Only</span></div>
+            <p style="font-size: 12px; color: #10B981; font-weight: 700; margin-bottom: 16px;">✔ Digital Instant Access • No Recurring Subscriptions</p>
+
+            <a href="https://your-checkout-link.com" class="primary-cta-btn" style="font-size: 19px; padding: 20px;">
+                <span>GET MY 28-DAY SYSTEM NOW</span> <span>→</span>
+            </a>
+
+            <div class="guarantee-badge">
+                <span style="font-size: 24px;">🛡️</span>
+                <span style="text-align: left;"><strong>60-Day Risk-Free Guarantee:</strong> If you don't feel calmer, more energized, and rested, get 100% of your money back.</span>
+            </div>
+        </div>
+
+        <!-- Social Proof / Testimonials -->
+        <div style="margin-top: 32px;">
+            <h3 style="text-align: center; font-size: 18px; margin-bottom: 16px;">Real Results From Real Women</h3>
+            
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"By day 4 of following the audio resets and evening protocol, I slept 7 hours straight for the first time in 2 years. I finally feel like myself again!"</p>
+                <div class="testimonial-author">Sarah M., 44 <span class="verified-check">✔ Verified Buyer</span></div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"My doctor kept telling me it was just stress. This 28-day program explained EXACTLY why my body was reacting this way and fixed my afternoon crashes."</p>
+                <div class="testimonial-author">Elena R., 51 <span class="verified-check">✔ Verified Buyer</span></div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h3 style="text-align: center; font-size: 18px; margin-bottom: 16px;">Frequently Asked Questions</h3>
+            
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">How fast will I receive access? <span>+</span></div>
+                <div class="faq-answer">Instantly! As soon as your checkout is complete, you will receive an email with your direct login to download the guide and audio tracks immediately.</div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Is this a monthly subscription? <span>+</span></div>
+                <div class="faq-answer">No. This is a one-time payment of $37. There are zero hidden fees or automatic recurring charges.</div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">What if I don't have hours to spare each day? <span>+</span></div>
+                <div class="faq-answer">The system is built for busy women. Daily routines take less than 10 to 15 minutes to implement.</div>
+            </div>
+        </div>
+
+        <!-- Bottom Disclaimer -->
+        <div class="legal-terms">
+            <p>Statements on this site have not been evaluated by the FDA. Products are not intended to diagnose, treat, cure, or prevent any disease. Results may vary.</p>
+            <p style="margin-top: 8px;"><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+        </div>
+    </div>
+
+    <!-- Micro-Modal Popup Overlay (used for Quiz Interstitials) -->
+    <div class="loading-modal-overlay" id="loadingModal">
+        <div class="loading-modal-card">
+            <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 12px; color: #0F172A;" id="modalTitle">Quick Question...</h3>
+            <p style="font-size: 14px; color: #64748B; margin-bottom: 20px; line-height: 1.5;" id="modalDesc">Are you ready to commit 10 minutes a day to restoring your baseline calm?</p>
+            <button class="primary-cta-btn" onclick="closeModalNext()">Yes, I'm Ready →</button>
+        </div>
+    </div>
+
+    <!-- Social Proof Toast -->
+    <div class="social-proof-toast" id="socialToast">
+        <span>🎉</span> <span id="toastText">Jessica from Ohio just claimed her 28-Day Protocol</span>
+    </div>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-mobile-cta" id="stickyCta">
+        <a href="https://your-checkout-link.com" class="primary-cta-btn" style="margin-top:0; padding: 14px;">
+            <span>CLAIM MY $37 PLAN</span> <span>→</span>
+        </a>
     </div>
 
 </div>
 
 <script>
-    const quizData = {
+    // State Tracking
+    let currentStep = 0;
+    const totalQuizSteps = 10;
+    
+    let userData = {
         age: '',
         symptoms: [],
-        cluster: '',
+        clusterName: '',
         clusterDetail: '',
         isolation: '',
         costs: [],
         trend: ''
     };
 
-    let currentStep = 0;
-    const totalSteps = 13;
+    // DOM Elements
+    const appHeader = document.getElementById('appHeader');
+    const timelineProgress = document.getElementById('timelineProgress');
 
-    function showStep(step) {
-        document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
-        const activeEl = document.querySelector(`[data-step="${step}"]`);
-        if (activeEl) activeEl.classList.add('active');
-
-        const appHeader = document.getElementById('appHeader');
-        if (step > 0 && step < 11) {
-            appHeader.style.display = 'flex';
-            updateProgressBar(step);
-        } else {
+    function updateHeaderProgress() {
+        if (currentStep === 0 || currentStep > 10) {
             appHeader.style.display = 'none';
+            return;
         }
-    }
+        
+        appHeader.style.display = 'flex';
+        // Calculate step progress percentage
+        const progressPct = ((currentStep - 1) / (totalQuizSteps - 1)) * 100;
+        timelineProgress.style.width = `${progressPct}%`;
 
-    function updateProgressBar(step) {
-        const progressPercent = Math.min(((step) / 10) * 100, 100);
-        document.getElementById('timelineProgress').style.width = `${progressPercent}%`;
-
+        // Dots highlighting
         for (let i = 1; i <= 4; i++) {
             const dot = document.getElementById(`dot${i}`);
-            if (dot) {
-                if (step >= i * 2.5) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
+            if (i <= Math.ceil((currentStep / totalQuizSteps) * 4)) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
             }
         }
     }
 
+    function showStep(stepIndex) {
+        document.querySelectorAll('.step-content').forEach(el => {
+            el.classList.remove('active');
+        });
+        
+        const target = document.querySelector(`.step-content[data-step="${stepIndex}"]`);
+        if (target) {
+            target.classList.add('active');
+        }
+        currentStep = stepIndex;
+        updateHeaderProgress();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     function nextStep() {
-        if (currentStep < totalSteps) {
-            currentStep++;
-            showStep(currentStep);
+        if (currentStep < 11) {
+            showStep(currentStep + 1);
         }
     }
 
     function prevStep() {
         if (currentStep > 0) {
-            currentStep--;
-            showStep(currentStep);
+            showStep(currentStep - 1);
         }
     }
 
-    function selectAge(age) {
-        quizData.age = age;
+    // Step 1: Age Selection
+    function selectAge(ageVal) {
+        userData.age = ageVal;
         nextStep();
     }
 
-    function toggleSymptom(btn, symptom) {
+    // Step 2: Symptom Toggle
+    function toggleSymptom(btn, symptomName) {
         btn.classList.toggle('selected');
-        if (quizData.symptoms.includes(symptom)) {
-            quizData.symptoms = quizData.symptoms.filter(s => s !== symptom);
+        if (btn.classList.contains('selected')) {
+            userData.symptoms.push(symptomName);
         } else {
-            quizData.symptoms.push(symptom);
+            userData.symptoms = userData.symptoms.filter(s => s !== symptomName);
         }
-        document.getElementById('symptomNextBtn').disabled = quizData.symptoms.length === 0;
+        
+        const nextBtn = document.getElementById('symptomNextBtn');
+        nextBtn.disabled = userData.symptoms.length === 0;
     }
 
-    function selectCluster(cluster, detail) {
-        quizData.cluster = cluster;
-        quizData.clusterDetail = detail;
+    // Step 4: Cluster Selection
+    function selectCluster(cName, cDetail) {
+        userData.clusterName = cName;
+        userData.clusterDetail = cDetail;
         nextStep();
     }
 
+    // Step 5: Isolation Selection
     function selectIsolation(val) {
-        quizData.isolation = val;
+        userData.isolation = val;
+        
+        // Custom interstitial text based on response
+        const dynText = document.getElementById('screen5DynamicText');
+        if (val.includes("doctor brushed")) {
+            dynText.innerText = "It is extremely common for doctors to dismiss metabolic & hormone shifts as 'just stress'. But feeling constantly drained is NOT just in your head — it is a physical response to chronic nervous system overload.";
+        }
         nextStep();
     }
 
-    function toggleCost(btn, cost) {
+    // Step 7: Cost Selection
+    function toggleCost(btn, costName) {
         btn.classList.toggle('selected');
-        if (quizData.costs.includes(cost)) {
-            quizData.costs = quizData.costs.filter(c => c !== cost);
+        if (btn.classList.contains('selected')) {
+            userData.costs.push(costName);
         } else {
-            quizData.costs.push(cost);
+            userData.costs = userData.costs.filter(c => c !== costName);
         }
-        document.getElementById('costNextBtn').disabled = quizData.costs.length === 0;
+        
+        const nextBtn = document.getElementById('costNextBtn');
+        nextBtn.disabled = userData.costs.length === 0;
     }
 
-    function selectTrend(trend) {
-        quizData.trend = trend;
+    // Step 9: Trend Selection
+    function selectTrend(trendVal) {
+        userData.trend = trendVal;
+        populateSummary();
         nextStep();
     }
 
-    function startAnalysis() {
-        nextStep(); // moves to step 11 (loader)
-        let progress = 0;
-        const progressBar = document.getElementById('loaderProgressBar');
-
-        const interval = setInterval(() => {
-            progress += 2;
-            if (progressBar) progressBar.style.width = `${progress}%`;
-
-            if (progress === 30) document.getElementById('check1')?.classList.add('active');
-            if (progress === 65) document.getElementById('check2')?.classList.add('active');
-            if (progress === 90) document.getElementById('check3')?.classList.add('active');
-
-            if (progress >= 100) {
-                clearInterval(interval);
-                populateResults();
-                nextStep(); // moves to step 12
-            }
-        }, 50);
+    // Populate Summary Screen (Step 10)
+    function populateSummary() {
+        document.getElementById('summaryAgeDisplay').innerText = userData.age || '40-45';
+        document.getElementById('summaryTriggerDisplay').innerText = userData.clusterName ? `${userData.clusterName} & Cortisol Imbalance` : 'Sleep & Cortisol Dysregulation';
+        
+        // Adjust dynamic summary cards
+        if (userData.clusterName === 'Sleep') {
+            document.getElementById('summaryMetabolic').innerText = "Adrenal Strain";
+            document.getElementById('summaryClarity').innerText = "Deep Sleep Deficit";
+        } else if (userData.clusterName === 'Emotional') {
+            document.getElementById('summaryMetabolic').innerText = "High Cortisol Spikes";
+            document.getElementById('summaryClarity').innerText = "Nervous System Fatigue";
+        }
     }
 
-    function populateResults() {
-        if (document.getElementById('resPrimaryCluster')) {
-            document.getElementById('resPrimaryCluster').innerText = quizData.cluster || 'Sleep & Energy';
-        }
-        if (document.getElementById('resAgeBracket')) {
-            document.getElementById('resAgeBracket').innerText = quizData.age || 'Not Specified';
-        }
-        if (document.getElementById('resSymptomCount')) {
-            document.getElementById('resSymptomCount').innerText = `${quizData.symptoms.length} Tracked`;
-        }
+    // WARRIOR BABE LOADER ANIMATION (Step 11)
+    function startWarriorBabeLoader() {
+        showStep(11);
+        
+        const bar = document.getElementById('wbProgressFill');
+        const title = document.getElementById('wbLoaderText');
+        const chk1 = document.getElementById('chk1');
+        const chk2 = document.getElementById('chk2');
+        const chk3 = document.getElementById('chk3');
+
+        let pct = 0;
+        const interval = setInterval(() => {
+            pct += 1;
+            bar.style.width = `${pct}%`;
+
+            if (pct === 30) {
+                chk1.classList.add('active');
+            }
+            if (pct === 65) {
+                chk2.classList.add('active');
+                title.innerText = "Personalizing Your 28-Day Protocol...";
+            }
+            if (pct === 90) {
+                chk3.classList.add('active');
+            }
+
+            if (pct >= 100) {
+                clearInterval(interval);
+                setTimeout(revealSalesPage, 400);
+            }
+        }, 40);
+    }
+
+    // REVEAL SALES PAGE
+    function revealSalesPage() {
+        // Hide loader step container
+        document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+        appHeader.style.display = 'none';
+
+        // Dynamic personalization on sales page
+        document.getElementById('salesDynamicFocus').innerText = userData.clusterDetail || 'sleep disruption & hormone fatigue';
+        document.getElementById('salesAge').innerText = userData.age || '40-45';
+        document.getElementById('salesPriority').innerText = userData.clusterName || 'Sleep & Energy';
+
+        // Display sales page
+        const salesPg = document.getElementById('salesPage');
+        salesPg.style.display = 'block';
+
+        // Start countdown timer
+        startTimer(14 * 60 + 59);
+
+        // Show Sticky CTA on scroll
+        window.addEventListener('scroll', () => {
+            const stickyCta = document.getElementById('stickyCta');
+            if (window.scrollY > 400) {
+                stickyCta.style.display = 'block';
+            } else {
+                stickyCta.style.display = 'none';
+            }
+        });
+
+        // Trigger Social Proof Toasts
+        initSocialToasts();
+    }
+
+    // Countdown Timer Function
+    function startTimer(duration) {
+        let timer = duration, minutes, seconds;
+        const display = document.getElementById('timer');
+        setInterval(() => {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
+    }
+
+    // FAQ Accordion Toggle
+    function toggleFaq(element) {
+        element.classList.toggle('open');
+        const span = element.querySelector('.faq-question span');
+        span.innerText = element.classList.contains('open') ? '−' : '+';
+    }
+
+    // Social Proof Toast Loop
+    function initSocialToasts() {
+        const notifications = [
+            "Maria K. from Austin just joined the 28-Day Reset!",
+            "Sarah B. claimed her custom protocol 2 mins ago.",
+            "Jennifer L. rating: ⭐⭐⭐⭐⭐ 'Game changer!'"
+        ];
+        
+        let i = 0;
+        const toast = document.getElementById('socialToast');
+        const toastText = document.getElementById('toastText');
+
+        setInterval(() => {
+            toastText.innerText = notifications[i % notifications.length];
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+
+            i++;
+        }, 12000);
+    }
+
+    // Interstitial Micro-Modal functions
+    function openModal() {
+        document.getElementById('loadingModal').style.display = 'flex';
+    }
+
+    function closeModalNext() {
+        document.getElementById('loadingModal').style.display = 'none';
+        nextStep();
     }
 </script>
-
 </body>
 </html>
