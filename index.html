@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personalized Calm Reset Challenge</title>
+    <!-- Load Whop Elements (this enables the embed) -->
+    <script src="https://js.whop.cloud/elements/amber/elements.js" data-whop-elements></script>
     <style>
         :root {
             --primary: #EC4899;
@@ -696,7 +698,7 @@
         }
 
         /* ============================================
-           UPDATED SALES PAGE (matches screenshots)
+           SALES PAGE STYLES (Step 21)
         ============================================ */
         .sales-headline {
             font-size: 26px;
@@ -781,7 +783,7 @@
             margin-top: 2px;
         }
 
-        /* Offer stack card – matches screenshot style */
+        /* Offer stack card */
         .offer-stack-card {
             background: #FFFFFF;
             border-radius: 16px;
@@ -898,6 +900,21 @@
             color: var(--primary);
             text-align: center;
             margin: 12px 0 4px;
+        }
+
+        /* Whop checkout container */
+        #whop-checkout {
+            display: none;
+            margin: 16px 0;
+            min-height: 400px;
+        }
+        #whop-checkout.visible {
+            display: block;
+        }
+
+        /* When checkout is shown, hide the offer content */
+        .offer-content-hidden {
+            display: none !important;
         }
 
         .testimonial-card {
@@ -1248,7 +1265,7 @@
     </div>
 
     <!-- ============================================ -->
-    <!-- SCREEN 21: UPDATED OFFER & PRICING PAGE       -->
+    <!-- SCREEN 21: OFFER & PRICING with Whop embed   -->
     <!-- ============================================ -->
     <div class="step-content" data-step="21">
         <!-- Eyebrow -->
@@ -1277,7 +1294,7 @@
             </div>
         </div>
 
-        <!-- Snapshot (age, priority, match) -->
+        <!-- Snapshot -->
         <div class="sales-snapshot">
             <div class="snapshot-item">
                 <div class="snapshot-label">Your Profile</div>
@@ -1293,63 +1310,64 @@
             </div>
         </div>
 
-        <!-- Offer Stack – inside a bordered card (matches screenshot) -->
-        <div class="offer-stack-card">
-            <!-- Item 1 -->
-            <div class="offer-item">
-                <div class="item-desc">
-                    Menopause, Decoded™ – The Complete Guide
-                    <span class="item-desc-small">102 pages – Evidence‑based (NICE, ACOG, WHO, The Menopause Society)</span>
+        <!-- Offer content (will be hidden when checkout is shown) -->
+        <div id="offerContent">
+            <!-- Offer Stack -->
+            <div class="offer-stack-card">
+                <div class="offer-item">
+                    <div class="item-desc">
+                        Menopause, Decoded™ – The Complete Guide
+                        <span class="item-desc-small">102 pages – Evidence‑based (NICE, ACOG, WHO, The Menopause Society)</span>
+                    </div>
+                    <span class="item-price">$197</span>
                 </div>
-                <span class="item-price">$197</span>
-            </div>
-            <!-- Item 2 -->
-            <div class="offer-item">
-                <div class="item-desc">
-                    30‑Day Meal & Grocery System
-                    <span class="item-desc-small">30 days of meal combos – weekly grocery lists – 20 fast breakfasts – low‑friction lunches/dinners – no‑cook page – substitution chart</span>
+                <div class="offer-item">
+                    <div class="item-desc">
+                        30‑Day Meal & Grocery System
+                        <span class="item-desc-small">30 days of meal combos – weekly grocery lists – 20 fast breakfasts – low‑friction lunches/dinners – no‑cook page – substitution chart</span>
+                    </div>
+                    <span class="item-price">$47</span>
+                    <span class="item-free">FREE TODAY</span>
                 </div>
-                <span class="item-price">$47</span>
-                <span class="item-free">FREE TODAY</span>
-            </div>
-            <!-- Item 3 -->
-            <div class="offer-item">
-                <div class="item-desc">
-                    Quick‑Relief Toolkit
-                    <span class="item-desc-small">10 phone‑friendly action cards: Hot Flash Now, 3 A.M. Wake‑Up, Brain‑Fog Rescue, Overwhelm Reset, Doctor Appointment Prep & more</span>
+                <div class="offer-item">
+                    <div class="item-desc">
+                        Quick‑Relief Toolkit
+                        <span class="item-desc-small">10 phone‑friendly action cards: Hot Flash Now, 3 A.M. Wake‑Up, Brain‑Fog Rescue, Overwhelm Reset, Doctor Appointment Prep & more</span>
+                    </div>
+                    <span class="item-price">$27</span>
+                    <span class="item-free">FREE TODAY</span>
                 </div>
-                <span class="item-price">$27</span>
-                <span class="item-free">FREE TODAY</span>
+                <div class="total-value">
+                    <span class="total-label">Total Value</span>
+                    <span class="total-price">$271</span>
+                </div>
             </div>
-            <!-- Total Value -->
-            <div class="total-value">
-                <span class="total-label">Total Value</span>
-                <span class="total-price">$271</span>
+
+            <!-- Scarcity line -->
+            <div class="sales-scarcity">
+                <i class="fas fa-tag" style="margin-right: 6px;"></i> This price is only available because you completed your personalized assessment.
+            </div>
+
+            <!-- Price Box with CTA -->
+            <div class="sales-price-box">
+                <div>
+                    <span class="discount-price" id="salesFinalPrice">$49</span>
+                    <span class="original-price">$271</span>
+                </div>
+                <div class="price-note">One‑time payment. Instant access. No subscription.</div>
+                <button class="primary-cta-btn" onclick="handleCheckout()" style="margin-top:12px;">
+                    Claim My $49 Plan →
+                </button>
+                <div class="guarantee-under-cta">
+                    <i class="fas fa-shield-alt"></i> If Menopause, Decoded™ doesn't help you understand what's happening and what to do next, email us within 30 days for a full refund — no questions asked.
+                </div>
             </div>
         </div>
 
-        <!-- Scarcity line -->
-        <div class="sales-scarcity">
-            <i class="fas fa-tag" style="margin-right: 6px;"></i> This price is only available because you completed your personalized assessment.
-        </div>
+        <!-- Whop Checkout Container (hidden initially) -->
+        <div id="whop-checkout"></div>
 
-        <!-- Price Box -->
-        <div class="sales-price-box">
-            <div>
-                <span class="discount-price" id="salesFinalPrice">$49</span>
-                <span class="original-price">$271</span>
-            </div>
-            <div class="price-note">One‑time payment. Instant access. No subscription.</div>
-            <button class="primary-cta-btn" onclick="handleCheckout()" style="margin-top:12px;">
-                Claim My $49 Plan →
-            </button>
-            <!-- Guarantee under CTA -->
-            <div class="guarantee-under-cta">
-                <i class="fas fa-shield-alt"></i> If Menopause, Decoded™ doesn't help you understand what's happening and what to do next, email us within 30 days for a full refund — no questions asked.
-            </div>
-        </div>
-
-        <!-- Reviews (keep existing) -->
+        <!-- Reviews (always visible) -->
         <div style="margin-top: 20px;">
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
@@ -1417,6 +1435,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
 <script>
+    // ============================
+    // QUIZ LOGIC (unchanged)
+    // ============================
     let currentStep = 0;
     const totalSteps = 15; 
 
@@ -1616,33 +1637,25 @@
         const priority = userAnswers.dominantCluster || 'Physical';
         const age = userAnswers.age || '46 – 52';
         const symptomCount = userAnswers.symptoms.length || 1;
-        let match = 78; // default
+        let match = 78;
         if (symptomCount >= 5) match = 98;
         else if (symptomCount >= 3) match = 85;
-        // else 78
-        const matchDisplay = match + '%';
-
-        // Headline
         id('salesHeadline').innerText = `Your Complete ${priority} Relief System`;
-        // Snapshot
         id('salesAgeDisplay').innerText = `Age ${age}`;
         id('salesClusterDisplay').innerText = priority;
-        id('salesMatchDisplay').innerText = matchDisplay;
+        id('salesMatchDisplay').innerText = match + '%';
     }
 
     /* ============================================
-       10-MINUTE COUNTDOWN (stored in localStorage, expires once)
+       10-MINUTE COUNTDOWN
     ============================================ */
     let countdownInterval = null;
     function startCountdown() {
         if (countdownInterval) clearInterval(countdownInterval);
-
         const storageKey = 'salesCountdownExpiry';
         let expiry = localStorage.getItem(storageKey);
         const now = Date.now();
-
         if (!expiry || parseInt(expiry, 10) < now) {
-            // Set expiry to 10 minutes from now
             expiry = now + 10 * 60 * 1000;
             localStorage.setItem(storageKey, expiry);
         }
@@ -1652,12 +1665,10 @@
             let diff = Math.max(0, parseInt(expiry, 10) - now);
             const minutes = Math.floor(diff / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
             const mEl = id('salesMinutes');
             const sEl = id('salesSeconds');
             if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
             if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
-
             if (diff <= 0) {
                 clearInterval(countdownInterval);
                 if (mEl) mEl.innerText = '00';
@@ -1665,10 +1676,79 @@
                 document.querySelector('.sales-urgency-note').innerHTML = '<i class="fas fa-clock"></i> This offer has expired.';
             }
         }
-
         update();
         countdownInterval = setInterval(update, 1000);
     }
+
+    /* ============================================
+       WHOP CHECKOUT INTEGRATION
+    ============================================ */
+    let checkoutInstance = null;
+    let checkoutMounted = false;
+
+    // Wait for WhopElements to be available (it loads via the script in <head>)
+    function initWhopCheckout() {
+        return new Promise((resolve) => {
+            const checkInterval = setInterval(() => {
+                if (window.WhopElements) {
+                    clearInterval(checkInterval);
+                    try {
+                        checkoutInstance = window.WhopElements().checkout.create({
+                            plan: "plan_SF7OBebWTouRi",
+                        });
+                        resolve();
+                    } catch (e) {
+                        console.error('Whop checkout init error:', e);
+                        resolve(); // still resolve to avoid blocking
+                    }
+                }
+            }, 200);
+            // Timeout after 5 seconds
+            setTimeout(() => {
+                clearInterval(checkInterval);
+                resolve();
+            }, 5000);
+        });
+    }
+
+    // Call this when the button is clicked
+    async function handleCheckout() {
+        // Hide the offer content
+        const offerContent = document.getElementById('offerContent');
+        if (offerContent) offerContent.classList.add('offer-content-hidden');
+
+        // Show the checkout container
+        const checkoutContainer = document.getElementById('whop-checkout');
+        if (checkoutContainer) {
+            checkoutContainer.classList.add('visible');
+            checkoutContainer.style.display = 'block';
+        }
+
+        // Ensure checkout is initialized and mount it
+        if (!checkoutInstance) {
+            await initWhopCheckout();
+        }
+
+        if (checkoutInstance && !checkoutMounted) {
+            try {
+                checkoutInstance.mount('#whop-checkout');
+                checkoutMounted = true;
+            } catch (e) {
+                console.error('Mount failed:', e);
+                // Fallback: redirect to checkout URL (you can replace with your actual product page)
+                // For demo, we alert, but you can set window.location.href
+                alert('Embed checkout failed. Please use the following link to complete your purchase:\nhttps://whop.com/your-product');
+            }
+        } else if (!checkoutInstance) {
+            // Fallback redirect
+            alert('Checkout not available. Please use this link: https://whop.com/your-product');
+        }
+    }
+
+    // Initialize Whop checkout on page load (so it's ready)
+    document.addEventListener('DOMContentLoaded', () => {
+        initWhopCheckout();
+    });
 
     /* FAQ toggle */
     function toggleSalesFaq(el) {
@@ -1684,21 +1764,6 @@
             answer.classList.add('open');
             el.classList.add('active');
         }
-    }
-
-    /* Checkout */
-    function handleCheckout() {
-        // Replace with your actual Whop checkout URL
-        alert('<div id="whop-checkout"></div>
-<script src="https://js.whop.cloud/elements/amber/elements.js" data-whop-elements></script>
-<script type="module">
-  const checkout = window.WhopElements().checkout.create({
-    plan: "plan_SF7OBebWTouRi",
-  });
-
-  checkout.create("checkout").mount("#whop-checkout");
-</script>');
-        // window.location.href = 'https://whop.com/your-product';
     }
 
     // Auto-init if step 21 is active on load
