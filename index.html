@@ -696,7 +696,7 @@
         }
 
         /* ============================================
-           UPDATED SALES PAGE (Step 21)
+           UPDATED SALES PAGE (matches screenshots)
         ============================================ */
         .sales-headline {
             font-size: 26px;
@@ -781,12 +781,13 @@
             margin-top: 2px;
         }
 
-        .sales-offer-list {
+        /* Offer stack card – matches screenshot style */
+        .offer-stack-card {
             background: #FFFFFF;
             border-radius: 16px;
             padding: 20px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             border: 1px solid var(--border-color);
         }
         .offer-item {
@@ -1276,7 +1277,7 @@
             </div>
         </div>
 
-        <!-- Snapshot (age, priority) – optional, we keep for personalization -->
+        <!-- Snapshot (age, priority, match) -->
         <div class="sales-snapshot">
             <div class="snapshot-item">
                 <div class="snapshot-label">Your Profile</div>
@@ -1288,13 +1289,13 @@
             </div>
             <div class="snapshot-item">
                 <div class="snapshot-label">Protocol Match</div>
-                <div class="snapshot-value" id="salesMatchDisplay">98%</div>
+                <div class="snapshot-value" id="salesMatchDisplay">78%</div>
             </div>
         </div>
 
-        <!-- Value Stack -->
-        <div class="sales-offer-list">
-            <!-- Main product -->
+        <!-- Offer Stack – inside a bordered card (matches screenshot) -->
+        <div class="offer-stack-card">
+            <!-- Item 1 -->
             <div class="offer-item">
                 <div class="item-desc">
                     Menopause, Decoded™ – The Complete Guide
@@ -1302,7 +1303,7 @@
                 </div>
                 <span class="item-price">$197</span>
             </div>
-            <!-- Bonus 1 -->
+            <!-- Item 2 -->
             <div class="offer-item">
                 <div class="item-desc">
                     30‑Day Meal & Grocery System
@@ -1311,7 +1312,7 @@
                 <span class="item-price">$47</span>
                 <span class="item-free">FREE TODAY</span>
             </div>
-            <!-- Bonus 2 -->
+            <!-- Item 3 -->
             <div class="offer-item">
                 <div class="item-desc">
                     Quick‑Relief Toolkit
@@ -1320,6 +1321,7 @@
                 <span class="item-price">$27</span>
                 <span class="item-free">FREE TODAY</span>
             </div>
+            <!-- Total Value -->
             <div class="total-value">
                 <span class="total-label">Total Value</span>
                 <span class="total-price">$271</span>
@@ -1339,7 +1341,7 @@
             </div>
             <div class="price-note">One‑time payment. Instant access. No subscription.</div>
             <button class="primary-cta-btn" onclick="handleCheckout()" style="margin-top:12px;">
-                Get My Complete Plan – $49 →
+                Claim My $49 Plan →
             </button>
             <!-- Guarantee under CTA -->
             <div class="guarantee-under-cta">
@@ -1614,15 +1616,14 @@
         const priority = userAnswers.dominantCluster || 'Physical';
         const age = userAnswers.age || '46 – 52';
         const symptomCount = userAnswers.symptoms.length || 1;
-        let match = 85;
+        let match = 78; // default
         if (symptomCount >= 5) match = 98;
-        else if (symptomCount >= 3) match = 92;
-        else if (symptomCount >= 1) match = 78;
+        else if (symptomCount >= 3) match = 85;
+        // else 78
         const matchDisplay = match + '%';
 
         // Headline
         id('salesHeadline').innerText = `Your Complete ${priority} Relief System`;
-        // Subhead is static
         // Snapshot
         id('salesAgeDisplay').innerText = `Age ${age}`;
         id('salesClusterDisplay').innerText = priority;
@@ -1661,7 +1662,6 @@
                 clearInterval(countdownInterval);
                 if (mEl) mEl.innerText = '00';
                 if (sEl) sEl.innerText = '00';
-                // Optionally hide or change the urgency message
                 document.querySelector('.sales-urgency-note').innerHTML = '<i class="fas fa-clock"></i> This offer has expired.';
             }
         }
@@ -1688,8 +1688,9 @@
 
     /* Checkout */
     function handleCheckout() {
-        alert('Proceed to checkout / payment page.\nReplace this with your actual checkout URL.');
-        // window.location.href = 'https://your-checkout.com/...';
+        // Replace with your actual Whop checkout URL
+        alert('Replace this with your Whop checkout URL.\nExample: window.location.href = "https://whop.com/your-product";');
+        // window.location.href = 'https://whop.com/your-product';
     }
 
     // Auto-init if step 21 is active on load
