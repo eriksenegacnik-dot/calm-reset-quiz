@@ -240,7 +240,7 @@
             border-radius: 16px;
             padding: 16px 20px;
             text-align: left;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             color: #000000;
             cursor: pointer;
@@ -248,8 +248,15 @@
             width: 100%;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 14px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .option-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
 
         .option-btn-icon {
@@ -263,6 +270,42 @@
         .option-btn:hover {
             border-color: #A5B4FC;
             background-color: #EEF2FF;
+        }
+
+        /* Checkbox styling for Multi-select */
+        .checkbox-circle {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid #CBD5E1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn.selected {
+            border-color: #5267FA;
+            background-color: #EEF2FF;
+        }
+
+        .option-btn.selected .checkbox-circle {
+            background-color: #5267FA;
+            border-color: #5267FA;
+            color: white;
+        }
+
+        .checkbox-circle::after {
+            content: '✓';
+            color: white;
+            font-size: 14px;
+            font-weight: 800;
+            display: none;
+        }
+
+        .option-btn.selected .checkbox-circle::after {
+            display: block;
         }
 
         /* Avatar Age Selector (Step 1) */
@@ -345,6 +388,12 @@
         .primary-cta-btn:hover {
             background: #3E53E8;
             transform: translateY(-1px);
+        }
+
+        .primary-cta-btn:disabled {
+            background: #94A3B8;
+            box-shadow: none;
+            cursor: not-allowed;
         }
 
         /* Circular Progress Loader Card (Step 14) */
@@ -760,34 +809,61 @@
         </div>
     </div>
 
-    <!-- STEP 2: Pain Location -->
+    <!-- STEP 2: Specific Symptoms Checklist (VIRAL MULTI-SELECT OPTION) -->
     <div class="step-content" data-step="2">
-        <h2>Where do you feel the changes hitting you the hardest right now?</h2>
+        <h2>Which of these "unspoken" changes have you noticed lately?</h2>
+        <p class="subtitle">Select all that apply to you</p>
         <div class="options-grid">
-            <button class="option-btn" onclick="selectPain('Sleep')">
-                <span class="option-btn-icon">😴</span> My sleep
+            <button class="option-btn" onclick="toggleSymptom(this, 'Anxiety')">
+                <div class="option-content">
+                    <span class="option-btn-icon">🫀</span> Random anxiety or "doom" feelings
+                </div>
+                <div class="checkbox-circle"></div>
             </button>
-            <button class="option-btn" onclick="selectPain('Mind')">
-                <span class="option-btn-icon">🧠</span> My mind (focus, memory, clarity)
+            <button class="option-btn" onclick="toggleSymptom(this, 'Sleep')">
+                <div class="option-content">
+                    <span class="option-btn-icon">⏰</span> Waking up wide awake at 3 AM
+                </div>
+                <div class="checkbox-circle"></div>
             </button>
-            <button class="option-btn" onclick="selectPain('Body')">
-                <span class="option-btn-icon">⚖️</span> My body & weight
+            <button class="option-btn" onclick="toggleSymptom(this, 'BrainFog')">
+                <div class="option-content">
+                    <span class="option-btn-icon">🧠</span> Brain fog so strong you forget basic words
+                </div>
+                <div class="checkbox-circle"></div>
             </button>
-            <button class="option-btn" onclick="selectPain('Mood')">
-                <span class="option-btn-icon">😩</span> My mood & emotions
+            <button class="option-btn" onclick="toggleSymptom(this, 'Weight')">
+                <div class="option-content">
+                    <span class="option-btn-icon">⚖️</span> Stubborn belly fat out of nowhere
+                </div>
+                <div class="checkbox-circle"></div>
             </button>
-            <button class="option-btn" onclick="selectPain('Energy')">
-                <span class="option-btn-icon">🔋</span> My energy levels
+            <button class="option-btn" onclick="toggleSymptom(this, 'Mood')">
+                <div class="option-content">
+                    <span class="option-btn-icon">😡</span> Sudden mood swings or quick irritability
+                </div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Joints')">
+                <div class="option-content">
+                    <span class="option-btn-icon">🦴</span> New joint aches or morning body stiffness
+                </div>
+                <div class="checkbox-circle"></div>
             </button>
         </div>
+        <button class="primary-cta-btn" id="step2NextBtn" disabled onclick="submitSymptoms()">
+            <span>Continue</span>
+            <span style="font-size: 18px;">›</span>
+        </button>
     </div>
 
     <!-- STEP 3: Pain Specification -->
     <div class="step-content" data-step="3">
-        <h2 id="step3Question">Do you wake up between 2–4 AM and struggle to fall back asleep?</h2>
+        <h2 id="step3Question">How often are these sudden changes disrupting your routine each week?</h2>
         <div class="options-grid" id="step3Options">
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, almost every night</button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No</button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-content"><span class="option-btn-icon">✅</span> Almost every single day</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-content"><span class="option-btn-icon">⚡</span> 3–4 times a week</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-content"><span class="option-btn-icon">🔄</span> Occasionally / unpredictable</span></button>
         </div>
     </div>
 
@@ -818,19 +894,19 @@
         <h2>If one thing changed starting tomorrow, what would make the biggest difference?</h2>
         <div class="options-grid">
             <button class="option-btn" onclick="selectOutcome('sleeping through the night again')">
-                <span class="option-btn-icon">😴</span> Sleeping through the night again
+                <span class="option-content"><span class="option-btn-icon">😴</span> Sleeping through the night again</span>
             </button>
             <button class="option-btn" onclick="selectOutcome('having steady energy all day')">
-                <span class="option-btn-icon">🔋</span> Having steady energy all day
+                <span class="option-content"><span class="option-btn-icon">🔋</span> Having steady energy all day</span>
             </button>
             <button class="option-btn" onclick="selectOutcome('losing stubborn belly fat')">
-                <span class="option-btn-icon">⚖️</span> Losing the stubborn belly fat
+                <span class="option-content"><span class="option-btn-icon">⚖️</span> Losing the stubborn belly fat</span>
             </button>
             <button class="option-btn" onclick="selectOutcome('feeling calm instead of on edge')">
-                <span class="option-btn-icon">🧘</span> Feeling calm instead of on edge
+                <span class="option-content"><span class="option-btn-icon">🧘</span> Feeling calm instead of on edge</span>
             </button>
             <button class="option-btn" onclick="selectOutcome('getting your sharp mind back')">
-                <span class="option-btn-icon">💡</span> Getting my sharp mind back
+                <span class="option-content"><span class="option-btn-icon">💡</span> Getting my sharp mind back</span>
             </button>
         </div>
     </div>
@@ -1016,8 +1092,8 @@
     <div class="step-content" data-step="17">
         <h2>Are you ready to finally get relief from these symptoms?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">👍</span> Yes, absolutely</button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">🙂</span> I think so</button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-content"><span class="option-btn-icon">👍</span> Yes, absolutely</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-content"><span class="option-btn-icon">🙂</span> I think so</span></button>
         </div>
     </div>
 
@@ -1025,8 +1101,8 @@
     <div class="step-content" data-step="18">
         <h2>Would you rather feel calm, energized, and in control — without relying on more willpower alone?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✨</span> Yes, that's exactly what I want</button>
-            <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">👍</span> Yes</button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-content"><span class="option-btn-icon">✨</span> Yes, that's exactly what I want</span></button>
+            <button class="option-btn" onclick="nextStep()"><span class="option-content"><span class="option-btn-icon">👍</span> Yes</span></button>
         </div>
     </div>
 
@@ -1034,8 +1110,8 @@
     <div class="step-content" data-step="19">
         <h2>Are you open to a natural approach that works with your body, not against it?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="startAnalysisLoader()"><span class="option-btn-icon">🚀</span> Yes, I'm ready</button>
-            <button class="option-btn" onclick="startAnalysisLoader()"><span class="option-btn-icon">👀</span> Yes, show me</button>
+            <button class="option-btn" onclick="startAnalysisLoader()"><span class="option-content"><span class="option-btn-icon">🚀</span> Yes, I'm ready</span></button>
+            <button class="option-btn" onclick="startAnalysisLoader()"><span class="option-content"><span class="option-btn-icon">👀</span> Yes, show me</span></button>
         </div>
     </div>
 
@@ -1081,7 +1157,7 @@
     let currentStep = 0;
     const totalSteps = 19;
     let selectedAge = '';
-    let selectedPainCluster = 'Sleep';
+    let selectedSymptoms = [];
     let selectedSeverityVal = '';
     let selectedOutcomeVal = 'sleeping through the night again';
     let selectedTimeVal = '';
@@ -1163,43 +1239,24 @@
         nextStep();
     }
 
-    function selectPain(pain) {
-        selectedPainCluster = pain;
-        const questionEl = document.getElementById('step3Question');
-        const optionsEl = document.getElementById('step3Options');
-
-        if (pain === 'Sleep') {
-            questionEl.innerText = 'Do you wake up between 2–4 AM and struggle to fall back asleep?';
-            optionsEl.innerHTML = `
-                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, almost every night</button>
-                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No</button>
-            `;
-        } else if (pain === 'Mind') {
-            questionEl.innerText = 'Do you regularly forget words mid-sentence or walk into a room and forget why?';
-            optionsEl.innerHTML = `
-                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, all the time</button>
-                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No, rarely</button>
-            `;
-        } else if (pain === 'Body') {
-            questionEl.innerText = 'Have you gained weight recently despite eating and exercising the same as before?';
-            optionsEl.innerHTML = `
-                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, stubborn belly fat especially</button>
-                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No</button>
-            `;
-        } else if (pain === 'Mood') {
-            questionEl.innerText = 'Do you find yourself snapping at people you love over small things?';
-            optionsEl.innerHTML = `
-                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, I feel irritable often</button>
-                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No</button>
-            `;
-        } else if (pain === 'Energy') {
-            questionEl.innerText = 'Do you wake up already feeling exhausted, even after a full night in bed?';
-            optionsEl.innerHTML = `
-                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">✅</span> Yes, completely drained</button>
-                <button class="option-btn" onclick="nextStep()"><span class="option-btn-icon">❌</span> No</button>
-            `;
+    /* Multi-select toggler for Step 2 */
+    function toggleSymptom(btnEl, symptomKey) {
+        btnEl.classList.toggle('selected');
+        
+        if (selectedSymptoms.includes(symptomKey)) {
+            selectedSymptoms = selectedSymptoms.filter(s => s !== symptomKey);
+        } else {
+            selectedSymptoms.push(symptomKey);
         }
-        nextStep();
+
+        const nextBtn = document.getElementById('step2NextBtn');
+        nextBtn.disabled = selectedSymptoms.length === 0;
+    }
+
+    function submitSymptoms() {
+        if (selectedSymptoms.length > 0) {
+            nextStep();
+        }
     }
 
     function selectSeverity(severity) {
@@ -1224,14 +1281,14 @@
 
     function run5SecondCircleLoader() {
         let percent = 0;
-        const totalDuration = 5000; // 5 seconds
-        const intervalTime = 50; // update every 50ms
+        const totalDuration = 5000;
+        const intervalTime = 50;
         const increment = 100 / (totalDuration / intervalTime);
 
         const circleFill = document.getElementById('circleProgressFill');
         const percentText = document.getElementById('circlePercentVal');
         const statusText = document.getElementById('circleStatusText');
-        const circumference = 440; // 2 * PI * 70 radius
+        const circumference = 440;
 
         circleInterval = setInterval(() => {
             percent += increment;
