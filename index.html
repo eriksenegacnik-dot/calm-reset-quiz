@@ -1689,7 +1689,15 @@
     /* Checkout */
     function handleCheckout() {
         // Replace with your actual Whop checkout URL
-        alert('Replace this with your Whop checkout URL.\nExample: window.location.href = "https://whop.com/your-product";');
+        alert('<div id="whop-checkout"></div>
+<script src="https://js.whop.cloud/elements/amber/elements.js" data-whop-elements></script>
+<script type="module">
+  const checkout = window.WhopElements().checkout.create({
+    plan: "plan_SF7OBebWTouRi",
+  });
+
+  checkout.create("checkout").mount("#whop-checkout");
+</script>');
         // window.location.href = 'https://whop.com/your-product';
     }
 
