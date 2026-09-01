@@ -128,12 +128,6 @@
             border-color: var(--primary);
         }
 
-        .timeline-dot.completed {
-            background: var(--primary);
-            color: white;
-            font-size: 8px;
-        }
-
         /* Screen Animations */
         .step-content {
             display: none;
@@ -303,7 +297,7 @@
             color: var(--text-main);
         }
 
-        /* NEW SUMMARY ASSESSMENT LAYOUT (Spartan Style adapted to theme) */
+        /* SUMMARY ASSESSMENT LAYOUT */
         .summary-main-card {
             background: #FFFFFF;
             border-radius: 20px;
@@ -478,47 +472,6 @@
             font-weight: 800;
             color: #0F172A;
             line-height: 1.2;
-        }
-
-        /* Timeline (Section 16) */
-        .timeline-card {
-            background: #FFFFFF;
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            margin-bottom: 24px;
-        }
-
-        .timeline-lead {
-            font-size: 15px;
-            font-weight: 600;
-            color: #475569;
-            text-align: center;
-            margin-bottom: 24px;
-            line-height: 1.5;
-            font-style: italic;
-        }
-
-        .timeline-list {
-            border-left: 3px solid var(--primary);
-            padding-left: 20px;
-            margin: 10px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .timeline-item h4 {
-            color: var(--primary);
-            font-size: 16px;
-            font-weight: 800;
-        }
-
-        .timeline-item p {
-            font-size: 14px;
-            color: #334155;
-            margin-top: 4px;
-            line-height: 1.5;
         }
 
         /* LOADING CARD & MICRO-POPUP INTERSTITIALS */
@@ -715,7 +668,7 @@
         </div>
     </div>
 
-    <!-- SCREEN 1: Age Bracket (PLACED FIRST AS REQUESTED) -->
+    <!-- SCREEN 1: Age Bracket -->
     <div class="step-content active" data-step="1">
         <h2>What age bracket are you in?</h2>
         <p class="subtitle">Helps fine-tune your hormonal assessment benchmarks</p>
@@ -955,7 +908,7 @@
         <button class="primary-cta-btn" onclick="nextStep()">See My Assessment Results →</button>
     </div>
 
-    <!-- SCREEN 16: Diagnosis / Summary Screen (REDESIGNED TO MATCH SPARTAN LAYOUT IN YOUR THEME) -->
+    <!-- SCREEN 16: Diagnosis / Summary Screen -->
     <div class="step-content" data-step="16">
         <h2>Summary of your Hormonal Profile</h2>
 
@@ -1021,27 +974,6 @@
             </div>
         </div>
 
-        <button class="primary-cta-btn" onclick="nextStep()">What to Expect Next →</button>
-    </div>
-
-    <!-- SCREEN 17: Transformation Timeline -->
-    <div class="step-content" data-step="17">
-        <h2>What to Expect From Your Personalized Guide</h2>
-        <div class="timeline-card">
-            <p class="timeline-lead">"This isn't a quick fix — it's clarity, followed by a plan you actually control."</p>
-            
-            <div class="timeline-list">
-                <div class="timeline-item">
-                    <h4>First few days:</h4>
-                    <p>Understand exactly what's happening in your body — which symptoms are typical perimenopause, which deserve medical attention, and why they're connected the way they are.</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>Within your first week:</h4>
-                    <p>Start your personalized 30-Day Reset — targeted, evidence-based self-care experiments matched to <strong id="timelineDominantCluster">your profile</strong>, so you're not guessing what to try next.</p>
-                </div>
-            </div>
-        </div>
-
         <button class="primary-cta-btn" onclick="startLoadingSequence()">Build My Plan →</button>
     </div>
 
@@ -1097,29 +1029,34 @@
 
 </div>
 
-<!-- INTERSTITIAL MICRO-MODALS FOR LOADING STEPS -->
+<!-- YES-STREAK INTERSTITIAL MICRO-MODALS (SECTION 6: STEPS 17–19) -->
 <div class="loading-modal-overlay" id="loadingModal">
     <div class="loading-modal-card">
         
-        <!-- MODAL STEP 1: PREVIOUS HRT / SUPPLEMENTS -->
-        <div class="modal-question" id="modalStep18" style="display: none;">
-            <h2>Have you tried HRT or targeted supplements before?</h2>
-            <p class="subtitle">So we don't recommend what hasn't worked</p>
-            <div class="options-grid">
-                <button class="option-btn" onclick="onSupplementSelected('Currently taking HRT/Supplements')">Yes, currently taking them</button>
-                <button class="option-btn" onclick="onSupplementSelected('Tried in past')">Tried in the past, but stopped</button>
-                <button class="option-btn" onclick="onSupplementSelected('Never tried')">No, never tried</button>
+        <!-- SCREEN 17 -->
+        <div class="modal-question" id="modalStep17" style="display: none;">
+            <h2>Are you ready to finally get relief from these symptoms?</h2>
+            <div class="options-grid" style="margin-top: 20px;">
+                <button class="option-btn" onclick="onYesStreakSelected(17)">Yes, absolutely</button>
+                <button class="option-btn" onclick="onYesStreakSelected(17)">I think so</button>
             </div>
         </div>
 
-        <!-- MODAL STEP 2: DAILY TIME COMMITMENT -->
+        <!-- SCREEN 18 -->
+        <div class="modal-question" id="modalStep18" style="display: none;">
+            <h2>Would you rather feel calm, energized, and in control — without relying on willpower alone?</h2>
+            <div class="options-grid" style="margin-top: 20px;">
+                <button class="option-btn" onclick="onYesStreakSelected(18)">Yes, that's exactly what I want</button>
+                <button class="option-btn" onclick="onYesStreakSelected(18)">Yes</button>
+            </div>
+        </div>
+
+        <!-- SCREEN 19 -->
         <div class="modal-question" id="modalStep19" style="display: none;">
-            <h2>How much time can you spend on your reset daily?</h2>
-            <p class="subtitle">We will customize daily steps to match your lifestyle</p>
-            <div class="options-grid">
-                <button class="option-btn" onclick="onTimeSelected('5 mins/day')">5 minutes a day (Micro-habits)</button>
-                <button class="option-btn" onclick="onTimeSelected('15 mins/day')">15 minutes a day (Standard)</button>
-                <button class="option-btn" onclick="onTimeSelected('30+ mins/day')">30+ minutes a day (Deep immersion)</button>
+            <h2>Are you open to a natural approach that works with your body, not against it?</h2>
+            <div class="options-grid" style="margin-top: 20px;">
+                <button class="option-btn" onclick="onYesStreakSelected(19)">Yes, I'm ready</button>
+                <button class="option-btn" onclick="onYesStreakSelected(19)">Yes, show me</button>
             </div>
         </div>
 
@@ -1128,7 +1065,7 @@
 
 <script>
     let currentStep = 1;
-    const totalSteps = 17; // Flow steps including the new summary card
+    const totalSteps = 16; 
 
     const userAnswers = {
         age: '',
@@ -1140,14 +1077,12 @@
         trend: '',
         spillovers: [],
         outcome: '',
-        objection: '',
-        supplements: '',
-        dailyTime: ''
+        objection: ''
     };
 
     function updateTimeline() {
         const header = id('appHeader');
-        if (currentStep > 1 && currentStep <= 17) {
+        if (currentStep > 1 && currentStep <= 16) {
             header.style.display = 'flex';
         } else {
             header.style.display = 'none';
@@ -1278,7 +1213,6 @@
             bodyEl.innerText = "Many women minimize their discomfort until it severely disrupts their lives. Addressing your symptoms early prevents deeper metabolic and emotional strain down the road.";
         }
 
-        // Build Step 16 Summary dynamically
         buildDiagnosisSummary();
         nextStep();
     }
@@ -1286,7 +1220,6 @@
     function buildDiagnosisSummary() {
         const count = userAnswers.symptoms.length || 1;
         
-        // Dynamic meter positioning based on symptom load
         let meterPos = 50;
         let badgeText = "Moderate";
         if (count >= 4) {
@@ -1309,15 +1242,11 @@
         id('gridImprovement').innerText = count > 3 ? 'High' : 'Significant';
         id('gridTrigger').innerText = 'Estrogen Shift';
         id('gridImpact').innerText = userAnswers.spillovers.length > 1 ? 'Noticeable' : 'Moderate';
-        
-        if (id('timelineDominantCluster')) {
-            id('timelineDominantCluster').innerText = `${userAnswers.dominantCluster || 'primary'} symptoms`;
-        }
     }
 
-    /* LOADING & MODAL SEQUENCING (STEPS 17 -> 21) */
+    /* YES-STREAK LOADING & MODAL SEQUENCING (STEPS 17-19) */
     function startLoadingSequence() {
-        showStep(20); // Show background loader screen
+        showStep(20);
         
         let progress = 0;
         const loaderFill = id('loaderFill');
@@ -1326,25 +1255,25 @@
             progress += 1;
             if (loaderFill) loaderFill.style.width = `${progress}%`;
 
-            if (progress === 45) {
+            if (progress === 30) {
                 id('chk1').classList.add('active');
+                pauseForModal('modalStep17');
+                clearInterval(interval);
+            } else if (progress === 60) {
+                id('chk2').classList.add('active');
                 pauseForModal('modalStep18');
                 clearInterval(interval);
-            } else if (progress === 80) {
-                id('chk2').classList.add('active');
+            } else if (progress === 90) {
+                id('chk3').classList.add('active');
                 pauseForModal('modalStep19');
                 clearInterval(interval);
             } else if (progress >= 100) {
                 clearInterval(interval);
-                id('chk3').classList.add('active');
                 setTimeout(() => {
-                    showStep(21); // Navigate to Pitch Screen
+                    showStep(21);
                 }, 400);
             }
         }, 30);
-
-        window.currentLoaderProgress = progress;
-        window.loaderInterval = interval;
     }
 
     function resumeLoadingSequence(startProgress) {
@@ -1355,13 +1284,16 @@
             progress += 1;
             if (loaderFill) loaderFill.style.width = `${progress}%`;
 
-            if (progress === 80 && startProgress < 80) {
+            if (progress === 60 && startProgress < 60) {
                 id('chk2').classList.add('active');
+                pauseForModal('modalStep18');
+                clearInterval(window.loaderInterval);
+            } else if (progress === 90 && startProgress < 90) {
+                id('chk3').classList.add('active');
                 pauseForModal('modalStep19');
                 clearInterval(window.loaderInterval);
             } else if (progress >= 100) {
                 clearInterval(window.loaderInterval);
-                id('chk3').classList.add('active');
                 setTimeout(() => {
                     showStep(21);
                 }, 400);
@@ -1380,17 +1312,15 @@
         id('loadingModal').style.display = 'none';
     }
 
-    /* Handlers for Modal Options */
-    function onSupplementSelected(val) {
-        userAnswers.supplements = val;
+    function onYesStreakSelected(stepNum) {
         closeModal();
-        resumeLoadingSequence(46);
-    }
-
-    function onTimeSelected(val) {
-        userAnswers.dailyTime = val;
-        closeModal();
-        resumeLoadingSequence(81);
+        if (stepNum === 17) {
+            resumeLoadingSequence(31);
+        } else if (stepNum === 18) {
+            resumeLoadingSequence(61);
+        } else if (stepNum === 19) {
+            resumeLoadingSequence(91);
+        }
     }
 </script>
 
