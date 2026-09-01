@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personalized Calm Reset Challenge & Plan</title>
+    <title>Personalized Calm Reset Challenge</title>
     <style>
         :root {
-            --primary: #d946ef;
-            --primary-dark: #c026d3;
-            --secondary: #ec4899;
-            --bg-light: #faf5f8;
-            --card-bg: #ffffff;
-            --text-dark: #1f2937;
-            --text-muted: #64748b;
-            --border-color: #f3e8ff;
-            --red-alert: #ef4444;
-            --yellow-alert: #f59e0b;
-            --green-alert: #10b981;
+            --primary: #EC4899;
+            --primary-hover: #DB2777;
+            --primary-light: #FCE7F3;
+            --bg-color: #FAF5F8;
+            --card-bg: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+            --radius: 20px;
         }
 
         * {
@@ -28,23 +26,25 @@
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             min-height: 100vh;
             padding: 16px;
+            overflow-x: hidden;
         }
 
         .quiz-container {
             width: 100%;
-            max-width: 680px;
-            margin: 0 auto;
+            max-width: 520px;
+            background: transparent;
             position: relative;
+            margin: 0 auto;
         }
 
-        /* Top Bar & App Header */
+        /* Top Header Navigation */
         .app-header {
             display: flex;
             flex-direction: column;
@@ -71,7 +71,7 @@
             transform: translateY(-50%);
             width: 36px;
             height: 36px;
-            background: #e2e8f0;
+            background: #E2E8F0;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -79,7 +79,7 @@
             border: none;
             cursor: pointer;
             font-weight: 700;
-            color: #1e293b;
+            color: #1E293B;
             font-size: 16px;
         }
 
@@ -94,7 +94,7 @@
             position: absolute;
             width: 100%;
             height: 3px;
-            background: #e2e8f0;
+            background: #E2E8F0;
             z-index: 1;
         }
 
@@ -119,8 +119,8 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #e2e8f0;
-            border: 2px solid #ffffff;
+            background: #E2E8F0;
+            border: 2px solid #FFFFFF;
         }
 
         .timeline-dot.active {
@@ -128,7 +128,7 @@
             border-color: var(--primary);
         }
 
-        /* Step Content Wrappers */
+        /* Screen Animations */
         .step-content {
             display: none;
             opacity: 0;
@@ -148,7 +148,7 @@
         h2 {
             font-size: 22px;
             font-weight: 800;
-            color: #0f172a;
+            color: #000000;
             margin-bottom: 8px;
             line-height: 1.3;
             text-align: center;
@@ -156,12 +156,12 @@
 
         .subtitle {
             font-size: 14px;
-            color: var(--text-muted);
+            color: #64748B;
             text-align: center;
             margin-bottom: 24px;
         }
 
-        /* Lander Specifics */
+        /* LANDER SPECIFIC STYLES */
         .lander-badges {
             display: flex;
             gap: 12px;
@@ -170,49 +170,80 @@
 
         .lander-badge-card {
             flex: 1;
-            background: #ffffff;
-            border: 1.5px solid var(--border-color);
+            background: #FFFFFF;
+            border: 1.5px solid var(--primary-light);
             border-radius: 16px;
             padding: 14px 12px;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 4px 12px rgba(217, 70, 239, 0.05);
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.05);
+        }
+
+        .lander-badge-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .lander-badge-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
         }
 
         .lander-badge-title {
             font-size: 11px;
             font-weight: 800;
-            color: var(--primary-dark);
+            color: var(--primary);
+            letter-spacing: 0.04em;
             text-transform: uppercase;
         }
 
         .lander-badge-sub {
             font-size: 11px;
             font-weight: 700;
-            color: #64748b;
+            color: #64748B;
+            line-height: 1.2;
+            margin-top: 2px;
         }
 
         .lander-headline {
             font-size: 28px;
             font-weight: 900;
-            color: var(--primary-dark);
+            color: var(--primary);
             text-align: center;
             line-height: 1.25;
             margin-bottom: 12px;
+            letter-spacing: -0.01em;
         }
 
         .lander-subhead {
             font-size: 14px;
             font-weight: 700;
-            color: #64748b;
+            color: #64748B;
             text-align: center;
             line-height: 1.5;
             text-transform: uppercase;
+            letter-spacing: 0.03em;
             margin-bottom: 32px;
+            padding: 0 8px;
         }
 
-        /* Form UI Controls */
+        .lander-disclaimer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #94A3B8;
+            text-align: center;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+
+        .lander-disclaimer a {
+            color: #94A3B8;
+            text-decoration: underline;
+        }
+
+        /* Options Grid */
         .options-grid {
             display: flex;
             flex-direction: column;
@@ -220,36 +251,59 @@
         }
 
         .option-btn {
-            background: #ffffff;
+            background: #FFFFFF;
             border: 1.5px solid transparent;
             border-radius: 16px;
             padding: 16px 20px;
             text-align: left;
             font-size: 15px;
             font-weight: 600;
-            color: #0f172a;
+            color: #000000;
             cursor: pointer;
             transition: all 0.2s ease;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 14px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
         }
 
-        .option-btn:hover, .option-btn.selected {
-            border-color: var(--primary);
-            background-color: #fdf4ff;
+        .option-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
 
+        .option-btn-icon {
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        /* Checkbox styling */
         .checkbox-circle {
             width: 22px;
             height: 22px;
             border-radius: 6px;
-            border: 2px solid #cbd5e1;
+            border: 2px solid #CBD5E1;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
         }
 
         .option-btn.selected .checkbox-circle {
@@ -258,46 +312,53 @@
             color: white;
         }
 
-        .option-btn.selected .checkbox-circle::after {
+        .checkbox-circle::after {
             content: '✓';
             color: white;
             font-size: 14px;
             font-weight: 800;
+            display: none;
+        }
+
+        .option-btn.selected .checkbox-circle::after {
+            display: block;
         }
 
         .primary-cta-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: var(--primary);
             color: white;
             border: none;
-            border-radius: 50px;
+            border-radius: 16px;
             padding: 18px 32px;
             font-size: 17px;
-            font-weight: 800;
+            font-weight: 700;
             width: 100%;
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(217, 70, 239, 0.35);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.3);
+            letter-spacing: 0.01em;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 8px;
             margin-top: 20px;
-            text-decoration: none;
         }
 
         .primary-cta-btn:hover {
-            transform: translateY(-2px);
+            background: var(--primary-hover);
+            transform: translateY(-1px);
         }
 
         .primary-cta-btn:disabled {
-            background: #94a3b8;
+            background: #94A3B8;
             box-shadow: none;
             cursor: not-allowed;
         }
 
+        /* Info Card */
         .info-card {
-            background: #ffffff;
+            background: #FFFFFF;
             border-left: 4px solid var(--primary);
             padding: 24px;
             border-radius: 16px;
@@ -306,19 +367,52 @@
         }
 
         .info-card h3 {
-            color: var(--primary-dark);
+            color: var(--primary);
             margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 700;
         }
 
-        /* Summary Diagnostics Card */
+        .info-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        /* SUMMARY ASSESSMENT LAYOUT */
         .summary-main-card {
-            background: #ffffff;
+            background: #FFFFFF;
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
             margin-bottom: 16px;
+            position: relative;
         }
 
+        .summary-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .summary-card-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0F172A;
+        }
+
+        .summary-badge-high {
+            background: #FEE2E2;
+            color: #EF4444;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        /* Gradient Meter Bar */
         .meter-container {
             margin: 20px 0 10px 0;
             position: relative;
@@ -327,7 +421,7 @@
         .meter-bar {
             height: 8px;
             border-radius: 99px;
-            background: linear-gradient(to right, #10b981 0%, #f59e0b 50%, #d946ef 100%);
+            background: linear-gradient(to right, #10B981 0%, #F59E0B 50%, #EC4899 100%);
             width: 100%;
             position: relative;
         }
@@ -338,25 +432,143 @@
             left: 82%;
             width: 18px;
             height: 18px;
-            background: #ffffff;
+            background: #FFFFFF;
             border: 4px solid var(--primary);
             border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             transform: translateX(-50%);
             transition: left 0.5s ease;
         }
 
-        /* Loader Animation */
+        .meter-tooltip {
+            position: absolute;
+            top: -34px;
+            left: 82%;
+            transform: translateX(-50%);
+            background: #1E293B;
+            color: #FFFFFF;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        .meter-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 4px 4px 0;
+            border-style: solid;
+            border-color: #1E293B transparent;
+        }
+
+        .meter-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #94A3B8;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* Highlight Info Box */
+        .summary-alert-box {
+            background: var(--primary-light);
+            border-radius: 12px;
+            padding: 12px 14px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-top: 16px;
+        }
+
+        .summary-alert-icon {
+            background: var(--primary);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .summary-alert-text {
+            font-size: 13px;
+            color: #1E293B;
+            line-height: 1.4;
+        }
+
+        .summary-alert-text strong {
+            display: block;
+            color: #0F172A;
+            margin-bottom: 2px;
+        }
+
+        /* 2x2 Feature Grid */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .summary-grid-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .grid-card-icon {
+            font-size: 18px;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: #F8FAFC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .grid-card-info h5 {
+            font-size: 11px;
+            color: #64748B;
+            font-weight: 600;
+            text-transform: capitalize;
+            margin-bottom: 2px;
+        }
+
+        .grid-card-info p {
+            font-size: 13px;
+            font-weight: 800;
+            color: #0F172A;
+            line-height: 1.2;
+        }
+
+        /* LOADER CARD & MICRO-POPUP INTERSTITIALS */
         .loader-card {
-            background: #ffffff;
+            background: #FFFFFF;
             border-radius: 24px;
             padding: 36px 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             text-align: center;
         }
 
         .spinner-ring-wrapper {
             position: relative;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             margin: 0 auto 24px auto;
         }
 
@@ -366,7 +578,32 @@
             height: 100%;
         }
 
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .spinner-track {
+            fill: none;
+            stroke: #F1F5F9;
+            stroke-width: 8;
+        }
+
+        .spinner-head {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 180;
+            stroke-dashoffset: 120;
+        }
+
+        .wb-loader-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 24px;
+        }
 
         .wb-checklist {
             display: flex;
@@ -380,181 +617,84 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 600;
+            color: #94A3B8;
+            transition: all 0.3s ease;
         }
 
-        .wb-check-item.active { color: #1e293b; font-weight: 700; }
+        .wb-check-item.active {
+            color: #1E293B;
+            font-weight: 700;
+        }
 
         .wb-check-icon {
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: #e2e8f0;
+            background: #E2E8F0;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
+            font-size: 12px;
+            font-weight: 800;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
         }
 
-        .wb-check-item.active .wb-check-icon { background: #10b981; }
-
-        .loading-modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(4px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 20px;
+        .wb-check-item.active .wb-check-icon {
+            background: #10B981;
         }
 
-        .loading-modal-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 28px 24px;
+        .wb-progress-bar-bg {
             width: 100%;
-            max-width: 440px;
+            height: 8px;
+            background: #E2E8F0;
+            border-radius: 99px;
+            overflow: hidden;
         }
 
-        /* FINAL SALES PAGE STYLES (Screen 21) */
-        .sales-header {
+        .wb-progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--primary);
+            border-radius: 99px;
+            transition: width 0.1s linear;
+        }
+
+        .legal-terms {
+            margin-top: 28px;
+            font-size: 11px;
+            color: var(--text-muted);
             text-align: center;
-            margin-bottom: 25px;
+            line-height: 1.6;
         }
 
-        .sales-badge {
-            background: #fae8ff;
-            color: var(--primary-dark);
-            font-size: 0.8rem;
-            font-weight: 800;
-            padding: 6px 16px;
+        .legal-terms a {
+            color: var(--text-muted);
+            text-decoration: underline;
+        }
+
+        .pricing-card {
+            background: #FFFFFF;
             border-radius: 20px;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .score-card {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .card-header-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .status-tag {
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-
-        .status-tag.critical { background: #fee2e2; color: #b91c1c; }
-        .status-tag.attention { background: #fef3c7; color: #b45309; }
-        .status-tag.beneficial { background: #d1fae5; color: #047857; }
-
-        .why-box {
-            background: #fff1f2;
-            border-left: 4px solid var(--secondary);
-            padding: 10px 14px;
-            font-size: 0.9rem;
-            margin-top: 12px;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .timer-box {
-            background: #ffffff;
-            border: 2px solid var(--primary);
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            margin: 25px 0;
-        }
-
-        .timer-display {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #dc2626;
-        }
-
-        .offer-section {
-            background: #ffffff;
-            border-radius: 16px;
             padding: 24px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            text-align: center;
+            margin-top: 20px;
         }
 
-        .stack-item {
-            border-bottom: 1px solid #f3f4f6;
-            padding-bottom: 18px;
-            margin-bottom: 18px;
-        }
-
-        .stack-item:last-child { border-bottom: none; }
-
-        .price-cross { text-decoration: line-through; color: #9ca3af; }
-
-        .pricing-table {
-            background: #fafafa;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            font-size: 0.95rem;
-        }
-
-        .price-row.total {
-            border-top: 2px solid #e5e7eb;
-            margin-top: 10px;
-            padding-top: 12px;
+        .price-badge {
+            background: var(--primary-light);
+            color: var(--primary);
             font-weight: 800;
-            font-size: 1.25rem;
-        }
-
-        .trustpilot-box {
-            text-align: center;
-            margin: 25px 0;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
-        }
-
-        .stars { color: #00b67a; font-size: 1.2rem; }
-
-        .guarantee-box {
-            border: 2px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 25px;
-            background: #ffffff;
-        }
-
-        .badge-free {
-            background: #10b981;
-            color: #ffffff;
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-left: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -562,35 +702,42 @@
 
 <div class="quiz-container">
 
-    <!-- SCREEN 0: LANDER -->
+    <!-- SCREEN 0: NEW LANDING PAGE -->
     <div class="step-content active" data-step="0">
+        <!-- Top Proof Badges -->
         <div class="lander-badges">
             <div class="lander-badge-card">
-                <span>🎯</span>
-                <div>
-                    <div class="lander-badge-title">100,000+ Women</div>
-                    <div class="lander-badge-sub">Balancing Hormones</div>
+                <span class="lander-badge-icon">🎯</span>
+                <div class="lander-badge-text">
+                    <span class="lander-badge-title">100,000+ Women</span>
+                    <span class="lander-badge-sub">Balancing Hormones</span>
                 </div>
             </div>
             <div class="lander-badge-card">
-                <span>⭐</span>
-                <div>
-                    <div class="lander-badge-title">Rated 4.8 / 5</div>
-                    <div class="lander-badge-sub">Trustpilot Verified</div>
+                <span class="lander-badge-icon">⭐</span>
+                <div class="lander-badge-text">
+                    <span class="lander-badge-title">Rated on Trustpilot</span>
+                    <span class="lander-badge-sub">4.8 Satisfaction Score</span>
                 </div>
             </div>
         </div>
 
+        <!-- Headline & Subhead -->
         <h1 class="lander-headline">Find Out Why You Don't Feel Like Yourself Anymore</h1>
         <p class="lander-subhead">Take the free 60-second quiz to get your personalized plan for better sleep, energy & hormonal balance</p>
 
-        <button class="primary-cta-btn" onclick="nextStep()">Start My Quiz ›</button>
-        <p style="margin-top: 20px; font-size: 11px; color: #94a3b8; text-align: center;">
-            By clicking 'Start My Quiz' you agree to our Terms, Privacy Policy, and Cookie Policy.
+        <!-- CTA Button -->
+        <button class="primary-cta-btn" onclick="nextStep()" style="font-size: 18px; padding: 20px 32px;">
+            <span>Start My Quiz</span> <span>›</span>
+        </button>
+
+        <!-- Dynamic Disclaimer Terms -->
+        <p class="lander-disclaimer">
+            By clicking 'Start My Quiz' you agree to the <a href="#">Terms of Use and Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a> (including the use of tracking technologies, e.g., Meta Pixel).
         </p>
     </div>
 
-    <!-- Header for Quiz Steps -->
+    <!-- Top Navigation Header (hidden on Screen 0) -->
     <div class="app-header" id="appHeader" style="display: none;">
         <div class="header-top-bar">
             <button class="back-btn" onclick="prevStep()">‹</button>
@@ -607,399 +754,414 @@
         </div>
     </div>
 
-    <!-- SCREEN 1 -->
+    <!-- SCREEN 1: Age Bracket -->
     <div class="step-content" data-step="1">
         <h2>What age bracket are you in?</h2>
         <p class="subtitle">Helps fine-tune your hormonal assessment benchmarks</p>
         <div class="options-grid">
-            <button class="option-btn" onclick="selectAge('Under 40')">Under 40</button>
-            <button class="option-btn" onclick="selectAge('40 – 45')">40 – 45</button>
-            <button class="option-btn" onclick="selectAge('46 – 52')">46 – 52</button>
-            <button class="option-btn" onclick="selectAge('53+')">53+</button>
+            <button class="option-btn" onclick="selectAge('Under 40')">
+                <span class="option-content">Under 40</span>
+            </button>
+            <button class="option-btn" onclick="selectAge('40 – 45')">
+                <span class="option-content">40 – 45</span>
+            </button>
+            <button class="option-btn" onclick="selectAge('46 – 52')">
+                <span class="option-content">46 – 52</span>
+            </button>
+            <button class="option-btn" onclick="selectAge('53+')">
+                <span class="option-content">53+</span>
+            </button>
         </div>
     </div>
 
-    <!-- SCREEN 2 -->
+    <!-- SCREEN 2: Symptom Checklist -->
     <div class="step-content" data-step="2">
         <h2>Check off any of these you've experienced — even just once.</h2>
-        <p class="subtitle">Select all that apply</p>
+        <p class="subtitle">Select all that apply to you</p>
         <div class="options-grid">
-            <button class="option-btn" onclick="toggleSymptom(this, '3 AM wake-ups')">⏰ Waking up at 3 AM <div class="checkbox-circle"></div></button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Sudden anxiety')">🫀 Sudden anxiety or doom feelings <div class="checkbox-circle"></div></button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Brain fog')">🧠 Brain fog mid-sentence <div class="checkbox-circle"></div></button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Belly fat')">⚖️ Stubborn belly fat <div class="checkbox-circle"></div></button>
-            <button class="option-btn" onclick="toggleSymptom(this, 'Hot flashes')">🔥 Hot flashes & flushing <div class="checkbox-circle"></div></button>
+            <button class="option-btn" onclick="toggleSymptom(this, '3 AM wake-ups')">
+                <div class="option-content"><span class="option-btn-icon">⏰</span> Waking up around 3 AM and unable to fall back asleep</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Sudden anxiety')">
+                <div class="option-content"><span class="option-btn-icon">🫀</span> Sudden anxiety or "doom" feelings with no clear cause</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Itching/Flushing')">
+                <div class="option-content"><span class="option-btn-icon">🔥</span> Random itching, flushing, or heat waves out of nowhere</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Brain fog')">
+                <div class="option-content"><span class="option-btn-icon">🧠</span> Brain fog so bad you forget words mid-sentence</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Mood swings')">
+                <div class="option-content"><span class="option-btn-icon">😡</span> Mood swings that feel like PMS on steroids</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Belly fat')">
+                <div class="option-content"><span class="option-btn-icon">⚖️</span> Belly fat that showed up despite no change in diet</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Hair thinning')">
+                <div class="option-content"><span class="option-btn-icon">💇‍♀️</span> Hair thinning, especially at the temples</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Flooding periods')">
+                <div class="option-content"><span class="option-btn-icon">🩸</span> Heavier, "flooding" periods</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleSymptom(this, 'Joint aches')">
+                <div class="option-content"><span class="option-btn-icon">🦴</span> New joint aches or stiffness you didn't have before</div>
+                <div class="checkbox-circle"></div>
+            </button>
         </div>
-        <button class="primary-cta-btn" id="symptomNextBtn" disabled onclick="nextStep()">Continue ›</button>
+        <button class="primary-cta-btn" id="symptomNextBtn" disabled onclick="nextStep()">
+            <span>Continue</span><span>›</span>
+        </button>
     </div>
 
-    <!-- SCREEN 3 -->
+    <!-- SCREEN 3: Interstitial — It's Not Random -->
     <div class="step-content" data-step="3">
         <div class="info-card">
             <h3>These Symptoms Aren't a Coincidence.</h3>
-            <p>Bad sleep, mood shifts, and metabolic changes aren't separate issues—they stem from the same underlying hormonal shifts in your body right now.</p>
+            <p>Most women think of these as separate problems — bad sleep here, a stressful week there, weight that 'just happens' with age. They're not separate. They're connected by the same underlying shift happening in your body right now. And most women don't realize that until years later.</p>
         </div>
         <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
-    <!-- SCREEN 4 -->
+    <!-- SCREEN 4: Dominant Cluster -->
     <div class="step-content" data-step="4">
-        <h2>Which is hitting you hardest right now?</h2>
+        <h2>Of everything you checked, which is hitting you hardest right now?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="selectCluster('Sleep', 'Sleep & Energy')">😴 Sleep & Exhaustion</button>
-            <button class="option-btn" onclick="selectCluster('Emotional', 'Emotional Stability')">😰 Anxiety & Mood Swings</button>
-            <button class="option-btn" onclick="selectCluster('Mental', 'Mental Clarity')">🧠 Brain Fog & Focus</button>
-            <button class="option-btn" onclick="selectCluster('Physical', 'Metabolic & Body Health')">⚖️ Weight & Body Changes</button>
+            <button class="option-btn" onclick="selectCluster('Sleep', 'sleep quality')">
+                <span class="option-content"><span class="option-btn-icon">😴</span> Sleep — waking up, exhaustion, never feeling rested</span>
+            </button>
+            <button class="option-btn" onclick="selectCluster('Emotional', 'emotional stability')">
+                <span class="option-content"><span class="option-btn-icon">😰</span> Emotional — anxiety, mood swings, feeling on edge</span>
+            </button>
+            <button class="option-btn" onclick="selectCluster('Mental', 'mental clarity')">
+                <span class="option-content"><span class="option-btn-icon">🧠</span> Mental — brain fog, forgetfulness, trouble focusing</span>
+            </button>
+            <button class="option-btn" onclick="selectCluster('Physical', 'metabolic & body health')">
+                <span class="option-content"><span class="option-btn-icon">🌡️</span> Physical — weight, hair, joints, hot flashes, periods</span>
+            </button>
         </div>
     </div>
 
-    <!-- SCREEN 5–15 Brief Stepper Placeholders -->
+    <!-- SCREEN 5: Isolation Question -->
     <div class="step-content" data-step="5">
         <h2>Has anyone actually understood what you're going through?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">My doctor brushed it off as "just stress"</button>
-            <button class="option-btn" onclick="nextStep()">I haven't told anyone yet</button>
-            <button class="option-btn" onclick="nextStep()">Friends & family don't really get it</button>
+            <button class="option-btn" onclick="selectIsolation('My doctor brushed it off or said it\'s \'just stress\'')">My doctor brushed it off or said it's "just stress"</button>
+            <button class="option-btn" onclick="selectIsolation('I haven\'t told anyone — I don\'t want to sound dramatic')">I haven't told anyone — I don't want to sound dramatic</button>
+            <button class="option-btn" onclick="selectIsolation('Friends/family don\'t really get it')">Friends/family don't really get it</button>
+            <button class="option-btn" onclick="selectIsolation('Yes, I\'ve found some support')">Yes, I've found some support</button>
         </div>
     </div>
 
+    <!-- SCREEN 6: Interstitial — The Real Cost -->
     <div class="step-content" data-step="6">
         <div class="info-card">
             <h3>This Isn't Just About Symptoms Anymore.</h3>
-            <p>Unaddressed hormonal changes bleed into work performance, relationships, and personal confidence. It's time to take control back.</p>
+            <p id="screen5DynamicText">When your symptoms go unaddressed, they rarely stay contained. Sleep problems bleed into mood. Mood bleeds into relationships. Brain fog bleeds into confidence at work. Women often tell us the symptom itself wasn't the hardest part — it was slowly losing pieces of who they used to be.</p>
         </div>
         <button class="primary-cta-btn" onclick="nextStep()">Continue →</button>
     </div>
 
+    <!-- SCREEN 7: What Has It Already Cost You? -->
     <div class="step-content" data-step="7">
-        <h2>What has this already cost you?</h2>
+        <h2>Be honest — what has this already taken from you?</h2>
+        <p class="subtitle">Select all that apply</p>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Patience with people I love</button>
-            <button class="option-btn" onclick="nextStep()">Confidence in my appearance</button>
-            <button class="option-btn" onclick="nextStep()">Energy to enjoy life</button>
+            <button class="option-btn" onclick="toggleCost(this, 'Patience with loved ones')">
+                <div class="option-content"><span class="option-btn-icon">❤️</span> Patience with the people I love</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleCost(this, 'Confidence in appearance')">
+                <div class="option-content"><span class="option-btn-icon">🪞</span> Confidence in how I look or feel</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleCost(this, 'Energy for hobbies')">
+                <div class="option-content"><span class="option-btn-icon">🔋</span> Energy to do things I used to enjoy</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleCost(this, 'Work performance')">
+                <div class="option-content"><span class="option-btn-icon">💼</span> Focus and performance at work</div>
+                <div class="checkbox-circle"></div>
+            </button>
+            <button class="option-btn" onclick="toggleCost(this, 'Feeling like myself')">
+                <div class="option-content"><span class="option-btn-icon">🪞</span> Feeling like "myself"</div>
+                <div class="checkbox-circle"></div>
+            </button>
         </div>
+        <button class="primary-cta-btn" id="costNextBtn" disabled onclick="nextStep()">Continue →</button>
     </div>
 
+    <!-- SCREEN 8: Duration -->
     <div class="step-content" data-step="8">
         <h2>How long has this pattern been going on?</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Last few months</button>
-            <button class="option-btn" onclick="nextStep()">6 to 12 months</button>
-            <button class="option-btn" onclick="nextStep()">1+ years</button>
+            <button class="option-btn" onclick="nextStep()">Just the last few months</button>
+            <button class="option-btn" onclick="nextStep()">6 months to a year</button>
+            <button class="option-btn" onclick="nextStep()">1–3 years</button>
+            <button class="option-btn" onclick="nextStep()">Years — and it keeps getting worse</button>
         </div>
     </div>
 
+    <!-- SCREEN 9: Trend Check -->
     <div class="step-content" data-step="9">
-        <h2>Over the last few months, is it...</h2>
+        <h2>Over the last few months, would you say it's...</h2>
         <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Getting worse</button>
-            <button class="option-btn" onclick="nextStep()">Staying the same</button>
-            <button class="option-btn" onclick="nextStep()">Unpredictable cycles</button>
+            <button class="option-btn" onclick="selectTrend('getting worse')">Getting worse</button>
+            <button class="option-btn" onclick="selectTrend('staying about the same')">Staying about the same</button>
+            <button class="option-btn" onclick="selectTrend('unpredictable — good weeks, then crashing')">Unpredictable — good weeks, then it crashes</button>
+            <button class="option-btn" onclick="selectTrend('becoming your new normal')">Hard to tell, it's become the new normal</button>
         </div>
     </div>
 
+    <!-- SCREEN 10: Commit Assessment Interstitial -->
     <div class="step-content" data-step="10">
-        <h2>What's stopping you from fixing this?</h2>
-        <div class="options-grid">
-            <button class="option-btn" onclick="nextStep()">Don't know what actually works</button>
-            <button class="option-btn" onclick="nextStep()">Tried things that didn't stick</button>
-            <button class="option-btn" onclick="nextStep()">No time for complex routines</button>
-        </div>
-    </div>
-
-    <div class="step-content" data-step="11">
         <div class="info-card">
-            <h3>We Know Taking The Next Step Requires Confidence.</h3>
-            <p>That's why our protocol cuts through the noise with simple, science-backed steps tailored directly to your symptom profile.</p>
+            <h3>Are You Ready to Reset Your Hormone Balance?</h3>
+            <p>Our 28-day Calm Reset Protocol is designed to deliver measurable improvements in deep sleep, anxiety relief, and mental clarity within 4 weeks.</p>
         </div>
-        <button class="primary-cta-btn" onclick="startLoadingSequence()">Analyze My Profile →</button>
+        <button class="primary-cta-btn" onclick="startAnalysis()">Analyze My Results →</button>
     </div>
 
-    <!-- SCREEN 16: LOADER -->
-    <div class="step-content" data-step="16">
+    <!-- SCREEN 11: LOADING / ANALYSIS ANIMATION -->
+    <div class="step-content" data-step="11">
         <div class="loader-card">
             <div class="spinner-ring-wrapper">
-                <svg class="spinner-svg" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="40" stroke="#f1f5f9" stroke-width="8" fill="none"/>
-                    <circle cx="50" cy="50" r="40" stroke="var(--primary)" stroke-width="8" fill="none" stroke-dasharray="180" stroke-linecap="round"/>
+                <svg class="spinner-svg" viewBox="0 0 50 50">
+                    <circle class="spinner-track" cx="25" cy="25" r="20"></circle>
+                    <circle class="spinner-head" cx="25" cy="25" r="20"></circle>
                 </svg>
             </div>
-            <h2>Analyzing Your Responses...</h2>
+            <h3 class="wb-loader-title">Analyzing Your Answers...</h3>
             <div class="wb-checklist">
-                <div class="wb-check-item" id="chk1"><div class="wb-check-icon">✓</div> Evaluating symptoms</div>
-                <div class="wb-check-item" id="chk2"><div class="wb-check-icon">✓</div> Mapping hormonal markers</div>
-                <div class="wb-check-item" id="chk3"><div class="wb-check-icon">✓</div> Building personalized protocol</div>
+                <div class="wb-check-item" id="check1">
+                    <div class="wb-check-icon">✓</div>
+                    <span>Processing symptom markers</span>
+                </div>
+                <div class="wb-check-item" id="check2">
+                    <div class="wb-check-icon">✓</div>
+                    <span>Mapping hormonal stress profile</span>
+                </div>
+                <div class="wb-check-item" id="check3">
+                    <div class="wb-check-icon">✓</div>
+                    <span>Generating custom 28-day reset plan</span>
+                </div>
+            </div>
+            <div class="wb-progress-bar-bg">
+                <div class="wb-progress-bar-fill" id="loaderProgressBar"></div>
             </div>
         </div>
     </div>
 
-    <!-- SCREEN 20: PROFILE SUMMARY -->
-    <div class="step-content" data-step="20">
-        <h2>Your Hormonal Profile Summary</h2>
+    <!-- SCREEN 12: PERSONALIZED RESULTS SUMMARY -->
+    <div class="step-content" data-step="12">
+        <h2 style="text-align: left; margin-bottom: 16px;">Your Hormonal Assessment</h2>
+        
         <div class="summary-main-card">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-weight: 800;">Disruption Level</span>
-                <span style="background: #fee2e2; color: #ef4444; padding: 4px 10px; border-radius: 12px; font-weight: 800; font-size: 11px;">HIGH</span>
+            <div class="summary-card-header">
+                <span class="summary-card-title">Hormonal Strain Level</span>
+                <span class="summary-badge-high">High Shift</span>
             </div>
+
             <div class="meter-container">
-                <div class="meter-bar"><div class="meter-pointer"></div></div>
-            </div>
-            <p style="font-size: 13px; color: #475569; margin-top: 10px;">Your assessment shows active estrogen-cortisol fluctuations contributing directly to your symptom stack.</p>
-        </div>
-        <button class="primary-cta-btn" onclick="nextStep()">View My Personalized Plan →</button>
-    </div>
-
-    <!-- SCREEN 21: FINAL SALES PAGE (Post-quiz Offer) -->
-    <div class="step-content" data-step="21">
-        <div class="sales-header">
-            <span class="sales-badge">Based on your quiz results</span>
-            <h1>Your Complete <span id="sales-cluster-title">Hormone</span> Relief System</h1>
-            <p class="subtitle">Everything you need to understand what's happening, act on it today, and eat without the daily guesswork.</p>
-        </div>
-
-        <!-- Priority Breakdown Cards (WarriorBabe style) -->
-        <div class="score-card">
-            <div class="card-header-flex">
-                <span class="status-tag critical">CRITICAL PRIORITY</span>
-                <span style="font-size: 12px; font-weight: 800; color: #64748b;">PRIORITY SCORE: <strong style="color: #0f172a; font-size: 16px;">92/100</strong></span>
-            </div>
-            <h3 style="font-size: 16px; margin-bottom: 4px;">Secret #1: Identifying Your Hormone Profile</h3>
-            <p style="font-size: 14px; color: #4b5563;">Understand typical vs. red-flag medical symptoms, plus straight evidence-based answers on HRT and supplements without fear or hype.</p>
-            <div class="why-box">
-                <strong>Why this score:</strong> Your high symptom friction requires immediate, evidence-based clarity.
-            </div>
-        </div>
-
-        <div class="score-card">
-            <div class="card-header-flex">
-                <span class="status-tag attention">NEEDS ATTENTION</span>
-                <span style="font-size: 12px; font-weight: 800; color: #64748b;">PRIORITY SCORE: <strong style="color: #0f172a; font-size: 16px;">78/100</strong></span>
-            </div>
-            <h3 style="font-size: 16px; margin-bottom: 4px;">Secret #2: Daily Fuel & Nutrition Alignment</h3>
-            <p style="font-size: 14px; color: #4b5563;">Eliminate daily food guesswork using a simple protein + plants + carb + fat meal formula without detoxes or forbidden foods.</p>
-            <div class="why-box">
-                <strong>Why this score:</strong> Daily meal uncertainty is exacerbating your fatigue and metabolic stress.
-            </div>
-        </div>
-
-        <div class="score-card">
-            <div class="card-header-flex">
-                <span class="status-tag beneficial">BENEFICIAL</span>
-                <span style="font-size: 12px; font-weight: 800; color: #64748b;">PRIORITY SCORE: <strong style="color: #0f172a; font-size: 16px;">65/100</strong></span>
-            </div>
-            <h3 style="font-size: 16px; margin-bottom: 4px;">Secret #3: Real-Time Acute Symptom Rescue</h3>
-            <p style="font-size: 14px; color: #4b5563;">Access 3-to-5 step phone-friendly action cards for 3 AM wake-ups, hot flashes, and brain fog moments.</p>
-            <div class="why-box">
-                <strong>Why this score:</strong> Fast action plans stop sudden symptom flare-ups from ruining your week.
-            </div>
-        </div>
-
-        <!-- Timer Bar -->
-        <div class="timer-box">
-            <div style="font-weight: 800; color: #991b1b; font-size: 12px; text-transform: uppercase;">⚠️ Your Personalized Quiz Discount Expires In:</div>
-            <div class="timer-display" id="salesTimer">14:59</div>
-            <p style="font-size: 12px; color: #64748b;">Quiz-takers get $148 off—this offer isn't shown on our main site.</p>
-        </div>
-
-        <!-- Value Stack Section -->
-        <div class="offer-section">
-            <h3 style="text-align: center; margin-bottom: 20px;">What's Included In Your Relief System:</h3>
-
-            <div class="stack-item">
-                <h4 style="font-size: 16px;">1. Menopause, Decoded™ — The Complete Guide</h4>
-                <div style="font-size: 12px; color: var(--primary-dark); font-weight: 700;">102 Pages | Evidence-Based (NICE, ACOG, WHO, The Menopause Society)</div>
-                <p style="font-size: 13px; color: #4b5563; margin-top: 4px;">Understand exactly what's happening in your body, map your symptoms, and get a clear 30-Day Reset to start acting on it.</p>
-                <p style="margin-top: 6px; font-weight: 700; font-size: 13px;">Value: <span class="price-cross">$123</span></p>
-            </div>
-
-            <div class="stack-item">
-                <h4 style="font-size: 16px;">2. BONUS #1 — 30-Day Meal & Grocery System <span class="badge-free">FREE TODAY</span></h4>
-                <div style="font-size: 12px; color: var(--primary-dark); font-weight: 700;">30 Days of Meal Combos | 4 Grocery Lists | 20 Breakfasts | 20 Lunches/Dinners</div>
-                <p style="font-size: 13px; color: #4b5563; margin-top: 4px;">Removes daily "what should I eat?" fatigue with simple protein + plants + carb + fat formulas turned into real meals.</p>
-                <p style="margin-top: 6px; font-weight: 700; font-size: 13px;">Value: <span class="price-cross">$47</span> — <span style="color: #10b981;">FREE Today</span></p>
-            </div>
-
-            <div class="stack-item">
-                <h4 style="font-size: 16px;">3. BONUS #2 — Quick-Relief Toolkit <span class="badge-free">FREE TODAY</span></h4>
-                <div style="font-size: 12px; color: var(--primary-dark); font-weight: 700;">10 Phone-Friendly Action Cards</div>
-                <p style="font-size: 13px; color: #4b5563; margin-top: 4px;">Includes Hot Flash Now, 3 A.M. Wake-Up, Brain-Fog Rescue, Overwhelm Reset, and Doctor Appointment Prep cards.</p>
-                <p style="margin-top: 6px; font-weight: 700; font-size: 13px;">Value: <span class="price-cross">$27</span> — <span style="color: #10b981;">FREE Today</span></p>
-            </div>
-
-            <!-- Price Breakdown -->
-            <div class="pricing-table">
-                <div class="price-row"><span>Menopause, Decoded™ Guide</span> <span>$123</span></div>
-                <div class="price-row"><span>BONUS #1: Meal System</span> <span><span class="price-cross">$47</span> FREE</span></div>
-                <div class="price-row"><span>BONUS #2: Quick-Relief Toolkit</span> <span><span class="price-cross">$27</span> FREE</span></div>
-                <div class="price-row total">
-                    <span>Total Value: <span class="price-cross">$197</span></span>
-                    <span style="color: var(--primary-dark);">$49 Today</span>
+                <div class="meter-bar">
+                    <div class="meter-pointer" id="meterPointer">
+                        <div class="meter-tooltip">82% High Strain</div>
+                    </div>
+                </div>
+                <div class="meter-labels">
+                    <span>Mild</span>
+                    <span>Moderate</span>
+                    <span>High Shift</span>
                 </div>
             </div>
 
-            <button class="primary-cta-btn" onclick="alert('Proceeding to secure checkout...')">Get My Complete Plan - $49 ›</button>
-            <p style="text-align: center; font-size: 11px; color: #64748b; margin-top: 8px;">One-time payment. Instant access. No subscription.</p>
+            <div class="summary-alert-box">
+                <div class="summary-alert-icon">!</div>
+                <div class="summary-alert-text">
+                    <strong>Primary Focus Target: <span id="resPrimaryCluster">Sleep & Recovery</span></strong>
+                    Your answers show your body is undergoing a severe cortisol-estrogen shift requiring target intervention.
+                </div>
+            </div>
         </div>
 
-        <!-- Trustpilot Proof -->
-        <div class="trustpilot-box">
-            <div class="stars">★★★★★</div>
-            <p style="font-weight: 800; margin-top: 4px;">Rated 4.8 / 5 on Trustpilot</p>
-            <p style="font-size: 13px; color: #4b5563; margin-top: 8px;">"The Quick-Relief cards on my phone have been an absolute lifesaver during 3 A.M. wake-ups." — <strong>Sarah M.</strong></p>
+        <div class="summary-grid">
+            <div class="summary-grid-card">
+                <div class="grid-card-icon">👤</div>
+                <div class="grid-card-info">
+                    <h5>Age Bracket</h5>
+                    <p id="resAgeBracket">40 – 45</p>
+                </div>
+            </div>
+            <div class="summary-grid-card">
+                <div class="grid-card-icon">⚡</div>
+                <div class="grid-card-info">
+                    <h5>Symptoms</h5>
+                    <p id="resSymptomCount">4 Tracked</p>
+                </div>
+            </div>
         </div>
 
-        <!-- Guarantee -->
-        <div class="guarantee-box">
-            <h3>Try It Risk-Free</h3>
-            <p style="font-size: 13px; color: #4b5563; margin-top: 6px;">If <em>Menopause, Decoded™</em> doesn't help you understand what's happening and what to do next, email us within 30 days for a full refund—no questions asked.</p>
-        </div>
+        <button class="primary-cta-btn" onclick="nextStep()">See My 28-Day Plan →</button>
     </div>
 
-</div>
+    <!-- SCREEN 13: SALES OFFER CARD -->
+    <div class="step-content" data-step="13">
+        <h2>Your Personalized 28-Day Calm Reset Challenge</h2>
+        <p class="subtitle">Designed specifically for your hormonal profile</p>
 
-<!-- Micro Interstitial Modals -->
-<div class="loading-modal-overlay" id="loadingModal">
-    <div class="loading-modal-card">
-        <div class="modal-question" id="modalStep17" style="display: none;">
-            <h2>Are you ready to finally get relief from these symptoms?</h2>
-            <div class="options-grid" style="margin-top: 16px;">
-                <button class="option-btn" onclick="onYesStreakSelected(17)">Yes, absolutely</button>
-                <button class="option-btn" onclick="onYesStreakSelected(17)">I think so</button>
-            </div>
+        <div class="pricing-card">
+            <span class="price-badge">Custom Plan Ready</span>
+            <h3 style="font-size: 24px; color: #000; margin-bottom: 12px;">28-Day Hormone Reset</h3>
+            <p style="font-size: 14px; color: #64748B; margin-bottom: 20px;">Daily guided protocols to restore sleep, mental clarity, and metabolic function.</p>
+            <button class="primary-cta-btn" onclick="alert('Redirecting to Checkout...')">Claim My Custom Plan</button>
         </div>
-        <div class="modal-question" id="modalStep18" style="display: none;">
-            <h2>Would you rather feel calm, energized, and in control?</h2>
-            <div class="options-grid" style="margin-top: 16px;">
-                <button class="option-btn" onclick="onYesStreakSelected(18)">Yes, exactly</button>
-            </div>
-        </div>
-        <div class="modal-question" id="modalStep19" style="display: none;">
-            <h2>Are you open to a natural approach that works with your body?</h2>
-            <div class="options-grid" style="margin-top: 16px;">
-                <button class="option-btn" onclick="onYesStreakSelected(19)">Yes, I'm ready</button>
-            </div>
-        </div>
+
+        <p class="legal-terms">
+            Guaranteed 30-day money-back guarantee. <a href="#">Terms & Conditions</a> apply.
+        </p>
     </div>
+
 </div>
 
 <script>
+    const quizData = {
+        age: '',
+        symptoms: [],
+        cluster: '',
+        clusterDetail: '',
+        isolation: '',
+        costs: [],
+        trend: ''
+    };
+
     let currentStep = 0;
-    const totalSteps = 15;
-    const userAnswers = { symptoms: [], dominantClusterLabel: 'Hormone' };
+    const totalSteps = 13;
 
-    function updateTimeline() {
-        const header = document.getElementById('appHeader');
-        if (currentStep > 0 && currentStep <= 15) {
-            header.style.display = 'flex';
-        } else {
-            header.style.display = 'none';
-        }
-        const progressPercent = Math.min(((currentStep - 1) / (totalSteps - 1)) * 100, 100);
-        document.getElementById('timelineProgress').style.width = `${progressPercent}%`;
-    }
-
-    function showStep(stepNumber) {
+    function showStep(step) {
         document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
-        const nextEl = document.querySelector(`.step-content[data-step="${stepNumber}"]`);
-        if (nextEl) nextEl.classList.add('active');
-        currentStep = stepNumber;
-        updateTimeline();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const activeEl = document.querySelector(`[data-step="${step}"]`);
+        if (activeEl) activeEl.classList.add('active');
 
-        if (stepNumber === 21) {
-            startSalesTimer(15 * 60);
-        }
-    }
-
-    function nextStep() { showStep(currentStep + 1); }
-    function prevStep() { if (currentStep > 0) showStep(currentStep - 1); }
-
-    function selectAge(val) { nextStep(); }
-
-    function toggleSymptom(btn, name) {
-        btn.classList.toggle('selected');
-        if (userAnswers.symptoms.includes(name)) {
-            userAnswers.symptoms = userAnswers.symptoms.filter(s => s !== name);
+        const appHeader = document.getElementById('appHeader');
+        if (step > 0 && step < 11) {
+            appHeader.style.display = 'flex';
+            updateProgressBar(step);
         } else {
-            userAnswers.symptoms.push(name);
+            appHeader.style.display = 'none';
         }
-        document.getElementById('symptomNextBtn').disabled = userAnswers.symptoms.length === 0;
     }
 
-    function selectCluster(key, labelText) {
-        userAnswers.dominantClusterLabel = labelText;
-        document.getElementById('sales-cluster-title').innerText = labelText;
+    function updateProgressBar(step) {
+        const progressPercent = Math.min(((step) / 10) * 100, 100);
+        document.getElementById('timelineProgress').style.width = `${progressPercent}%`;
+
+        for (let i = 1; i <= 4; i++) {
+            const dot = document.getElementById(`dot${i}`);
+            if (dot) {
+                if (step >= i * 2.5) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            }
+        }
+    }
+
+    function nextStep() {
+        if (currentStep < totalSteps) {
+            currentStep++;
+            showStep(currentStep);
+        }
+    }
+
+    function prevStep() {
+        if (currentStep > 0) {
+            currentStep--;
+            showStep(currentStep);
+        }
+    }
+
+    function selectAge(age) {
+        quizData.age = age;
         nextStep();
     }
 
-    function startLoadingSequence() {
-        showStep(16);
+    function toggleSymptom(btn, symptom) {
+        btn.classList.toggle('selected');
+        if (quizData.symptoms.includes(symptom)) {
+            quizData.symptoms = quizData.symptoms.filter(s => s !== symptom);
+        } else {
+            quizData.symptoms.push(symptom);
+        }
+        document.getElementById('symptomNextBtn').disabled = quizData.symptoms.length === 0;
+    }
+
+    function selectCluster(cluster, detail) {
+        quizData.cluster = cluster;
+        quizData.clusterDetail = detail;
+        nextStep();
+    }
+
+    function selectIsolation(val) {
+        quizData.isolation = val;
+        nextStep();
+    }
+
+    function toggleCost(btn, cost) {
+        btn.classList.toggle('selected');
+        if (quizData.costs.includes(cost)) {
+            quizData.costs = quizData.costs.filter(c => c !== cost);
+        } else {
+            quizData.costs.push(cost);
+        }
+        document.getElementById('costNextBtn').disabled = quizData.costs.length === 0;
+    }
+
+    function selectTrend(trend) {
+        quizData.trend = trend;
+        nextStep();
+    }
+
+    function startAnalysis() {
+        nextStep(); // moves to step 11 (loader)
         let progress = 0;
+        const progressBar = document.getElementById('loaderProgressBar');
+
         const interval = setInterval(() => {
-            progress += 1;
-            if (progress === 30) {
-                document.getElementById('chk1').classList.add('active');
-                pauseModal('modalStep17');
+            progress += 2;
+            if (progressBar) progressBar.style.width = `${progress}%`;
+
+            if (progress === 30) document.getElementById('check1')?.classList.add('active');
+            if (progress === 65) document.getElementById('check2')?.classList.add('active');
+            if (progress === 90) document.getElementById('check3')?.classList.add('active');
+
+            if (progress >= 100) {
                 clearInterval(interval);
-            } else if (progress === 60) {
-                document.getElementById('chk2').classList.add('active');
-                pauseModal('modalStep18');
-                clearInterval(interval);
-            } else if (progress === 90) {
-                document.getElementById('chk3').classList.add('active');
-                pauseModal('modalStep19');
-                clearInterval(interval);
-            } else if (progress >= 100) {
-                clearInterval(interval);
-                showStep(20);
+                populateResults();
+                nextStep(); // moves to step 12
             }
-        }, 30);
+        }, 50);
     }
 
-    function pauseModal(modalId) {
-        document.querySelectorAll('.modal-question').forEach(m => m.style.display = 'none');
-        document.getElementById(modalId).style.display = 'block';
-        document.getElementById('loadingModal').style.display = 'flex';
-    }
-
-    function onYesStreakSelected(stepNum) {
-        document.getElementById('loadingModal').style.display = 'none';
-        if (stepNum === 17) resumeLoading(31);
-        if (stepNum === 18) resumeLoading(61);
-        if (stepNum === 19) resumeLoading(91);
-    }
-
-    function resumeLoading(startProgress) {
-        let progress = startProgress;
-        const interval = setInterval(() => {
-            progress += 1;
-            if (progress === 60 && startProgress < 60) {
-                document.getElementById('chk2').classList.add('active');
-                pauseModal('modalStep18');
-                clearInterval(interval);
-            } else if (progress === 90 && startProgress < 90) {
-                document.getElementById('chk3').classList.add('active');
-                pauseModal('modalStep19');
-                clearInterval(interval);
-            } else if (progress >= 100) {
-                clearInterval(interval);
-                showStep(20);
-            }
-        }, 30);
-    }
-
-    function startSalesTimer(duration) {
-        let timer = duration, minutes, seconds;
-        const display = document.getElementById('salesTimer');
-        setInterval(() => {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-            if (display) display.textContent = minutes + ":" + seconds;
-            if (--timer < 0) timer = 0;
-        }, 1000);
+    function populateResults() {
+        if (document.getElementById('resPrimaryCluster')) {
+            document.getElementById('resPrimaryCluster').innerText = quizData.cluster || 'Sleep & Energy';
+        }
+        if (document.getElementById('resAgeBracket')) {
+            document.getElementById('resAgeBracket').innerText = quizData.age || 'Not Specified';
+        }
+        if (document.getElementById('resSymptomCount')) {
+            document.getElementById('resSymptomCount').innerText = `${quizData.symptoms.length} Tracked`;
+        }
     }
 </script>
+
 </body>
 </html>
