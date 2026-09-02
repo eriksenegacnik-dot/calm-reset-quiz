@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personalized Calm Reset Challenge</title>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <!-- Whop Elements (loaded early, but fallback is ready if it fails) -->
-    <script src="https://js.whop.cloud/elements/amber/elements.js" data-whop-elements></script>
     <style>
+        /* ===== All styles remain exactly the same as before ===== */
         :root {
             --primary: #EC4899;
             --primary-hover: #DB2777;
@@ -22,9 +20,9 @@
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
@@ -699,7 +697,6 @@
             text-decoration: underline;
         }
 
-        /* Sales page styles */
         .sales-headline {
             font-size: 26px;
             font-weight: 900;
@@ -899,19 +896,6 @@
             color: var(--primary);
             text-align: center;
             margin: 12px 0 4px;
-        }
-
-        #whop-checkout {
-            display: none;
-            margin: 16px 0;
-            min-height: 400px;
-        }
-        #whop-checkout.visible {
-            display: block;
-        }
-
-        .offer-content-hidden {
-            display: none !important;
         }
 
         .testimonial-card {
@@ -1262,21 +1246,17 @@
     </div>
 
     <!-- ============================================ -->
-    <!-- SCREEN 21: UPDATED OFFER & PRICING PAGE       -->
+    <!-- SCREEN 21: OFFER & PRICING PAGE              -->
     <!-- ============================================ -->
     <div class="step-content" data-step="21">
-        <!-- Eyebrow -->
         <div style="text-align: center; font-size: 13px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px;">
             Based on your quiz results
         </div>
 
-        <!-- Headline -->
         <div class="sales-headline" id="salesHeadline">Your Complete {{dominant_cluster}} Relief System</div>
 
-        <!-- Subhead -->
         <div class="sales-subhead" id="salesSubhead">Everything you need to understand what's happening, act on it today, and eat without the daily guesswork.</div>
 
-        <!-- Countdown timer (10 minutes) -->
         <div class="sales-urgency-note">
             <i class="fas fa-clock" style="margin-right: 6px;"></i> This special price expires in:
         </div>
@@ -1291,7 +1271,6 @@
             </div>
         </div>
 
-        <!-- Snapshot -->
         <div class="sales-snapshot">
             <div class="snapshot-item">
                 <div class="snapshot-label">Your Profile</div>
@@ -1307,9 +1286,7 @@
             </div>
         </div>
 
-        <!-- Offer content (will be hidden when checkout is shown) -->
         <div id="offerContent">
-            <!-- Offer Stack -->
             <div class="offer-stack-card">
                 <div class="offer-item">
                     <div class="item-desc">
@@ -1340,12 +1317,10 @@
                 </div>
             </div>
 
-            <!-- Scarcity line -->
             <div class="sales-scarcity">
                 <i class="fas fa-tag" style="margin-right: 6px;"></i> This price is only available because you completed your personalized assessment.
             </div>
 
-            <!-- Price Box with CTA -->
             <div class="sales-price-box">
                 <div>
                     <span class="discount-price" id="salesFinalPrice">$49</span>
@@ -1361,10 +1336,6 @@
             </div>
         </div>
 
-        <!-- Whop Checkout Container (hidden initially) -->
-        <div id="whop-checkout"></div>
-
-        <!-- Reviews (always visible) -->
         <div style="margin-top: 20px;">
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
@@ -1378,7 +1349,6 @@
             </div>
         </div>
 
-        <!-- FAQ -->
         <div class="faq-sales">
             <div class="faq-item">
                 <div class="q" onclick="toggleSalesFaq(this)">How fast will I receive access? <i class="fas fa-chevron-down"></i></div>
@@ -1394,7 +1364,6 @@
             </div>
         </div>
 
-        <!-- Legal -->
         <div class="legal-terms">
             By clicking above, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
         </div>
@@ -1431,7 +1400,7 @@
 
 <script>
     // ============================
-    // QUIZ LOGIC (unchanged)
+    // QUIZ LOGIC
     // ============================
     let currentStep = 0;
     const totalSteps = 15; 
@@ -1490,10 +1459,8 @@
     function prevStep() { if (currentStep > 0) showStep(currentStep - 1); }
     function id(str) { return document.getElementById(str); }
 
-    /* STEP 1 */
     function selectAge(val) { userAnswers.age = val; nextStep(); }
 
-    /* STEP 2 */
     function toggleSymptom(btn, symptomName) {
         btn.classList.toggle('selected');
         if (userAnswers.symptoms.includes(symptomName)) {
@@ -1504,17 +1471,14 @@
         id('symptomNextBtn').disabled = userAnswers.symptoms.length === 0;
     }
 
-    /* STEP 4 */
     function selectCluster(clusterName, labelText) {
         userAnswers.dominantCluster = clusterName;
         userAnswers.dominantClusterLabel = labelText;
         nextStep();
     }
 
-    /* STEP 5 */
     function selectIsolation(val) { userAnswers.isolation = val; nextStep(); }
 
-    /* STEP 7 */
     function toggleCost(btn, costName) {
         btn.classList.toggle('selected');
         if (userAnswers.costs.includes(costName)) {
@@ -1525,10 +1489,8 @@
         id('costNextBtn').disabled = userAnswers.costs.length === 0;
     }
 
-    /* STEP 9 */
     function selectTrend(val) { userAnswers.trend = val; nextStep(); }
 
-    /* STEP 10 */
     function toggleSpillover(btn, item) {
         btn.classList.toggle('selected');
         if (userAnswers.spillovers.includes(item)) {
@@ -1539,10 +1501,8 @@
         id('spilloverNextBtn').disabled = userAnswers.spillovers.length === 0;
     }
 
-    /* STEP 12 */
     function selectOutcome(val) { userAnswers.outcome = val; nextStep(); }
 
-    /* STEP 14 */
     function selectObjection(key) {
         userAnswers.objection = key;
         const titleEl = id('objectionCardTitle');
@@ -1582,7 +1542,6 @@
         id('gridImpact').innerText = userAnswers.spillovers.length > 1 ? 'Noticeable' : 'Moderate';
     }
 
-    /* LOADER */
     function startLoadingSequence() {
         showStep(16);
         let progress = 0;
@@ -1626,7 +1585,7 @@
     }
 
     /* ============================================
-       SALES PAGE POPULATION (Step 21)
+       SALES PAGE POPULATION
     ============================================ */
     function populateSalesPage() {
         const priority = userAnswers.dominantCluster || 'Physical';
@@ -1642,7 +1601,7 @@
     }
 
     /* ============================================
-       10-MINUTE COUNTDOWN
+       COUNTDOWN
     ============================================ */
     let countdownInterval = null;
     function startCountdown() {
@@ -1676,68 +1635,29 @@
     }
 
     /* ============================================
-       ROBUST WHOP CHECKOUT: EMBED + FALLBACK
+       INSTANT REDIRECT TO WHOP
+       (Fastest, most reliable)
     ============================================ */
-    const WHOP_CHECKOUT_URL = 'https://whop.com/checkout/plan_SF7OBebWTouRi/'; // <-- Your Checkout URL
-
-    let checkoutMounted = false;
-
-    function mountWhopCheckout() {
-        if (checkoutMounted) return true;
-        if (!window.WhopElements) return false;
-
-        try {
-            const checkout = window.WhopElements().checkout.create({
-                plan: "plan_SF7OBebWTouRi",
-            });
-            checkout.create("checkout").mount("#whop-checkout");
-            checkoutMounted = true;
-            console.log('✅ Whop checkout mounted successfully');
-            return true;
-        } catch (e) {
-            console.error('❌ Whop mount error:', e);
-            return false;
-        }
-    }
-
     function handleCheckout() {
+        // Get the quiz result
         const result = userAnswers.dominantCluster || 'Personalized';
-        const offerContent = document.getElementById('offerContent');
-        const checkoutContainer = document.getElementById('whop-checkout');
-
-        // Hide offer, show checkout container
-        if (offerContent) offerContent.classList.add('offer-content-hidden');
-        if (checkoutContainer) {
-            checkoutContainer.style.display = 'block';
-            checkoutContainer.classList.add('visible');
-        }
-
-        // Attempt to mount the embed
-        if (mountWhopCheckout()) {
-            // Success! The embed is mounted.
-            return;
-        }
-
-        // If mount failed immediately, wait a bit and retry, then fallback to redirect
-        let attempts = 0;
-        const maxAttempts = 10;
-        const interval = setInterval(() => {
-            attempts++;
-            if (mountWhopCheckout()) {
-                clearInterval(interval);
-            } else if (attempts >= maxAttempts) {
-                clearInterval(interval);
-                // Fallback redirect
-                const redirectUrl = WHOP_CHECKOUT_URL + 
-                    '?return_url=' + encodeURIComponent(
-                        'https://menopause-thank-you.vercel.app?result=' + encodeURIComponent(result)
-                    );
-                window.location.href = redirectUrl;
-            }
-        }, 300);
+        
+        // Your Whop checkout URL (replace with your actual link)
+        const checkoutUrl = 'https://whop.com/checkout/plan_SF7OBebWTouRi/';
+        
+        // Build the full URL with return_url and result param
+        const redirectUrl = checkoutUrl + 
+            '?return_url=' + encodeURIComponent(
+                'https://menopause-thank-you.vercel.app?result=' + encodeURIComponent(result)
+            );
+        
+        // Instant redirect
+        window.location.href = redirectUrl;
     }
 
-    /* FAQ toggle */
+    /* ============================================
+       FAQ TOGGLE
+    ============================================ */
     function toggleSalesFaq(el) {
         const answer = el.nextElementSibling;
         const isOpen = answer.classList.contains('open');
