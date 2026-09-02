@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You – Your Plan Is Ready</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ---- Reset & Base ---- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #FAF5F8;
+      color: #1E293B;
+      padding: 20px 16px 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 780px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ---- Fireworks Canvas ---- */
+    #fireworks-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ---- Cards & Sections ---- */
+    .card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 28px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      border: 1px solid #F1F5F9;
+      transition: transform 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .card-header i {
+      font-size: 28px;
+      color: #EC4899;
+      width: 40px;
+      text-align: center;
+    }
+
+    .card-header h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0F172A;
+      margin: 0;
+    }
+
+    .badge {
+      background: #FCE7F3;
+      color: #EC4899;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---- Header / Celebration ---- */
+    .celebration {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    .celebration .checkmark {
+      background: #10B981;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: white;
+      margin-bottom: 16px;
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.25);
+    }
+
+    .celebration h1 {
+      font-size: 32px;
+      font-weight: 900;
+      color: #0F172A;
+      margin-bottom: 8px;
+    }
+
+    .celebration .sub {
+      font-size: 18px;
+      color: #64748B;
+      max-width: 500px;
+      margin: 0 auto 6px;
+    }
+
+    .celebration .email-confirm {
+      font-size: 14px;
+      color: #94A3B8;
+      background: #F1F5F9;
+      padding: 10px 18px;
+      border-radius: 30px;
+      display: inline-block;
+      margin-top: 12px;
+    }
+
+    .celebration .email-confirm i {
+      color: #EC4899;
+      margin-right: 8px;
+    }
+
+    /* ---- Download Items ---- */
+    .download-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .download-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px;
+      background: #F8FAFC;
+      border-radius: 16px;
+      border: 1px solid #E2E8F0;
+      transition: border-color 0.2s;
+    }
+
+    .download-item:hover {
+      border-color: #EC4899;
+    }
+
+    .download-item .icon {
+      width: 48px;
+      height: 48px;
+      background: #FCE7F3;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #EC4899;
+      flex-shrink: 0;
+    }
+
+    .download-item .info {
+      flex: 1;
+    }
+
+    .download-item .info .name {
+      font-weight: 700;
+      font-size: 16px;
+      color: #0F172A;
+    }
+
+    .download-item .info .desc {
+      font-size: 14px;
+      color: #64748B;
+    }
+
+    .download-btn {
+      background: #EC4899;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 22px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.15s, transform 0.1s;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .download-btn:hover {
+      background: #DB2777;
+      transform: scale(1.02);
+    }
+
+    .support-line {
+      text-align: center;
+      font-size: 14px;
+      color: #94A3B8;
+      margin-top: 12px;
+    }
+
+    .support-line a {
+      color: #EC4899;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ---- Onboarding Steps ---- */
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: #FCE7F3;
+      color: #EC4899;
+      font-weight: 800;
+      font-size: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-content p {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #1E293B;
+      margin: 0;
+    }
+
+    .step-content strong {
+      color: #0F172A;
+    }
+
+    /* ---- Roadmap ---- */
+    .roadmap-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .roadmap-item {
+      border-left: 3px solid #EC4899;
+      padding-left: 18px;
+    }
+
+    .roadmap-item .week {
+      font-weight: 800;
+      font-size: 16px;
+      color: #0F172A;
+    }
+
+    .roadmap-item p {
+      font-size: 15px;
+      color: #475569;
+      margin: 4px 0 0;
+      line-height: 1.5;
+    }
+
+    /* ---- Reassurance ---- */
+    .reassurance {
+      background: #FCE7F3;
+      border: 1px solid #F9A8D4;
+      text-align: center;
+      padding: 32px 24px;
+    }
+
+    .reassurance h2 {
+      color: #0F172A;
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .reassurance p {
+      font-size: 16px;
+      color: #475569;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ---- FAQ / Support ---- */
+    .faq-item {
+      border-bottom: 1px solid #F1F5F9;
+      padding: 14px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      color: #0F172A;
+      user-select: none;
+    }
+
+    .faq-question i {
+      color: #94A3B8;
+      transition: transform 0.2s;
+    }
+
+    .faq-question.open i {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease, padding 0.25s ease;
+      padding: 0 4px;
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .faq-answer.open {
+      max-height: 200px;
+      padding: 12px 4px 0;
+    }
+
+    .support-email {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 15px;
+      color: #64748B;
+    }
+
+    .support-email a {
+      color: #EC4899;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #94A3B8;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #E2E8F0;
+    }
+
+    .footer a {
+      color: #EC4899;
+      text-decoration: none;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 4px;
+      }
+      .card {
+        padding: 20px 16px;
+      }
+      .download-item {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .download-item .info {
+        flex: 1 1 100%;
+        order: 2;
+      }
+      .download-btn {
+        width: 100%;
+        justify-content: center;
+        order: 3;
+      }
+      .download-item .icon {
+        order: 1;
+      }
+      .celebration h1 {
+        font-size: 26px;
+      }
+      .celebration .sub {
+        font-size: 16px;
+      }
+      .step-item {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fireworks Canvas -->
+  <canvas id="fireworks-canvas"></canvas>
+
+  <div class="container">
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 1 – Celebration & Confirmation                         -->
+    <!-- ============================================================ -->
+    <div class="celebration">
+      <div class="checkmark">✓</div>
+      <h1>You're In. Your Personalized Plan Is Ready.</h1>
+      <p class="sub">Welcome to Menopause, Decoded™ — here's everything, unlocked instantly.</p>
+      <div class="email-confirm">
+        <i class="fas fa-envelope"></i> A receipt has been sent to <strong>{{email}}</strong>. Save this page or bookmark it — you'll have access anytime.
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 2 – Your Downloads                                     -->
+    <!-- ============================================================ -->
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-cloud-download-alt"></i>
+        <h2>Your Complete System — Ready to Open</h2>
+      </div>
+
+      <div class="download-grid">
+        <!-- Item 1 -->
+        <div class="download-item">
+          <div class="icon"><i class="fas fa-book"></i></div>
+          <div class="info">
+            <div class="name">📘 Menopause, Decoded™ — The Complete Guide</div>
+            <div class="desc">Your core guide. Start here.</div>
+          </div>
+          <a href="#" class="download-btn" download><i class="fas fa-download"></i> Download Now</a>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="download-item">
+          <div class="icon"><i class="fas fa-utensils"></i></div>
+          <div class="info">
+            <div class="name">🍽️ 30-Day Meal & Grocery System</div>
+            <div class="desc">Your done-for-you nutrition companion.</div>
+          </div>
+          <a href="#" class="download-btn" download><i class="fas fa-download"></i> Download Now</a>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="download-item">
+          <div class="icon"><i class="fas fa-first-aid"></i></div>
+          <div class="info">
+            <div class="name">🆘 Quick-Relief Toolkit</div>
+            <div class="desc">Keep this one on your phone.</div>
+          </div>
+          <a href="#" class="download-btn" download><i class="fas fa-download"></i> Download Now</a>
+        </div>
+      </div>
+
+      <div class="support-line">
+        <i class="fas fa-life-ring" style="color:#EC4899; margin-right:6px;"></i>
+        Having trouble downloading? Email <a href="mailto:support@yourdomain.com">support@yourdomain.com</a> and we'll get you sorted within 24 hours.
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 3 – Start Here: Your First 10 Minutes                  -->
+    <!-- ============================================================ -->
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-rocket"></i>
+        <h2>Don't Read Everything Today. Do This Instead.</h2>
+      </div>
+      <p style="font-size:15px; color:#475569; margin-bottom:20px;">
+        You just got three guides at once, and that can feel like a lot. Here's exactly what to do in your first 10 minutes so this doesn't turn into another PDF you never open.
+      </p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <p><strong>Open the Quick-Relief Toolkit first — not the main guide.</strong><br>
+            Find the card that matches whatever's bothering you <em>right now</em> (hot flash, bad night, brain fog, overwhelm). Read just that one card. That's it for today if you want.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <p><strong>Save the Quick-Relief Toolkit to your phone.</strong><br>
+            This is the one you'll actually reach for in the moment — not at your desk. Screenshot the "Fast-Action Index" page (last page of the toolkit) so it's always one tap away.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <p><strong>Skim — don't study — the Table of Contents of the main guide.</strong><br>
+            You don't need to read Menopause, Decoded™ cover to cover this week. Just see what's in there so you know where to go when a specific question comes up.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <p><strong>Glance at Week 1 of the Meal & Grocery System.</strong><br>
+            Don't meal-plan the whole month tonight. Just look at Day 1 and Day 2 — see how simple the format is — and decide if you want to start this week or next.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 4 – Your Realistic Next 30 Days                        -->
+    <!-- ============================================================ -->
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-calendar-check"></i>
+        <h2>What Using This Actually Looks Like</h2>
+      </div>
+      <p style="font-size:15px; color:#475569; margin-bottom:20px;">
+        This isn't about reading more. It's about knowing what to do, one moment at a time.
+      </p>
+
+      <div class="roadmap-grid">
+        <div class="roadmap-item">
+          <div class="week">📅 This week</div>
+          <p>Use the <strong>Quick-Relief Toolkit</strong> whenever a symptom hits. Read one section of the main guide that matches your priority symptom from the quiz (<strong>{{dominant_cluster}}</strong>).</p>
+        </div>
+        <div class="roadmap-item">
+          <div class="week">📅 Week 2–3</div>
+          <p>Start the <strong>30-Day Meal & Grocery System</strong> if you haven't yet — even just Week 1's grocery list and no-cook page.</p>
+        </div>
+        <div class="roadmap-item">
+          <div class="week">📅 Week 4 and on</div>
+          <p>Revisit your symptom tracker (inside the toolkit) to see what's actually helping, and use the <strong>Doctor Appointment Prep</strong> card before your next visit.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; padding:16px; background:#F1F5F9; border-radius:12px; text-align:center; font-size:15px; color:#475569;">
+        <i class="fas fa-check-circle" style="color:#10B981; margin-right:8px;"></i>
+        There's no wrong order here, and no deadline. This is yours to use at your own pace — the goal is progress, not a perfect streak.
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 5 – You Made a Good Decision                           -->
+    <!-- ============================================================ -->
+    <div class="card reassurance">
+      <h2>You Didn't Just Buy a PDF. You Stopped Guessing.</h2>
+      <p>
+        Most women in <strong>{{dominant_cluster}}</strong> patterns spend months — sometimes years — trying random fixes before finding something that actually explains what's happening. You just skipped that part.
+      </p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 6 – Stay Connected / Community (Optional)              -->
+    <!-- ============================================================ -->
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-envelope-open-text"></i>
+        <h2>One More Thing</h2>
+      </div>
+      <p style="font-size:15px; color:#475569; margin-bottom:16px;">
+        Keep an eye on your inbox — we'll send a few short emails over the next two weeks with quick wins from the guide, so you're not on your own figuring out where to start.
+      </p>
+      <!-- If you have a Facebook group / community, uncomment and add link -->
+      <!--
+      <a href="#" style="display:inline-block; background:#EC4899; color:white; padding:12px 28px; border-radius:30px; font-weight:700; text-decoration:none;">
+        <i class="fab fa-facebook"></i> Join the Private Community
+      </a>
+      <p style="font-size:14px; color:#94A3B8; margin-top:12px;">Connect with other women going through the same thing — ask questions, share what's working.</p>
+      -->
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 7 – Need Help? (FAQ & Support)                        -->
+    <!-- ============================================================ -->
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Questions? We've Got You.</h2>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>I didn't get the download email</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">Check your spam folder, or simply use the download buttons above — they'll work even if the email gets delayed.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I access this on my phone?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">Yes, all three guides are PDFs and open perfectly on any device — phone, tablet, or computer.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Is this a subscription?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">No, this was a one-time payment. Your access is for life, with no recurring charges.</div>
+      </div>
+
+      <div class="support-email">
+        <i class="fas fa-headset" style="color:#EC4899; margin-right:6px;"></i>
+        Still need help? Email us at <a href="mailto:support@yourdomain.com">support@yourdomain.com</a> — real humans, usually within 24 hours.
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      &copy; 2026 Menopause, Decoded™ &middot; <a href="#">Privacy Policy</a> &middot; <a href="#">Terms</a>
+    </div>
+
+  </div>
+
+  <script>
+    // ================================================================
+    // 1. FIREWORKS ANIMATION
+    // ================================================================
+    (function() {
+      const canvas = document.getElementById('fireworks-canvas');
+      const ctx = canvas.getContext('2d');
+      let W, H;
+
+      function resize() {
+        W = window.innerWidth;
+        H = window.innerHeight;
+        canvas.width = W;
+        canvas.height = H;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      const particles = [];
+      const GRAVITY = 0.04;
+      const FADE = 0.965;
+
+      class Particle {
+        constructor(x, y, color) {
+          this.x = x;
+          this.y = y;
+          const angle = Math.random() * 2 * Math.PI;
+          const speed = Math.random() * 6 + 2;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed - 1.5;
+          this.life = 1;
+          this.decay = 0.008 + Math.random() * 0.015;
+          this.size = Math.random() * 4 + 2;
+          this.color = color;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.vy += GRAVITY;
+          this.vx *= 0.99;
+          this.life -= this.decay;
+          this.size *= 0.998;
+          return this.life > 0 && this.size > 0.1;
+        }
+
+        draw() {
+          ctx.globalAlpha = this.life;
+          ctx.fillStyle = this.color;
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      function burst(x, y) {
+        const colors = ['#EC4899', '#F97316', '#8B5CF6', '#10B981', '#3B82F6', '#F59E0B', '#EF4444', '#EC4899', '#8B5CF6'];
+        const count = 90 + Math.floor(Math.random() * 60);
+        for (let i = 0; i < count; i++) {
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          particles.push(new Particle(x, y, color));
+        }
+      }
+
+      let lastBurstTime = 0;
+      let burstCount = 0;
+
+      function animate(time) {
+        // Auto-burst every 800ms for first 8 bursts, then slower
+        if (time - lastBurstTime > 800 && burstCount < 8) {
+          const x = Math.random() * W * 0.8 + W * 0.1;
+          const y = Math.random() * H * 0.5 + H * 0.1;
+          burst(x, y);
+          lastBurstTime = time;
+          burstCount++;
+          // Random extra burst
+          if (Math.random() > 0.6) {
+            setTimeout(() => {
+              burst(Math.random() * W * 0.8 + W * 0.1, Math.random() * H * 0.5 + H * 0.1);
+            }, 300);
+          }
+        }
+        // Occasional bursts after the initial flurry
+        if (burstCount >= 8 && Math.random() < 0.008) {
+          burst(Math.random() * W * 0.8 + W * 0.1, Math.random() * H * 0.5 + H * 0.1);
+        }
+
+        ctx.clearRect(0, 0, W, H);
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const alive = particles[i].update();
+          particles[i].draw();
+          if (!alive) {
+            particles.splice(i, 1);
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      // Trigger initial bursts
+      setTimeout(() => burst(W/2, H/2.5), 100);
+      setTimeout(() => burst(W/3, H/3), 300);
+      setTimeout(() => burst(W*0.7, H/3.5), 600);
+
+      animate(0);
+
+      // Also burst on click/tap for fun
+      canvas.addEventListener('click', (e) => {
+        burst(e.clientX, e.clientY);
+      });
+      canvas.addEventListener('touchstart', (e) => {
+        if (e.touches.length) {
+          burst(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      });
+    })();
+
+    // ================================================================
+    // 2. FAQ TOGGLE
+    // ================================================================
+    function toggleFaq(element) {
+      const answer = element.nextElementSibling;
+      const isOpen = answer.classList.contains('open');
+
+      // Close any other open FAQ items (optional, for accordion behavior)
+      // document.querySelectorAll('.faq-answer').forEach(a => {
+      //   if (a !== answer) {
+      //     a.classList.remove('open');
+      //     a.previousElementSibling.classList.remove('open');
+      //   }
+      // });
+
+      if (isOpen) {
+        answer.classList.remove('open');
+        element.classList.remove('open');
+      } else {
+        answer.classList.add('open');
+        element.classList.add('open');
+      }
+    }
+  </script>
+</body>
+</html>
