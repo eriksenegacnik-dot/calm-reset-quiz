@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personalized Calm Reset Challenge</title>
-    <!-- Load Whop Elements (this enables the embed) -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Whop Elements (loaded early, but fallback is ready if it fails) -->
     <script src="https://js.whop.cloud/elements/amber/elements.js" data-whop-elements></script>
     <style>
         :root {
@@ -697,9 +699,7 @@
             text-decoration: underline;
         }
 
-        /* ============================================
-           SALES PAGE STYLES (Step 21)
-        ============================================ */
+        /* Sales page styles */
         .sales-headline {
             font-size: 26px;
             font-weight: 900;
@@ -783,7 +783,6 @@
             margin-top: 2px;
         }
 
-        /* Offer stack card */
         .offer-stack-card {
             background: #FFFFFF;
             border-radius: 16px;
@@ -902,7 +901,6 @@
             margin: 12px 0 4px;
         }
 
-        /* Whop checkout container */
         #whop-checkout {
             display: none;
             margin: 16px 0;
@@ -912,7 +910,6 @@
             display: block;
         }
 
-        /* When checkout is shown, hide the offer content */
         .offer-content-hidden {
             display: none !important;
         }
@@ -1265,7 +1262,7 @@
     </div>
 
     <!-- ============================================ -->
-    <!-- SCREEN 21: OFFER & PRICING with Whop embed   -->
+    <!-- SCREEN 21: UPDATED OFFER & PRICING PAGE       -->
     <!-- ============================================ -->
     <div class="step-content" data-step="21">
         <!-- Eyebrow -->
@@ -1355,7 +1352,7 @@
                     <span class="original-price">$271</span>
                 </div>
                 <div class="price-note">One‑time payment. Instant access. No subscription.</div>
-                <button class="primary-cta-btn" onclick="handleCheckout()" style="margin-top:12px;">
+                <button class="primary-cta-btn" id="checkoutCtaBtn" onclick="handleCheckout()" style="margin-top:12px;">
                     Claim My $49 Plan →
                 </button>
                 <div class="guarantee-under-cta">
@@ -1431,8 +1428,6 @@
         </div>
     </div>
 </div>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
 <script>
     // ============================
@@ -1681,74 +1676,66 @@
     }
 
     /* ============================================
-       WHOP CHECKOUT INTEGRATION
+       ROBUST WHOP CHECKOUT: EMBED + FALLBACK
     ============================================ */
-    let checkoutInstance = null;
+    const WHOP_CHECKOUT_URL = 'https://whop.com/checkout/plan_SF7OBebWTouRi/'; // <-- Your Checkout URL
+
     let checkoutMounted = false;
 
-    // Wait for WhopElements to be available (it loads via the script in <head>)
-    function initWhopCheckout() {
-        return new Promise((resolve) => {
-            const checkInterval = setInterval(() => {
-                if (window.WhopElements) {
-                    clearInterval(checkInterval);
-                    try {
-                        checkoutInstance = window.WhopElements().checkout.create({
-                            plan: "plan_SF7OBebWTouRi",
-                        });
-                        resolve();
-                    } catch (e) {
-                        console.error('Whop checkout init error:', e);
-                        resolve(); // still resolve to avoid blocking
-                    }
-                }
-            }, 200);
-            // Timeout after 5 seconds
-            setTimeout(() => {
-                clearInterval(checkInterval);
-                resolve();
-            }, 5000);
-        });
+    function mountWhopCheckout() {
+        if (checkoutMounted) return true;
+        if (!window.WhopElements) return false;
+
+        try {
+            const checkout = window.WhopElements().checkout.create({
+                plan: "plan_SF7OBebWTouRi",
+            });
+            checkout.create("checkout").mount("#whop-checkout");
+            checkoutMounted = true;
+            console.log('✅ Whop checkout mounted successfully');
+            return true;
+        } catch (e) {
+            console.error('❌ Whop mount error:', e);
+            return false;
+        }
     }
 
-    // Call this when the button is clicked
-    async function handleCheckout() {
-        // Hide the offer content
+    function handleCheckout() {
+        const result = userAnswers.dominantCluster || 'Personalized';
         const offerContent = document.getElementById('offerContent');
-        if (offerContent) offerContent.classList.add('offer-content-hidden');
-
-        // Show the checkout container
         const checkoutContainer = document.getElementById('whop-checkout');
+
+        // Hide offer, show checkout container
+        if (offerContent) offerContent.classList.add('offer-content-hidden');
         if (checkoutContainer) {
-            checkoutContainer.classList.add('visible');
             checkoutContainer.style.display = 'block';
+            checkoutContainer.classList.add('visible');
         }
 
-        // Ensure checkout is initialized and mount it
-        if (!checkoutInstance) {
-            await initWhopCheckout();
+        // Attempt to mount the embed
+        if (mountWhopCheckout()) {
+            // Success! The embed is mounted.
+            return;
         }
 
-        if (checkoutInstance && !checkoutMounted) {
-            try {
-                checkoutInstance.mount('#whop-checkout');
-                checkoutMounted = true;
-            } catch (e) {
-                console.error('Mount failed:', e);
-                // Fallback: redirect to checkout URL (you can replace with your actual product page)
-                // For demo, we alert, but you can set window.location.href
-                alert('Embed checkout failed. Please use the following link to complete your purchase:\nhttps://whop.com/your-product');
+        // If mount failed immediately, wait a bit and retry, then fallback to redirect
+        let attempts = 0;
+        const maxAttempts = 10;
+        const interval = setInterval(() => {
+            attempts++;
+            if (mountWhopCheckout()) {
+                clearInterval(interval);
+            } else if (attempts >= maxAttempts) {
+                clearInterval(interval);
+                // Fallback redirect
+                const redirectUrl = WHOP_CHECKOUT_URL + 
+                    '?return_url=' + encodeURIComponent(
+                        'https://menopause-thank-you.vercel.app?result=' + encodeURIComponent(result)
+                    );
+                window.location.href = redirectUrl;
             }
-        } else if (!checkoutInstance) {
-            // Fallback redirect
-            alert('Checkout not available. Please use this link: https://whop.com/your-product');
-        }
+        }, 300);
     }
-
-    // Initialize Whop checkout on page load (so it's ready)
-    document.addEventListener('DOMContentLoaded', () => {
-        initWhopCheckout();
-    });
 
     /* FAQ toggle */
     function toggleSalesFaq(el) {
