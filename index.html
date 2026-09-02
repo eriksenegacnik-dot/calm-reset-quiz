@@ -898,6 +898,20 @@
             margin: 12px 0 4px;
         }
 
+        /* Checkout container for the new embed */
+        #whop-checkout-container {
+            display: none;
+            margin: 20px 0;
+            min-height: 400px;
+        }
+        #whop-checkout-container.visible {
+            display: block;
+        }
+
+        .offer-content-hidden {
+            display: none !important;
+        }
+
         .testimonial-card {
             background: #FFFFFF;
             border-radius: 16px;
@@ -1246,7 +1260,7 @@
     </div>
 
     <!-- ============================================ -->
-    <!-- SCREEN 21: OFFER & PRICING PAGE              -->
+    <!-- SCREEN 21: OFFER & PRICING PAGE WITH NEW EMBED -->
     <!-- ============================================ -->
     <div class="step-content" data-step="21">
         <div style="text-align: center; font-size: 13px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px;">
@@ -1286,6 +1300,7 @@
             </div>
         </div>
 
+        <!-- Offer content (will be hidden when checkout is shown) -->
         <div id="offerContent">
             <div class="offer-stack-card">
                 <div class="offer-item">
@@ -1336,6 +1351,17 @@
             </div>
         </div>
 
+        <!-- WHOP CHECKOUT CONTAINER (new embed method) -->
+        <div id="whop-checkout-container">
+            <!-- The checkout will be rendered here via the data attribute and loader script -->
+            <div
+                data-whop-checkout-plan-id="plan_NnPGSrcOyPySo"
+                data-whop-checkout-theme="light"
+                data-whop-checkout-theme-accent-color="#EC4899"
+            ></div>
+        </div>
+
+        <!-- Reviews (always visible) -->
         <div style="margin-top: 20px;">
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
@@ -1349,6 +1375,7 @@
             </div>
         </div>
 
+        <!-- FAQ -->
         <div class="faq-sales">
             <div class="faq-item">
                 <div class="q" onclick="toggleSalesFaq(this)">How fast will I receive access? <i class="fas fa-chevron-down"></i></div>
@@ -1397,6 +1424,9 @@
         </div>
     </div>
 </div>
+
+<!-- Whop Checkout Loader Script -->
+<script async src="https://js.whop.com/static/checkout/loader.js"></script>
 
 <script>
     // ============================
@@ -1635,24 +1665,23 @@
     }
 
     /* ============================================
-       INSTANT REDIRECT TO WHOP
-       (Fastest, most reliable)
+       CHECKOUT HANDLER – Show the embed container
     ============================================ */
     function handleCheckout() {
-        // Get the quiz result
-        const result = userAnswers.dominantCluster || 'Personalized';
-        
-        // Your Whop checkout URL (replace with your actual link)
-        const checkoutUrl = 'https://whop.com/checkout/plan_SF7OBebWTouRi/';
-        
-        // Build the full URL with return_url and result param
-        const redirectUrl = checkoutUrl + 
-            '?return_url=' + encodeURIComponent(
-                'https://menopause-thank-you.vercel.app?result=' + encodeURIComponent(result)
-            );
-        
-        // Instant redirect
-        window.location.href = redirectUrl;
+        // Hide the offer content
+        const offerContent = document.getElementById('offerContent');
+        if (offerContent) offerContent.classList.add('offer-content-hidden');
+
+        // Show the checkout container
+        const checkoutContainer = document.getElementById('whop-checkout-container');
+        if (checkoutContainer) {
+            checkoutContainer.classList.add('visible');
+            checkoutContainer.style.display = 'block';
+        }
+
+        // The loader script will automatically render the checkout
+        // because the div with data-whop-checkout-plan-id is now visible.
+        // No extra code needed – the loader script handles it.
     }
 
     /* ============================================
