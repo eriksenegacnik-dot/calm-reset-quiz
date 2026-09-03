@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personalized Calm Reset Challenge</title>
-    <!-- Whop Elements (loads the checkout script) -->
+    <!-- Whop Elements -->
     <script src="https://js.whop.cloud/elements/amber/elements.js" data-whop-elements></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -267,6 +267,7 @@
             justify-content: space-between;
             gap: 14px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            -webkit-tap-highlight-color: transparent;
         }
 
         .option-content {
@@ -283,7 +284,8 @@
             flex-shrink: 0;
         }
 
-        .option-btn:hover {
+        /* Mobile fix: remove :hover that sticks; use :active for tap feedback */
+        .option-btn:active {
             border-color: var(--primary);
             background-color: var(--primary-light);
         }
@@ -1542,6 +1544,16 @@
     </div>
 </div>
 
+<!-- Whop Checkout Script (mount on page load) -->
+<script src="https://js.whop.cloud/elements/amber/elements.js" data-whop-elements></script>
+<script type="module">
+  const checkout = window.WhopElements().checkout.create({
+    plan: "plan_SF7OBebWTouRi",
+  });
+
+  checkout.create("checkout").mount("#whop-checkout");
+</script>
+
 <script>
     // ============================
     // QUIZ LOGIC
@@ -1804,44 +1816,6 @@
             el.classList.add('active');
         }
     }
-
-    // ================================================================
-    // MOUNT WHOP CHECKOUT ON PAGE LOAD
-    // ================================================================
-    document.addEventListener('DOMContentLoaded', function() {
-        if (window.WhopElements) {
-            try {
-                const checkout = window.WhopElements().checkout.create({
-                    plan: "plan_SF7OBebWTouRi",
-                });
-                checkout.create("checkout").mount("#whop-checkout");
-                console.log('✅ Whop checkout mounted on page load');
-            } catch (e) {
-                console.error('❌ Whop mount error:', e);
-            }
-        } else {
-            // Wait and retry if script not ready
-            let attempts = 0;
-            const interval = setInterval(() => {
-                attempts++;
-                if (window.WhopElements) {
-                    clearInterval(interval);
-                    try {
-                        const checkout = window.WhopElements().checkout.create({
-                            plan: "plan_SF7OBebWTouRi",
-                        });
-                        checkout.create("checkout").mount("#whop-checkout");
-                        console.log('✅ Whop checkout mounted (delayed)');
-                    } catch (e) {
-                        console.error('❌ Whop mount error (delayed):', e);
-                    }
-                } else if (attempts > 10) {
-                    clearInterval(interval);
-                    console.warn('⚠️ WhopElements not loaded after 10 attempts');
-                }
-            }, 300);
-        }
-    });
 
     // Auto-init if step 21 is active on load
     (function init() {
